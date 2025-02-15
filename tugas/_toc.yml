@@ -3,8 +3,9 @@
 
 format: jb-book
 root: intro
+title: My Website
 chapters:
-  # - file: intro
   - file: materi
     sections: 
     - file: sub bab materi 1
+    - file: sub bab materi 2
