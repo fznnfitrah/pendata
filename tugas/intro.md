@@ -1,3 +1,6 @@
 # Welcome to my Website About Data Mining
 
-Please enjoy my topic what are we discus here!!
+Nama : Achmad Fauzan Alif Fitrah
+NIM : 230411100145
+Kelas : DATA MINING D
+NO Handphone : 085924854545
