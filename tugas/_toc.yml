@@ -5,11 +5,9 @@ format: jb-book
 root: intro
 title: My Website
 chapters:
+  - file: prepare
   - file: materi
-    sections: 
-    - file: prepare
-    - file: materi 1
-    - file: sub bab materi 1
-      title: judul baru
-    - file: materi 2
-      title: materi 2
+  - file: materi 2
+    title: Materi 2x
+  - file: sub bab materi 2
+  - file: materi 3
