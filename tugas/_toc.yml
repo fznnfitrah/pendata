@@ -8,6 +8,8 @@ chapters:
   - file: materi
     sections: 
     - file: prepare
+    - file: materi 1
     - file: sub bab materi 1
       title: judul baru
-    - file: sub bab materi 2
+    - file: materi 2
+      title: materi 2
