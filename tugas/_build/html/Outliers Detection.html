@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ouliers Detection &#8212; Data Mining</title>
+    <title>Outliers Detection Use K-NN &#8212; Data Mining</title>
   
   
   
@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sub Bab Materi 2" href="materi%202.html" />
-    <link rel="prev" title="Penjelasan Data Understanding" href="Data%20Understanding.html" />
+    <link rel="prev" title="Data Understanding" href="Data%20Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -170,11 +170,10 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html">Penjelasan Data Understanding</a></li>
-
-
-
-
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Outliers Detection Use K-NN</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="materi%202.html">Materi 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sub%20bab%20materi%202.html">Materi 2</a></li>
 </ul>
@@ -365,7 +364,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ouliers Detection</h1>
+    <h1>Outliers Detection Use K-NN</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -375,20 +374,15 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ouliers Detection</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam macam tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-apakah-regresi-atau-klasifikasi">Menentukan apakah regresi atau klasifikasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-k-nn">Algoritma K-NN</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -399,58 +393,22 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="ouliers-detection">
-<h1>Ouliers Detection<a class="headerlink" href="#ouliers-detection" title="Link to this heading">#</a></h1>
-</section>
-<section id="macam-macam-tipe-data">
-<h1>Macam macam tipe data<a class="headerlink" href="#macam-macam-tipe-data" title="Link to this heading">#</a></h1>
-</section>
-<section id="menentukan-apakah-regresi-atau-klasifikasi">
-<h1>Menentukan apakah regresi atau klasifikasi<a class="headerlink" href="#menentukan-apakah-regresi-atau-klasifikasi" title="Link to this heading">#</a></h1>
-<ol class="arabic simple">
-<li><p>Regresi : regresi biasanay mengeluarkan angka/numeric dalam outputnya</p></li>
-<li><p>klasifikasi : klasifikasi biasanya outputnya adalah label/string/class</p></li>
-</ol>
-</section>
-<section id="algoritma-k-nn">
-<h1>Algoritma K-NN<a class="headerlink" href="#algoritma-k-nn" title="Link to this heading">#</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Euclidean distance
-  afoanfosainfisdn
-  
-  $akar (x2-x1)^2 + (y2-y1)^2$
-
-- Manhattan distance : selalu postif 
-  |x2-x1| + |y2-y1|
-
--MInkowski distance : 
-</pre></div>
-</div>
-<p>2 + (y2-y1)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Manhattan distance : selalu postif 
-  |x2-x1| + |y2-y1|
-
--MInkowski distance : 
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Data understanding menjelaskan tipe tipe data</p></li>
-<li><p>deteksi outliers menggunakan K-NN, dengan penjelasan konsepnya, menggunakan data iris yang sudah di ubah</p></li>
-</ul>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="outliers-detection-use-k-nn">
+<h1>Outliers Detection Use K-NN<a class="headerlink" href="#outliers-detection-use-k-nn" title="Link to this heading">#</a></h1>
 <section id="penjelasan-outliers">
-<h1>Penjelasan Outliers<a class="headerlink" href="#penjelasan-outliers" title="Link to this heading">#</a></h1>
+<h2>Penjelasan Outliers<a class="headerlink" href="#penjelasan-outliers" title="Link to this heading">#</a></h2>
 <p>Outlier adalah nilai yang jauh berbeda dari nilai lainnya dalam kumpulan data. Nilai ini muncul sebagai pengecualian dalam pola data yang ada. Nilai yang ada di outlier bisa jauh lebih tinggi maupun lebih rendah dibandingkan dengan nilai-nilai lain dalam dataset. Outlier bisa terjadi karena berbagai alasan, termasuk kesalahan pengukuran, kejadian langka, atau karena faktor lain yang tidak terduga.</p>
 </section>
 <section id="cara-mendeteksi-outliers">
-<h1>Cara Mendeteksi Outliers<a class="headerlink" href="#cara-mendeteksi-outliers" title="Link to this heading">#</a></h1>
+<h2>Cara Mendeteksi Outliers<a class="headerlink" href="#cara-mendeteksi-outliers" title="Link to this heading">#</a></h2>
 <p>Salah satu cara untuk mendeteksi outliers adalah dengan menggunakan rumus yang telah banyak dikembangkan saat ini, salah satunya adalah K-NN. K-NN adalah salah satu metode yang cukup efektif dan juga efisien dalam melihat suatu anomali pada data, salah satunya tentu saja outliers</p>
 <section id="penjelasan-metode-k-nn">
-<h2>Penjelasan Metode K-NN<a class="headerlink" href="#penjelasan-metode-k-nn" title="Link to this heading">#</a></h2>
+<h3>Penjelasan Metode K-NN<a class="headerlink" href="#penjelasan-metode-k-nn" title="Link to this heading">#</a></h3>
 <p>k-Nearest Neighbors (k-NN) adalah salah satu algoritma machine learning berbasis lazy learning yang digunakan untuk klasifikasi dan regresi. Metode ini bekerja dengan cara mencari k tetangga terdekat dari suatu data baru berdasarkan jarak dari data yang sudah ada (training data).</p>
 <p>Metode k-NN tidak membangun model eksplisit selama tahap pelatihan, melainkan langsung menggunakan semua data yang tersedia saat melakukan prediksi. Oleh karena itu, algoritma ini disebut non-parametrik dan lazy learner (karena tidak melakukan perhitungan kompleks saat training, tetapi saat prediksi).</p>
 </section>
 <section id="bagaimana-cara-kerja-k-nn">
-<h2>Bagaimana Cara Kerja k-NN?<a class="headerlink" href="#bagaimana-cara-kerja-k-nn" title="Link to this heading">#</a></h2>
+<h3>Bagaimana Cara Kerja k-NN?<a class="headerlink" href="#bagaimana-cara-kerja-k-nn" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Tentukan Nilai k</p>
 <ul class="simple">
@@ -482,13 +440,13 @@
 </ol>
 </section>
 <section id="deteksi-outliers-dengan-metode-k-nn">
-<h2>Deteksi Outliers dengan Metode k-NN<a class="headerlink" href="#deteksi-outliers-dengan-metode-k-nn" title="Link to this heading">#</a></h2>
+<h3>Deteksi Outliers dengan Metode k-NN<a class="headerlink" href="#deteksi-outliers-dengan-metode-k-nn" title="Link to this heading">#</a></h3>
 <p>Metode k-Nearest Neighbors (k-NN) tidak hanya digunakan untuk klasifikasi dan regresi, tetapi juga bisa digunakan untuk mendeteksi outliers (pencilan). Outliers adalah data yang jauh berbeda dari mayoritas data lainnya dalam dataset.</p>
 <p>Bayangkan kamu berada di sebuah kelas dengan 30 mahasiswa, dan hampir semua tinggi badan mereka berkisar antara 150 cm - 180 cm. Namun, tiba-tiba ada seseorang yang tingginya 220 cm. Orang ini bisa dianggap outlier karena jauh berbeda dari yang lain. k-NN dapat membantu mendeteksi outliers dengan melihat seberapa jauh sebuah titik data dari tetangga terdekatnya.</p>
 </section>
 </section>
 <section id="contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">
-<h1>Contoh Penerapan Deteksi Ouliers menggunakan K-NN<a class="headerlink" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn" title="Link to this heading">#</a></h1>
+<h2>Contoh Penerapan Deteksi Ouliers menggunakan K-NN<a class="headerlink" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengimport Library yang digunakan dalam prosesnya</span>
@@ -681,6 +639,7 @@ Data Outliers:
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -718,7 +677,7 @@ Data Outliers:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Penjelasan Data Understanding</p>
+        <p class="prev-next-title">Data Understanding</p>
       </div>
     </a>
     <a class="right-next"
@@ -747,20 +706,15 @@ Data Outliers:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ouliers Detection</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam macam tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-apakah-regresi-atau-klasifikasi">Menentukan apakah regresi atau klasifikasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-k-nn">Algoritma K-NN</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
