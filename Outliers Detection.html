@@ -1,0 +1,817 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ouliers Detection &#8212; Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Outliers Detection';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sub Bab Materi 2" href="materi%202.html" />
+    <link rel="prev" title="Penjelasan Data Understanding" href="Data%20Understanding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Mining - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Data Mining - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Data Mining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html">Penjelasan Data Understanding</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="materi%202.html">Materi 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sub%20bab%20materi%202.html">Materi 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="materi%203.html">Materi 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sub%20bab%203.html">Sub bab Materi 3</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FOutliers Detection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Outliers Detection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ouliers Detection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ouliers Detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam macam tipe data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-apakah-regresi-atau-klasifikasi">Menentukan apakah regresi atau klasifikasi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-k-nn">Algoritma K-NN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ouliers-detection">
+<h1>Ouliers Detection<a class="headerlink" href="#ouliers-detection" title="Link to this heading">#</a></h1>
+</section>
+<section id="macam-macam-tipe-data">
+<h1>Macam macam tipe data<a class="headerlink" href="#macam-macam-tipe-data" title="Link to this heading">#</a></h1>
+</section>
+<section id="menentukan-apakah-regresi-atau-klasifikasi">
+<h1>Menentukan apakah regresi atau klasifikasi<a class="headerlink" href="#menentukan-apakah-regresi-atau-klasifikasi" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Regresi : regresi biasanay mengeluarkan angka/numeric dalam outputnya</p></li>
+<li><p>klasifikasi : klasifikasi biasanya outputnya adalah label/string/class</p></li>
+</ol>
+</section>
+<section id="algoritma-k-nn">
+<h1>Algoritma K-NN<a class="headerlink" href="#algoritma-k-nn" title="Link to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Euclidean distance
+  afoanfosainfisdn
+  
+  $akar (x2-x1)^2 + (y2-y1)^2$
+
+- Manhattan distance : selalu postif 
+  |x2-x1| + |y2-y1|
+
+-MInkowski distance : 
+</pre></div>
+</div>
+<p>2 + (y2-y1)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Manhattan distance : selalu postif 
+  |x2-x1| + |y2-y1|
+
+-MInkowski distance : 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data understanding menjelaskan tipe tipe data</p></li>
+<li><p>deteksi outliers menggunakan K-NN, dengan penjelasan konsepnya, menggunakan data iris yang sudah di ubah</p></li>
+</ul>
+</section>
+<section id="penjelasan-outliers">
+<h1>Penjelasan Outliers<a class="headerlink" href="#penjelasan-outliers" title="Link to this heading">#</a></h1>
+<p>Outlier adalah nilai yang jauh berbeda dari nilai lainnya dalam kumpulan data. Nilai ini muncul sebagai pengecualian dalam pola data yang ada. Nilai yang ada di outlier bisa jauh lebih tinggi maupun lebih rendah dibandingkan dengan nilai-nilai lain dalam dataset. Outlier bisa terjadi karena berbagai alasan, termasuk kesalahan pengukuran, kejadian langka, atau karena faktor lain yang tidak terduga.</p>
+</section>
+<section id="cara-mendeteksi-outliers">
+<h1>Cara Mendeteksi Outliers<a class="headerlink" href="#cara-mendeteksi-outliers" title="Link to this heading">#</a></h1>
+<p>Salah satu cara untuk mendeteksi outliers adalah dengan menggunakan rumus yang telah banyak dikembangkan saat ini, salah satunya adalah K-NN. K-NN adalah salah satu metode yang cukup efektif dan juga efisien dalam melihat suatu anomali pada data, salah satunya tentu saja outliers</p>
+<section id="penjelasan-metode-k-nn">
+<h2>Penjelasan Metode K-NN<a class="headerlink" href="#penjelasan-metode-k-nn" title="Link to this heading">#</a></h2>
+<p>k-Nearest Neighbors (k-NN) adalah salah satu algoritma machine learning berbasis lazy learning yang digunakan untuk klasifikasi dan regresi. Metode ini bekerja dengan cara mencari k tetangga terdekat dari suatu data baru berdasarkan jarak dari data yang sudah ada (training data).</p>
+<p>Metode k-NN tidak membangun model eksplisit selama tahap pelatihan, melainkan langsung menggunakan semua data yang tersedia saat melakukan prediksi. Oleh karena itu, algoritma ini disebut non-parametrik dan lazy learner (karena tidak melakukan perhitungan kompleks saat training, tetapi saat prediksi).</p>
+</section>
+<section id="bagaimana-cara-kerja-k-nn">
+<h2>Bagaimana Cara Kerja k-NN?<a class="headerlink" href="#bagaimana-cara-kerja-k-nn" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Tentukan Nilai k</p>
+<ul class="simple">
+<li><p>k adalah jumlah tetangga terdekat yang akan digunakan untuk menentukan kelas atau nilai prediksi.</p></li>
+<li><p>Contoh: Jika k = 3, maka kita akan melihat 3 tetangga terdekat dari data yang ingin diprediksi.</p></li>
+</ul>
+</li>
+<li><p>Hitung Jarak Data Baru ke Data yang Ada</p>
+<ul>
+<li><p>Umumnya menggunakan Jarak Euclidean, tetapi bisa juga menggunakan Manhattan atau Minkowski.</p></li>
+<li><p>Formula Euclidean Distance untuk dua titik 𝐴(𝑥1,𝑦1)A(x 1 ,y1 ) dan 𝐵(𝑥2,𝑦2)B(x 2 ,y 2 ) adalah:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>      𝑑(𝐴,𝐵)=(𝑥2−𝑥1)2+(𝑦2−𝑦1)2d(A,B)= (x 2 −x 1 ) 2 +(y 2​ −y 1 ) 2
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Ambil k Tetangga Terdekat</p>
+<ul class="simple">
+<li><p>Setelah menghitung jarak ke semua titik dalam dataset, pilih k titik dengan jarak terdekat.</p></li>
+</ul>
+</li>
+<li><p>Lakukan Klasifikasi atau Regresi</p>
+<ul class="simple">
+<li><p>Klasifikasi: Data baru akan diberi label berdasarkan mayoritas kelas dari k tetangga terdekat.</p></li>
+<li><p>Regresi: Data baru akan diberi nilai berdasarkan rata-rata atau perhitungan lain dari k tetangga terdekat.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="deteksi-outliers-dengan-metode-k-nn">
+<h2>Deteksi Outliers dengan Metode k-NN<a class="headerlink" href="#deteksi-outliers-dengan-metode-k-nn" title="Link to this heading">#</a></h2>
+<p>Metode k-Nearest Neighbors (k-NN) tidak hanya digunakan untuk klasifikasi dan regresi, tetapi juga bisa digunakan untuk mendeteksi outliers (pencilan). Outliers adalah data yang jauh berbeda dari mayoritas data lainnya dalam dataset.</p>
+<p>Bayangkan kamu berada di sebuah kelas dengan 30 mahasiswa, dan hampir semua tinggi badan mereka berkisar antara 150 cm - 180 cm. Namun, tiba-tiba ada seseorang yang tingginya 220 cm. Orang ini bisa dianggap outlier karena jauh berbeda dari yang lain. k-NN dapat membantu mendeteksi outliers dengan melihat seberapa jauh sebuah titik data dari tetangga terdekatnya.</p>
+</section>
+</section>
+<section id="contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">
+<h1>Contoh Penerapan Deteksi Ouliers menggunakan K-NN<a class="headerlink" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengimport Library yang digunakan dalam prosesnya</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NearestNeighbors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengkoneksi database dengan python</span>
+<span class="c1"># for mysql</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf8mb4&quot;</span><span class="p">,</span>
+    <span class="n">connect_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="n">cursorclass</span><span class="o">=</span><span class="n">pymysql</span><span class="o">.</span><span class="n">cursors</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">,</span>
+    <span class="n">db</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-726cd75-mysqlpendata-11.h.aivencloud.com&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_LHA80D-LNsKI6wncjfc&quot;</span><span class="p">,</span>
+    <span class="n">read_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">20734</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+    <span class="n">write_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">mysql_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;mysql+pymysql://avnadmin:AVNS_LHA80D-LNsKI6wncjfc@mysql-726cd75-mysqlpendata-11.h.aivencloud.com:20734/defaultdb&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1"># for postgre</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;postgres://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb?sslmode=require&#39;</span><span class="p">)</span>
+
+    <span class="n">query_sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT VERSION()&#39;</span>
+
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_sql</span><span class="p">)</span>
+
+    <span class="n">version</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql+psycopg2://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PostgreSQL 16.7 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 14.2.1 20240912 (Red Hat 14.2.1-3), 64-bit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil data dari MySQL</span>
+<span class="n">mysql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM iris_data&quot;</span>
+<span class="n">mysql_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">mysql_query</span><span class="p">,</span> <span class="n">mysql_engine</span><span class="p">)</span>
+
+<span class="c1"># Ambil data dari PostgreSQL</span>
+<span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM postgre&#39;</span>
+<span class="n">pg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">pg_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mengabungkan 2 database</span>
+<span class="n">merge_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mysql_df</span><span class="p">,</span> <span class="n">pg_df</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan data yang diambil database dan ditampilkan dalam bentuk tabel</span>
+<span class="n">selected_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal width&quot;</span><span class="p">]</span>  
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">merge_df</span><span class="p">[</span><span class="n">selected_columns</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Berikut ini adalah tampilan data yang diambil dari database :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berikut ini adalah tampilan data yang diambil dari database :
+
+      id           class  petal_length  petal_width  sepal length  sepal width
+0      1     Iris-setosa          86.4         70.0          20.1         30.5
+1      2     Iris-setosa           1.4          0.2           4.9          3.0
+2      3     Iris-setosa           1.3          0.2           4.7          3.2
+3      4     Iris-setosa           1.5          0.2           4.6          3.1
+4      5     Iris-setosa           1.4          0.2           5.0          3.6
+..   ...             ...           ...          ...           ...          ...
+145  146  Iris-virginica           5.2          2.3           6.7          3.0
+146  147  Iris-virginica           5.0          1.9           6.3          2.5
+147  148  Iris-virginica           5.2          2.0           6.5          3.0
+148  149  Iris-virginica           5.4          2.3           6.2          3.4
+149  150  Iris-virginica           5.1          1.8           5.9          3.0
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1️⃣ Pilih fitur numerik untuk analisis outlier</span>
+<span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal width&quot;</span><span class="p">]</span>
+<span class="n">data_numeric</span> <span class="o">=</span> <span class="n">merge_df</span><span class="p">[</span><span class="n">numeric_columns</span><span class="p">]</span>
+
+<span class="c1"># 2️⃣ Normalisasi data agar skala fitur seragam</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">data_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_numeric</span><span class="p">)</span>
+
+<span class="c1"># 3️⃣ Deteksi Outliers menggunakan k-NN</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Bisa disesuaikan</span>
+<span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<span class="n">nbrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_scaled</span><span class="p">)</span>
+<span class="n">distances</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data_scaled</span><span class="p">)</span>
+
+<span class="c1"># Gunakan jarak ke tetangga ke-k sebagai skor outlier</span>
+<span class="n">outlier_scores</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 4️⃣ Tentukan threshold outlier (contoh: ambil 5% data dengan skor tertinggi)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">outlier_scores</span><span class="p">,</span> <span class="mi">95</span><span class="p">)</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">outlier_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Index outlier</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah outliers yang terdeteksi: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Index data outliers:&quot;</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Outliers:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merge_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+
+<span class="c1"># 5️⃣ Visualisasi dengan PCA untuk reduksi dimensi</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">data_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_scaled</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Normal Data&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_pca</span><span class="p">[</span><span class="n">outliers</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data_pca</span><span class="p">[</span><span class="n">outliers</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers&quot;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA Component 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA Component 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Deteksi Outliers dengan k-NN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah outliers yang terdeteksi: 8
+Index data outliers: [  0  14  15  41  60 109 117 131]
+Data Outliers:
+      id            class  petal_length  petal_width            Class  \
+0      1      Iris-setosa          86.4         70.0      Iris-setosa   
+14    15      Iris-setosa           1.2          0.2      Iris-setosa   
+15    16      Iris-setosa           1.5          0.4      Iris-setosa   
+41    42      Iris-setosa           1.3          0.3      Iris-setosa   
+60    61  Iris-versicolor           3.5          1.0  Iris-versicolor   
+109  110   Iris-virginica           6.1          2.5   Iris-virginica   
+117  118   Iris-virginica           6.7          2.2   Iris-virginica   
+131  132   Iris-virginica           6.4          2.0   Iris-virginica   
+
+     sepal length  sepal width  
+0            20.1         30.5  
+14            5.8          4.0  
+15            5.7          4.4  
+41            4.5          2.3  
+60            5.0          2.0  
+109           7.2          3.6  
+117           7.7          3.8  
+131           7.9          3.8  
+</pre></div>
+</div>
+<img alt="_images/e40288cbfa8acc1eb5d942f0306780e1a0ccc519fb8e36304f766ea8accd8666.png" src="_images/e40288cbfa8acc1eb5d942f0306780e1a0ccc519fb8e36304f766ea8accd8666.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Data%20Understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Penjelasan Data Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="materi%202.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sub Bab Materi 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ouliers Detection</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam macam tipe data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-apakah-regresi-atau-klasifikasi">Menentukan apakah regresi atau klasifikasi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-k-nn">Algoritma K-NN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outliers">Penjelasan Outliers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mendeteksi-outliers">Cara Mendeteksi Outliers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-metode-k-nn">Penjelasan Metode K-NN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-cara-kerja-k-nn">Bagaimana Cara Kerja k-NN?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers-dengan-metode-k-nn">Deteksi Outliers dengan Metode k-NN</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-penerapan-deteksi-ouliers-menggunakan-k-nn">Contoh Penerapan Deteksi Ouliers menggunakan K-NN</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fauzan Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

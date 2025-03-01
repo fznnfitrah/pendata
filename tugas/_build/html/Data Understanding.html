@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data Understanding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Sub Bab Materi 2" href="materi%202.html" />
+    <link rel="next" title="Ouliers Detection" href="Outliers%20Detection.html" />
     <link rel="prev" title="Alat dan Bahan Data Mining" href="prepare.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,6 +171,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Penjelasan Data Understanding</a></li>
+
 
 
 
@@ -379,6 +380,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap">Penjelasan Setiap Tahap</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam Macam Tipe Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding">Cotoh Beberapa Proses Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database">Menarik Data dari Database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database">Membuat Koneksi dengan Database</a></li>
@@ -443,6 +445,16 @@ Proses melihat masalah seperti adanya anomali pada data, atau suatu nilai yang b
 Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau masih ada data yang kurang tepat. Data juga dicek apakah diambil dari data primer atau tidak, sebagai pertimbangan keputasan nantinya.</p></li>
 </ol>
 </section>
+</section>
+<section id="macam-macam-tipe-data">
+<h1>Macam Macam Tipe Data<a class="headerlink" href="#macam-macam-tipe-data" title="Link to this heading">#</a></h1>
+<p>Ketika kita mempelajari data mining tentunya objek yang paling utama diolah adalah data itu sendiri. Data adalah sekumpulan fakta atau objek dan atributnya. Atribut merupakn karakteristik atau properti dari objek tertentu. Jenis atribut atau nilai dari kolom ada beberapa, diantaranya adalah :</p>
+<ol class="arabic simple">
+<li><p>Nominal yang merupakan kategori class yang tidak memiliki perbedaan nilai atau rangking. Contoh pekerjaan (Dosen, PNS).</p></li>
+<li><p>Binary merupakan atribut yang tidak memiliki perbedaan dan hanya memiliki 2 states, contohnya seperti jenis kelamin (perempuan, laki-laki).</p></li>
+<li><p>Ordinal merupakan kategori class yang memiliki nilai rangking, contohnya seperti jabatan, jenjang pendidikan, dll.</p></li>
+<li><p>Numeric merupakan kuantitas yang memiliki ukuran nilai yang memiliki jarak yang jelas, contohnya adalah umur. Numeric ini memiliki 2 jenis, yaitu rasio dan interval.</p></li>
+</ol>
 </section>
 <section id="cotoh-beberapa-proses-data-understanding">
 <h1>Cotoh Beberapa Proses Data Understanding<a class="headerlink" href="#cotoh-beberapa-proses-data-understanding" title="Link to this heading">#</a></h1>
@@ -579,7 +591,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berikut ini adalah tampilan data yang diambil dari database :
 
       id           class  petal_length  petal_width  sepal length  sepal width
-0      1     Iris-setosa           1.4          0.2           5.1          3.5
+0      1     Iris-setosa          86.4         70.0          20.1         30.5
 1      2     Iris-setosa           1.4          0.2           4.9          3.0
 2      3     Iris-setosa           1.3          0.2           4.7          3.2
 3      4     Iris-setosa           1.5          0.2           4.6          3.1
@@ -672,7 +684,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c08f33564ceef4a50da955c3895407cc1e963a19733d767f4f791dbfec09919.png" src="_images/8c08f33564ceef4a50da955c3895407cc1e963a19733d767f4f791dbfec09919.png" />
+<img alt="_images/9541c012d74e9afe1564864797a30ba2342bfef1bbf4475ae43df3a6f53aa6f1.png" src="_images/9541c012d74e9afe1564864797a30ba2342bfef1bbf4475ae43df3a6f53aa6f1.png" />
 </div>
 </div>
 </section>
@@ -704,7 +716,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9257b234e999817492e3418c73ab7334b6725db7f23f6a0646560c9a8e568d37.png" src="_images/9257b234e999817492e3418c73ab7334b6725db7f23f6a0646560c9a8e568d37.png" />
+<img alt="_images/27eaa8c89ea6bae94a86af33aad08cc76e6b18aec7d6a69265f394eb9dfba386.png" src="_images/27eaa8c89ea6bae94a86af33aad08cc76e6b18aec7d6a69265f394eb9dfba386.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -728,7 +740,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a971ce92a8b74cb489b124f2ad8b64c575e0b4b04307aea3dadd52a1c006c069.png" src="_images/a971ce92a8b74cb489b124f2ad8b64c575e0b4b04307aea3dadd52a1c006c069.png" />
+<img alt="_images/5e43df16d90e055b1e8b1e5841918a19516cfe715be9e3770ef0880d749b44ae.png" src="_images/5e43df16d90e055b1e8b1e5841918a19516cfe715be9e3770ef0880d749b44ae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -745,7 +757,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d724c9755c09f05f5e7234dcc3547ab896e652f159064b9bae128ec2e798a6c6.png" src="_images/d724c9755c09f05f5e7234dcc3547ab896e652f159064b9bae128ec2e798a6c6.png" />
+<img alt="_images/da43c4cfefbc9e5654aa7d472d2399dfb8bde4db92f80bdba6bafa75e583f156.png" src="_images/da43c4cfefbc9e5654aa7d472d2399dfb8bde4db92f80bdba6bafa75e583f156.png" />
 </div>
 </div>
 </section>
@@ -795,22 +807,20 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outliers pada kolom Petal Length:
-Empty DataFrame
-Columns: [petal_length]
-Index: []
+   petal_length
+0          86.4
 
 Outliers pada kolom Petal Width:
-Empty DataFrame
-Columns: [petal_width]
-Index: []
+   petal_width
+0         70.0
 
 Outliers pada kolom Sepal Length:
-Empty DataFrame
-Columns: [sepal length]
-Index: []
+   sepal length
+0          20.1
 
 Outliers pada kolom Sepal Width:
     sepal width
+0          30.5
 15          4.4
 32          4.1
 33          4.2
@@ -858,8 +868,8 @@ Outliers pada kolom Sepal Width:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Petal Length): 3.758666666666666
-Median (Petal Length): 4.35
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Petal Length): 4.325333333333333
+Median (Petal Length): 4.4
 Modus (Petal Length): 1.5
 </pre></div>
 </div>
@@ -880,7 +890,7 @@ Modus (Petal Length): 1.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Petal Width): 1.1986666666666668
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Petal Width): 1.6640000000000001
 Median (Petal Width): 1.3
 Modus (Petal Width): 0.2
 </pre></div>
@@ -902,7 +912,7 @@ Modus (Petal Width): 0.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Sepal Length): 5.843333333333334
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (Sepal Length): 5.943333333333333
 Median (Sepal Length): 5.8
 Modus (Sepal Length): 5.0
 </pre></div>
@@ -928,7 +938,7 @@ Modus (Sepal Length): 5.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (tanpa outliers): 3.036986301369863
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean (tanpa outliers): 3.033793103448276
 Median (tanpa outliers): 3.0
 Modus (tanpa outliers): 3.0
 </pre></div>
@@ -1098,6 +1108,8 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1140,11 +1152,11 @@ Note: you may need to restart the kernel to use updated packages.
       </div>
     </a>
     <a class="right-next"
-       href="materi%202.html"
+       href="Outliers%20Detection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sub Bab Materi 2</p>
+        <p class="prev-next-title">Ouliers Detection</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1170,6 +1182,7 @@ Note: you may need to restart the kernel to use updated packages.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap">Penjelasan Setiap Tahap</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam Macam Tipe Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding">Cotoh Beberapa Proses Data Understanding</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database">Menarik Data dari Database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database">Membuat Koneksi dengan Database</a></li>

@@ -9,6 +9,8 @@ chapters:
     title: Tools and Materials
   - file: Data Understanding #ipynb
     title: Data Understanding
+    sections: 
+    - file: Outliers Detection
 
   - file: materi 2 #markdown
     title: Materi 2
