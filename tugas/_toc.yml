@@ -12,6 +12,9 @@ chapters:
     title: Data Understanding
     sections: 
     - file: Outliers Detection #ipynb
+      title: Outliers Detection
+    - file: LOF #ipynb
+      title: Local Outliers Factors
 
   - file: materi 2 #markdown
     title: Materi 2

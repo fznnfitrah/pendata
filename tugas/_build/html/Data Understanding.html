@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Understanding &#8212; Data Mining</title>
+    <title>Penjelasan Data Understanding &#8212; Data Mining</title>
   
   
   
@@ -60,10 +60,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data Understanding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Outliers Detection Use K-NN" href="Outliers%20Detection.html" />
+    <link rel="next" title="Penjelasan Outliers" href="Outliers%20Detection.html" />
     <link rel="prev" title="Alat dan Bahan Data Mining" href="prepare.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,10 +172,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Outliers%20Detection.html">Outliers Detection Use K-NN</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Penjelasan Data Understanding</strong></a></li>
+
+
+
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="materi%202.html">Materi 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sub%20bab%20materi%202.html">Materi 2</a></li>
 </ul>
@@ -364,7 +367,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Understanding</h1>
+    <h1>Penjelasan Data Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,30 +377,31 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-data-understanding">Penjelasan Data Understanding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-data-understanding">Langkah langkah Data Understanding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap">Penjelasan Setiap Tahap</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Penjelasan Data Understanding</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-data-understanding"><strong>Langkah langkah Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap"><em>Penjelasan Setiap Tahap</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam Macam Tipe Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding">Cotoh Beberapa Proses Data Understanding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database">Menarik Data dari Database</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database">Membuat Koneksi dengan Database</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-tabel-dan-data">Memilih Tabel dan Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penggabungan-tabel">Penggabungan Tabel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data">Profiling Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-data">Visualising Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart">Bar Chart</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data"><strong>Macam Macam Tipe Data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding"><strong>Cotoh Beberapa Proses Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database"><em>Menarik Data dari Database</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database"><em>Membuat Koneksi dengan Database</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-tabel-dan-data"><em>Memilih Tabel dan Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penggabungan-tabel"><em>Penggabungan Tabel</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data"><em>Menampilkan Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data"><em>Profiling Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-data"><em>Visualising Data</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart">Bar Chart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah">Identifikasi Masalah</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah"><em>Identifikasi Masalah</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><em>Eksplorasi Data</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-library-yang-dipakai">Macam Macam Library yang dipakai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-library-yang-dipakai"><strong>Macam Macam Library yang dipakai</strong></a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -408,14 +412,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<section id="penjelasan-data-understanding">
-<h2>Penjelasan Data Understanding<a class="headerlink" href="#penjelasan-data-understanding" title="Link to this heading">#</a></h2>
+  <section id="penjelasan-data-understanding">
+<h1><strong>Penjelasan Data Understanding</strong><a class="headerlink" href="#penjelasan-data-understanding" title="Link to this heading">#</a></h1>
 <p>Data Understanding adalah tahap kedua dari Metode Data Mining, dan juga salah satu tahap paling penting dalam Data Mining. Pada proses ini menargetkan untuk kenal dengan data yang nantinya akan diproses. Ada banyak hal yang harus dilakukan pada tahap ini seperti mengumpulkan data, mencari permasalahan dalam data yang akan diproses, menyelidiki setiap data yang akan diproses, menentukan apakah data sesuai dengan dengan tujuan. Pada tahap ini juga setiap datanya akan dicek apakah berkualitas atau tidak. oleh karena itu sangat penting untuk memahami proses ini, karena jika sampai data yang diolah adalah data sampah maka hasil yang akan didapat juga akan sampah</p>
 </section>
 <section id="langkah-langkah-data-understanding">
-<h2>Langkah langkah Data Understanding<a class="headerlink" href="#langkah-langkah-data-understanding" title="Link to this heading">#</a></h2>
+<h1><strong>Langkah langkah Data Understanding</strong><a class="headerlink" href="#langkah-langkah-data-understanding" title="Link to this heading">#</a></h1>
 <p>Dalam melakukan data understanding ada tahapan tahapan sebelum melanjutkan ke proses selanjutnya antaranya :</p>
 <ol class="arabic simple">
 <li><p>Pengumpulan Data</p></li>
@@ -427,7 +429,7 @@
 <li><p>Validasi Data</p></li>
 </ol>
 <section id="penjelasan-setiap-tahap">
-<h3>Penjelasan Setiap Tahap<a class="headerlink" href="#penjelasan-setiap-tahap" title="Link to this heading">#</a></h3>
+<h2><em>Penjelasan Setiap Tahap</em><a class="headerlink" href="#penjelasan-setiap-tahap" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Pengumpulan Data
 Mungkin bisa dibilang proses terpenting pada langkah langkah Data Understanding ini karena jika tidak ada data yang dikumpulkan dan diproses maka tahap tahapan yang lain tentu saja tidak akan berjalan</p></li>
@@ -447,7 +449,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </section>
 </section>
 <section id="macam-macam-tipe-data">
-<h2>Macam Macam Tipe Data<a class="headerlink" href="#macam-macam-tipe-data" title="Link to this heading">#</a></h2>
+<h1><strong>Macam Macam Tipe Data</strong><a class="headerlink" href="#macam-macam-tipe-data" title="Link to this heading">#</a></h1>
 <p>Ketika kita mempelajari data mining tentunya objek yang paling utama diolah adalah data itu sendiri. Data adalah sekumpulan fakta atau objek dan atributnya. Atribut merupakn karakteristik atau properti dari objek tertentu. Jenis atribut atau nilai dari kolom ada beberapa, diantaranya adalah :</p>
 <ol class="arabic simple">
 <li><p>Nominal yang merupakan kategori class yang tidak memiliki perbedaan nilai atau rangking. Contoh pekerjaan (Dosen, PNS).</p></li>
@@ -457,9 +459,9 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </ol>
 </section>
 <section id="cotoh-beberapa-proses-data-understanding">
-<h2>Cotoh Beberapa Proses Data Understanding<a class="headerlink" href="#cotoh-beberapa-proses-data-understanding" title="Link to this heading">#</a></h2>
+<h1><strong>Cotoh Beberapa Proses Data Understanding</strong><a class="headerlink" href="#cotoh-beberapa-proses-data-understanding" title="Link to this heading">#</a></h1>
 <section id="menarik-data-dari-database">
-<h3>Menarik Data dari Database<a class="headerlink" href="#menarik-data-dari-database" title="Link to this heading">#</a></h3>
+<h2><em>Menarik Data dari Database</em><a class="headerlink" href="#menarik-data-dari-database" title="Link to this heading">#</a></h2>
 <p>Hal hal yang harus dilakukan sebelum anda melakukan penarikan data adalah mempersiapkan library python yang seperti yang sudah ada di bawah ini. Library ini akan sangat membantu untuk proses Data Understanding kita</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -481,7 +483,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </div>
 </section>
 <section id="membuat-koneksi-dengan-database">
-<h3>Membuat Koneksi dengan Database<a class="headerlink" href="#membuat-koneksi-dengan-database" title="Link to this heading">#</a></h3>
+<h2><em>Membuat Koneksi dengan Database</em><a class="headerlink" href="#membuat-koneksi-dengan-database" title="Link to this heading">#</a></h2>
 <p>Proses selanjutnya adalah mengkoneksikan database yang sudah kita buat di aiven sebelumnya dengan python yang kita miliki disini. Dengan begitu kita bisa mengambil data datanya untuk nantinya akan diproses agar menjadi suatu informasi yang berguna bagi kita. Disini kita juga akan menggunakan library library yang sudah kita install di atas agar lebih mempermudah pekerjaan kita</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -531,7 +533,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </div>
 </section>
 <section id="memilih-tabel-dan-data">
-<h3>Memilih Tabel dan Data<a class="headerlink" href="#memilih-tabel-dan-data" title="Link to this heading">#</a></h3>
+<h2><em>Memilih Tabel dan Data</em><a class="headerlink" href="#memilih-tabel-dan-data" title="Link to this heading">#</a></h2>
 <p>Berikutnya adalah pembuatan query dan memilih data yang ingin digunakan dan ditampilkan di proses atau tujuan kali ini. Hal ini juga tak kalah penting karena pembutan query sangat krusial untuk mengambil kolom serta data mana yang ingin diambil dan dari database mana. Setelah query sudah dibuat maka kita akan menggunakan library dari python kembali untuk mengambil hasil querynya. Library yang digunakan adalah library pandas denga method “read_sql()” untuk membaca query dan akan dikirimkan ke database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -548,7 +550,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </div>
 </section>
 <section id="penggabungan-tabel">
-<h3>Penggabungan Tabel<a class="headerlink" href="#penggabungan-tabel" title="Link to this heading">#</a></h3>
+<h2><em>Penggabungan Tabel</em><a class="headerlink" href="#penggabungan-tabel" title="Link to this heading">#</a></h2>
 <p>Berikut ini adalah cara untuk menggabungkan dua tabel dalam dua database</p>
 <ol class="arabic simple">
 <li><p>Import library pandas dari python</p></li>
@@ -567,7 +569,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </div>
 </section>
 <section id="menampilkan-data">
-<h3>Menampilkan Data<a class="headerlink" href="#menampilkan-data" title="Link to this heading">#</a></h3>
+<h2><em>Menampilkan Data</em><a class="headerlink" href="#menampilkan-data" title="Link to this heading">#</a></h2>
 <p>Cara menampilkan data datanya anda juga bisa menggunakan library pandas dari python :</p>
 <ol class="arabic simple">
 <li><p>Buat array yang berisi nilai nama kolom yang ada pada tabel yang sudah digabung</p></li>
@@ -610,7 +612,7 @@ Tahap pengecekan setiap data yang akan digunakan apakah sudah sesuai semua atau 
 </div>
 </section>
 <section id="profiling-data">
-<h3>Profiling Data<a class="headerlink" href="#profiling-data" title="Link to this heading">#</a></h3>
+<h2><em>Profiling Data</em><a class="headerlink" href="#profiling-data" title="Link to this heading">#</a></h2>
 <p>Tahapan yang selanjutnya adalah penulis akan mencontohkan bagaimana proses profiling data sederhana yaitu mengidentifikasi tipe data dari setiap kolom atau fitur yang tersedia dalam tabel data yang sudah kita ambil</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -648,9 +650,9 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </section>
 <section id="visualising-data">
-<h3>Visualising Data<a class="headerlink" href="#visualising-data" title="Link to this heading">#</a></h3>
+<h2><em>Visualising Data</em><a class="headerlink" href="#visualising-data" title="Link to this heading">#</a></h2>
 <section id="bar-chart">
-<h4>Bar Chart<a class="headerlink" href="#bar-chart" title="Link to this heading">#</a></h4>
+<h3>Bar Chart<a class="headerlink" href="#bar-chart" title="Link to this heading">#</a></h3>
 <p>Pada Code ini saya menggunakan library mathplotlib dan juga seaborn</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,7 +691,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </div>
 </section>
 <section id="scatter-plot">
-<h4>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h4>
+<h3>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filtered_df2</span><span class="p">)</span>
@@ -763,7 +765,7 @@ Ini adalah tipe data dari kolom Sepal Length:
 </section>
 </section>
 <section id="identifikasi-masalah">
-<h3>Identifikasi Masalah<a class="headerlink" href="#identifikasi-masalah" title="Link to this heading">#</a></h3>
+<h2><em>Identifikasi Masalah</em><a class="headerlink" href="#identifikasi-masalah" title="Link to this heading">#</a></h2>
 <p>Salah satu proses yang harus dilakukan sebelum proses eksplorasi data adalah proses Identifikasi Masalah. Untuk contoh dari proses ini saya hanya akan mencontohkan untuk mendeteksi outliers yang ada pada data iris kali ini. Hal ini dilakukan untuk memfilter data data yang dianggap anomali atau tidak sesuai dengan kebanyakan data yang sudah ada. Jadi perolehan suatu informasi lebih akurat dan juga efisien</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -831,7 +833,7 @@ Outliers pada kolom Sepal Width:
 </div>
 </section>
 <section id="eksplorasi-data">
-<h3>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h3>
+<h2><em>Eksplorasi Data</em><a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h2>
 <p>Untuk proses eksplorasi data disini, saya akan mencoba untuk menampilkan mean, median, dan juga modus dari data iris yang sudah dikumpulkan sebelumnya. Saya juga menggunakan library yang sudah tersedia di python agar prosesnya lebih cepat. Untuk library yang penulis pakai adalah numpy, pandas, dan juga scipy. Penulis juga membuat fungsi untuk menghapus nilai data outliers agar hasil yang diterima lebih akurat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -948,7 +950,7 @@ Modus (tanpa outliers): 3.0
 </section>
 </section>
 <section id="macam-macam-library-yang-dipakai">
-<h2>Macam Macam Library yang dipakai<a class="headerlink" href="#macam-macam-library-yang-dipakai" title="Link to this heading">#</a></h2>
+<h1><strong>Macam Macam Library yang dipakai</strong><a class="headerlink" href="#macam-macam-library-yang-dipakai" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> list
@@ -1059,6 +1061,7 @@ regex                         2024.11.6
 requests                      2.32.3
 requests-file                 2.1.0
 rpds-py                       0.22.3
+Sastrawi                      1.0.1
 scikit-learn                  1.6.1
 scipy                         1.15.2
 Scrapy                        2.12.0
@@ -1108,7 +1111,6 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -1157,7 +1159,7 @@ Note: you may need to restart the kernel to use updated packages.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Outliers Detection Use K-NN</p>
+        <p class="prev-next-title"><strong>Penjelasan Outliers</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1178,30 +1180,31 @@ Note: you may need to restart the kernel to use updated packages.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-data-understanding">Penjelasan Data Understanding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-data-understanding">Langkah langkah Data Understanding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap">Penjelasan Setiap Tahap</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Penjelasan Data Understanding</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-data-understanding"><strong>Langkah langkah Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-setiap-tahap"><em>Penjelasan Setiap Tahap</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data">Macam Macam Tipe Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding">Cotoh Beberapa Proses Data Understanding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database">Menarik Data dari Database</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database">Membuat Koneksi dengan Database</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-tabel-dan-data">Memilih Tabel dan Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penggabungan-tabel">Penggabungan Tabel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data">Menampilkan Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data">Profiling Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-data">Visualising Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart">Bar Chart</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-tipe-data"><strong>Macam Macam Tipe Data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cotoh-beberapa-proses-data-understanding"><strong>Cotoh Beberapa Proses Data Understanding</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menarik-data-dari-database"><em>Menarik Data dari Database</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-koneksi-dengan-database"><em>Membuat Koneksi dengan Database</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-tabel-dan-data"><em>Memilih Tabel dan Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penggabungan-tabel"><em>Penggabungan Tabel</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-data"><em>Menampilkan Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data"><em>Profiling Data</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-data"><em>Visualising Data</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart">Bar Chart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter Plot</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah">Identifikasi Masalah</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah"><em>Identifikasi Masalah</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><em>Eksplorasi Data</em></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-library-yang-dipakai">Macam Macam Library yang dipakai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-library-yang-dipakai"><strong>Macam Macam Library yang dipakai</strong></a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
