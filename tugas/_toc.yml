@@ -10,7 +10,7 @@ chapters:
     
   - file: Data Understanding #ipynb
     title: Data Understanding
-    sections: 
+    sections:
     - file: Outliers Detection #ipynb
       title: Outliers Detection
     - file: LOF #ipynb

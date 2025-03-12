@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Penjelasan Local Outliers Factors &#8212; Data Mining</title>
+    <title>LOCAL OUTLIERS FACTORS (LOF) &#8212; Data Mining</title>
   
   
   
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sub Bab Materi 2" href="materi%202.html" />
-    <link rel="prev" title="Penjelasan Outliers" href="Outliers%20Detection.html" />
+    <link rel="prev" title="OUTLIERS DETECTION" href="Outliers%20Detection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -172,11 +172,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html"><strong>Penjelasan Data Understanding</strong></a></li>
-
-
-
-
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Outliers%20Detection.html">Outliers Detection</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Local Outliers Factors</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="materi%202.html">Materi 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sub%20bab%20materi%202.html">Materi 2</a></li>
 </ul>
@@ -367,7 +367,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Penjelasan Local Outliers Factors</h1>
+    <h1>LOCAL OUTLIERS FACTORS (LOF)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,19 +377,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Penjelasan Local Outliers Factors</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-lof-langkah-langkah"><strong>Cara Kerja LOF (Langkah-Langkah)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data"><strong>Contoh Data</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn"><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-euclidean"><em>Menghitung Rumus Euclidean</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-reachibility-distance"><em>Menghitung Rumus Reachibility Distance</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-local-reachibility-distance"><em>Menghitung Local Reachibility Distance</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-local-outliers-factor"><em>Menghitung Nilai Local Outliers Factor</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-local-outliers-factors"><strong>Penjelasan Local Outliers Factors</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-lof-langkah-langkah"><strong>Cara Kerja LOF (Langkah-Langkah)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data"><strong>Contoh Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn"><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-euclidean"><em>Menghitung Rumus Euclidean</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-reachibility-distance"><em>Menghitung Rumus Reachibility Distance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-local-reachibility-distance"><em>Menghitung Local Reachibility Distance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-local-outliers-factor"><em>Menghitung Nilai Local Outliers Factor</em></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn"><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn"><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -400,13 +399,15 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="penjelasan-local-outliers-factors">
-<h1><strong>Penjelasan Local Outliers Factors</strong><a class="headerlink" href="#penjelasan-local-outliers-factors" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="local-outliers-factors-lof">
+<h1><strong>LOCAL OUTLIERS FACTORS (LOF)</strong><a class="headerlink" href="#local-outliers-factors-lof" title="Link to this heading">#</a></h1>
+<section id="penjelasan-local-outliers-factors">
+<h2><strong>Penjelasan Local Outliers Factors</strong><a class="headerlink" href="#penjelasan-local-outliers-factors" title="Link to this heading">#</a></h2>
 <p>LOF (Local Outlier Factor) adalah algoritma yang digunakan untuk mendeteksi outlier (anomali) dalam sekumpulan data. Outlier adalah titik data yang berbeda jauh dari data lainnya, misalnya transaksi mencurigakan dalam deteksi penipuan atau sensor yang memberikan pembacaan aneh.</p>
 <p>Yang membedakan LOF dari metode lain adalah pendekatan berbasis kepadatan lokal. LOF membandingkan kepadatan suatu titik data dengan kepadatan tetangganya. Jika kepadatan suatu titik jauh lebih rendah dibandingkan dengan tetangganya, maka titik tersebut dianggap sebagai outlier.</p>
 </section>
 <section id="cara-kerja-lof-langkah-langkah">
-<h1><strong>Cara Kerja LOF (Langkah-Langkah)</strong><a class="headerlink" href="#cara-kerja-lof-langkah-langkah" title="Link to this heading">#</a></h1>
+<h2><strong>Cara Kerja LOF (Langkah-Langkah)</strong><a class="headerlink" href="#cara-kerja-lof-langkah-langkah" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Tentukan jumlah tetangga (k).</p>
 <ul class="simple">
@@ -458,7 +459,7 @@ $<span class="math notranslate nohighlight">\(
 </ol>
 </section>
 <section id="contoh-data">
-<h1><strong>Contoh Data</strong><a class="headerlink" href="#contoh-data" title="Link to this heading">#</a></h1>
+<h2><strong>Contoh Data</strong><a class="headerlink" href="#contoh-data" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>id</p></th>
@@ -512,10 +513,10 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 <section id="proses-perhitungan-lof-manual-tanpa-library-scikit-learn">
-<h1><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em><a class="headerlink" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn" title="Link to this heading">#</a></h1>
+<h2><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em><a class="headerlink" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn" title="Link to this heading">#</a></h2>
 <p>Untuk mempercepat perhitungannya saya hanya akan memunculkan hanya beberapa perhitungan Euclidean, Reachibility Distance, dan juga Local Reachibility Dencity saja. sedangkan untuk yang lain akan saya lakukan menggunakan code dari python langsung. Untuk rumus pertama yang penulis ingin cari adalah perhitungan euclidean untuk data outliers saja. Tentu pada kasus yang nyata kita harus menganalisis serta menghitung semua data datanya, bukan hanya data outliers saja. Akan tetapi untuk menghemat waktu, disini penulis mungkin hanya akan menampilkan proses perhitunga data outliers saja</p>
 <section id="menghitung-rumus-euclidean">
-<h2><em>Menghitung Rumus Euclidean</em><a class="headerlink" href="#menghitung-rumus-euclidean" title="Link to this heading">#</a></h2>
+<h3><em>Menghitung Rumus Euclidean</em><a class="headerlink" href="#menghitung-rumus-euclidean" title="Link to this heading">#</a></h3>
 <p>Pada perhitungan euclidean kita mendapatkan beberapa data jarak, yang semua dimulai dari data indeks outliers indeks ke-3 sampai ke semua data yang ada. Contohnya dari indeks ke-3 ke indeks-0 = 42.95, dilanjutkan dengan indeks ke-3 ke indeks ke-1 = 43.38, dan seterusnya sampai selesai. Setelah kita mendapatkan data jarak dari indeks ke-3 selanjutnay kita akan menentukan berapa k-distance nya. Karena ketentuannya k = 3, maka k pada materi ini akan menggunakan 3. Jadi kita akan mengambil 3 data jarak euclidean yang terkecil yaitu indeks ke-3 pada indeks ke-9 = <strong>41.63</strong>, indeks ke-3 pada indeks ke-8 = <strong>41.15</strong>, indeks ke-3 pada indeks ke-1 = <strong>40.72</strong>. Untuk catatan mendapatkan RD dan juga LRD nya kita juga butuh k-distance dari setiap indeks yang kita ambill. berikut perhitungannya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,7 +694,7 @@ Jarak dari indeks 1 ke indeks 9: 1.00
 <p>Selanjutnya Kita ambil data jarak ke-3 dari masing masing perhitungan tersebut untuk nanti dimasukkan ke dalam rumus mencari Reachibility Distance untuk indeks ke-3.</p>
 </section>
 <section id="menghitung-rumus-reachibility-distance">
-<h2><em>Menghitung Rumus Reachibility Distance</em><a class="headerlink" href="#menghitung-rumus-reachibility-distance" title="Link to this heading">#</a></h2>
+<h3><em>Menghitung Rumus Reachibility Distance</em><a class="headerlink" href="#menghitung-rumus-reachibility-distance" title="Link to this heading">#</a></h3>
 <p>Setelah penulis mendapatkan data jarak pada indeks 3 ke semua data, dan juga mendapatkan data k-distance pada setiap data yang dekat dengan indeks 3. selanjutnya kita hanya perlu membandingkan nilai untuk mendapatkan RD-nya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,7 +727,7 @@ Berikut ini adalah nilai dari RD(3,9) : 39.81
 </div>
 </section>
 <section id="menghitung-local-reachibility-distance">
-<h2><em>Menghitung Local Reachibility Distance</em><a class="headerlink" href="#menghitung-local-reachibility-distance" title="Link to this heading">#</a></h2>
+<h3><em>Menghitung Local Reachibility Distance</em><a class="headerlink" href="#menghitung-local-reachibility-distance" title="Link to this heading">#</a></h3>
 <p>Setelah kita mendapatkan RD untuk setiap jarak antar indeks 3, selanjutnya kita akan mendapatkan LRD 3 dengan rumus LRD</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,7 +830,7 @@ Berikut ini adalah nilai dari RD(3,9) : 39.81
 </div>
 </section>
 <section id="menghitung-nilai-local-outliers-factor">
-<h2><em>Menghitung Nilai Local Outliers Factor</em><a class="headerlink" href="#menghitung-nilai-local-outliers-factor" title="Link to this heading">#</a></h2>
+<h3><em>Menghitung Nilai Local Outliers Factor</em><a class="headerlink" href="#menghitung-nilai-local-outliers-factor" title="Link to this heading">#</a></h3>
 <p>Setelah kita mendapatkan semua data yang dibutuhkan kita akan menghitung rumus LOF dari data LRD yang sudah tersedia. Dimana data yang kita gunakan adalah LRD dari indeks ke-1, LRD dari indeks ke-8, dan LRD dari indeks ke-9. berikut ini adalah perhitungannya</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -887,7 +888,7 @@ Berikut ini adalah nilai dari RD(3,9) : 39.81
 </section>
 </section>
 <section id="proses-perhitungan-lof-dengan-menggunakan-scikit-learn">
-<h1><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em><a class="headerlink" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn" title="Link to this heading">#</a></h1>
+<h2><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em><a class="headerlink" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn" title="Link to this heading">#</a></h2>
 <p>Pada bab selanjutnya adalah penilaian dengan menggunakan library yang sudah ada di python yaitu scikit-learn. library dapat memudahkan kita mencari ouliers dengan hanya beberapa baris saja. Dapat dilihat dari code yang ada di bawah ini, yang harusnya codenya menghabiskan beberapa baris kolom kita dapat mempersingkatnya hanya dengan 1 kolom baris saja.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -924,6 +925,7 @@ Indeks-9 → LOF: 1.0000
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -962,7 +964,7 @@ Indeks-9 → LOF: 1.0000
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Penjelasan Outliers</strong></p>
+        <p class="prev-next-title"><strong>OUTLIERS DETECTION</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -991,19 +993,18 @@ Indeks-9 → LOF: 1.0000
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Penjelasan Local Outliers Factors</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-lof-langkah-langkah"><strong>Cara Kerja LOF (Langkah-Langkah)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data"><strong>Contoh Data</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn"><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-euclidean"><em>Menghitung Rumus Euclidean</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-reachibility-distance"><em>Menghitung Rumus Reachibility Distance</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-local-reachibility-distance"><em>Menghitung Local Reachibility Distance</em></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-local-outliers-factor"><em>Menghitung Nilai Local Outliers Factor</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-local-outliers-factors"><strong>Penjelasan Local Outliers Factors</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-lof-langkah-langkah"><strong>Cara Kerja LOF (Langkah-Langkah)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data"><strong>Contoh Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn"><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-euclidean"><em>Menghitung Rumus Euclidean</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rumus-reachibility-distance"><em>Menghitung Rumus Reachibility Distance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-local-reachibility-distance"><em>Menghitung Local Reachibility Distance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-local-outliers-factor"><em>Menghitung Nilai Local Outliers Factor</em></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn"><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-perhitungan-lof-dengan-menggunakan-scikit-learn"><em><strong>Proses Perhitungan LOF dengan Menggunakan Scikit-Learn</strong></em></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
