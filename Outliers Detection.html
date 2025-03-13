@@ -60,6 +60,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Outliers Detection';</script>
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -410,7 +412,7 @@
 </section>
 <section id="bagaimana-cara-kerja-algoritma-k-nn">
 <h3><em>Bagaimana Cara Kerja Algoritma K-NN?</em><a class="headerlink" href="#bagaimana-cara-kerja-algoritma-k-nn" title="Link to this heading">#</a></h3>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Tentukan Nilai k</p>
 <ul class="simple">
 <li><p>k adalah jumlah tetangga terdekat yang akan digunakan untuk menentukan kelas atau nilai prediksi.</p></li>
@@ -418,15 +420,17 @@
 </ul>
 </li>
 <li><p>Hitung Jarak Data Baru ke Data yang Ada</p>
-<ul>
+<ul class="simple">
 <li><p>Umumnya menggunakan Jarak Euclidean, tetapi bisa juga menggunakan Manhattan atau Minkowski.</p></li>
-<li><p>Formula Euclidean Distance untuk dua titik 𝐴(𝑥1,𝑦1)A(x 1 ,y1 ) dan 𝐵(𝑥2,𝑦2)B(x 2 ,y 2 ) adalah:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>      𝑑(𝐴,𝐵)=(𝑥2−𝑥1)2+(𝑦2−𝑦1)2d(A,B)= (x 2 −x 1 ) 2 +(y 2​ −y 1 ) 2
-</pre></div>
-</div>
-</li>
+<li><p>Formula Euclidean Distance untuk dua titik 𝐴(𝑥1,𝑦1)A(x 1 ,y1 ) dan 𝐵(𝑥2,𝑦2)B(x 2 ,y 2 ) adalah:</p></li>
 </ul>
 </li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+d(A, B) = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}
+\]</div>
+<ol class="arabic simple" start="3">
 <li><p>Ambil k Tetangga Terdekat</p>
 <ul class="simple">
 <li><p>Setelah menghitung jarak ke semua titik dalam dataset, pilih k titik dengan jarak terdekat.</p></li>
