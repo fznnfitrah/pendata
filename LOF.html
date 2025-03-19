@@ -413,7 +413,10 @@
 <li><p>Tentukan jumlah tetangga (k).</p>
 <ul class="simple">
 <li><p>Kita memilih <strong>k</strong> tetangga terdekat untuk setiap titik (misalnya, ( k = 3 )).</p></li>
-<li><p>Tetangga ini ditentukan menggunakan jarak Euclidean atau metrik lainnya.</p></li>
+<li><p>Tetangga ini ditentukan menggunakan jarak rumus Euclidean, berikut adalah rumusnya:
+$<span class="math notranslate nohighlight">\(
+ d(A, B) = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}
+\)</span>$</p></li>
 </ul>
 </li>
 <li><p>Hitung jarak jangkauan k-tetangga.</p>
@@ -515,11 +518,10 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="proses-perhitungan-lof-manual-tanpa-library-scikit-learn">
 <h2><em><strong>Proses Perhitungan LOF Manual tanpa Library scikit-learn</strong></em><a class="headerlink" href="#proses-perhitungan-lof-manual-tanpa-library-scikit-learn" title="Link to this heading">#</a></h2>
-<p>Untuk mempercepat perhitungannya saya hanya akan memunculkan hanya beberapa perhitungan Euclidean, Reachibility Distance, dan juga Local Reachibility Dencity saja. sedangkan untuk yang lain akan saya lakukan menggunakan code dari python langsung. Untuk rumus pertama yang penulis ingin cari adalah perhitungan euclidean untuk data outliers saja. Tentu pada kasus yang nyata kita harus menganalisis serta menghitung semua data datanya, bukan hanya data outliers saja. Akan tetapi untuk menghemat waktu, disini penulis mungkin hanya akan menampilkan proses perhitunga data outliers saja</p>
+<p>Sebagai contoh dari perhitungan LOF, disini penulis hanya menggunakan data indeks ke-3 untuk proses perhitungan Euclidean, Reachibility Distance, dan juga Local Reachibility Dencity saja. Jika memungkinkan, hasil dari perhitungan yang lain akan ditampilkan dengan menggunakan excel. Urutan dari proses perhitungan LOF juga dimulai dengan menghitung rumus Euclidean, dilanjutkan dengan rumus RD, selanjutnya adalah rumus LRD dan yang terakhir adalah menentukan nilai LOF dari setiap data.</p>
 <section id="menghitung-rumus-euclidean">
 <h3><em>Menghitung Rumus Euclidean</em><a class="headerlink" href="#menghitung-rumus-euclidean" title="Link to this heading">#</a></h3>
-<p>Pada perhitungan euclidean kita mendapatkan beberapa data jarak, yang semua dimulai dari data indeks outliers indeks ke-3 sampai ke semua data yang ada. Contohnya dari indeks ke-3 ke indeks-0 = 42.95, dilanjutkan dengan indeks ke-3 ke indeks ke-1 = 43.38, dan seterusnya sampai selesai. Setelah kita mendapatkan data jarak dari indeks ke-3 selanjutnay kita akan menentukan berapa k-distance nya. Karena ketentuannya k = 3, maka k pada materi ini akan menggunakan 3. Jadi kita akan mengambil 3 data jarak euclidean yang terkecil yaitu indeks ke-3 pada indeks ke-9 = <strong>41.63</strong>, indeks ke-3 pada indeks ke-8 = <strong>41.15</strong>, indeks ke-3 pada indeks ke-1 = <strong>40.72</strong>. Untuk catatan mendapatkan RD dan juga LRD nya kita juga butuh k-distance dari setiap indeks yang kita ambill. berikut perhitungannya.</p>
-<p><img alt="Alt text" src="_images/k-distance.png" /></p>
+<p>Proses pertama adalah menghitung jarak dari data indeks ke-3 ke semua data, dan untuk rumusnya kita menggunakan rumus Euclidean yang sudah penulis berikan di atas. berikut adalah perhitungannya</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -693,7 +695,14 @@ Jarak dari indeks 1 ke indeks 9: 1.00
 </div>
 </div>
 </div>
-<p>Selanjutnya Kita ambil data jarak ke-3 dari masing masing perhitungan tersebut untuk nanti dimasukkan ke dalam rumus mencari Reachibility Distance untuk indeks ke-3.</p>
+<p>Pada perhitungan di atas penulis juga mencari data jarak indeks-1 ke semua data, data jarak indeks-8 ke semua data, dan jarak indeks-9 ke semua data. Kenapa? Dikarenakan untuk melanjutkan ke proses perhitungan selanjutnya kita membutuhkan k-3 tetangga terdekat dari indeks-3. Bisa dilihat bahwa 3 tetangga terdekat dari indeks-3 adalah indeks-1, indeks-8 dan indeks-9. Oleh karena itu kita membutuhkan data k-3 dari masing masing data terdekat tersebut. berikut adalah data k-3 dari setiap indeksnya :</p>
+<ol class="arabic simple">
+<li><p>indeks-1 -&gt; indeks-8 = 2.24</p></li>
+<li><p>indeks-8 -&gt; indeks-1 = 2.24</p></li>
+<li><p>indeks-9 -&gt; indeks-8 = 2.00</p></li>
+</ol>
+<p>Data tersebutlah yang nanti akan kita butuhkan dan dibandingkan pada proses rumus RD(Reachibility Distance). Berikut ini adalah data lengkap mengenai semua jarak dari indeks-0 sampai dengan indeks-9, jadi pembaca dapat melihat sendiri bagaimana hasil perhitungannya.</p>
+<p><img alt="K-Distance" src="_images/k-distance.png" /></p>
 </section>
 <section id="menghitung-rumus-reachibility-distance">
 <h3><em>Menghitung Rumus Reachibility Distance</em><a class="headerlink" href="#menghitung-rumus-reachibility-distance" title="Link to this heading">#</a></h3>
@@ -727,6 +736,8 @@ Berikut ini adalah nilai dari RD(3,9) : 39.81
 </div>
 </div>
 </div>
+<p>Berikut ini adalah hasil perhitungan Excel dari rumus RD :</p>
+<p><img alt="Reachibility Distance" src="_images/RD.png" /></p>
 </section>
 <section id="menghitung-local-reachibility-distance">
 <h3><em>Menghitung Local Reachibility Distance</em><a class="headerlink" href="#menghitung-local-reachibility-distance" title="Link to this heading">#</a></h3>
@@ -749,6 +760,8 @@ Berikut ini adalah nilai dari RD(3,9) : 39.81
 </div>
 </div>
 </div>
+<p>Berikut ini adalah hasil perhitungan dari rumus LRD dengan perhitungan melalui excel :</p>
+<p><img alt="Local Reachibility Distance" src="_images/RD.png" /></p>
 <p>setelah mendapatkan LRD kita akan menghitung nilai LOF pada setiap data yang penulis punya, jadi penulis membutuhkan semua data LRD untuk setiap data yang penulis punya. Oleh karena itu untuk mempersingkat prosesnya, penulis langsung menggunakan code yang akan memunculkan perhitungan hasil dari semua LRD tanpa menggunakan library scikit-learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
