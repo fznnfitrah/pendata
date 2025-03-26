@@ -15,9 +15,11 @@ chapters:
       title: Outliers Detection
     - file: LOF #ipynb
       title: Local Outliers Factors
+    - file: klasifikasi-naive-bayes #ipynb
+      title: Klasifikasi Naive Bayes
 
-  - file: materi 2 #markdown
-    title: Materi 2
+  - file: data-preprocessing #markdown
+    title: Materi 
     sections: 
     - file: sub bab materi 2 #ipynb
 
