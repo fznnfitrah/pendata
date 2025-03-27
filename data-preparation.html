@@ -60,7 +60,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data-preprocessing';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data-preparation';</script>
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -172,12 +172,12 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Outliers%20Detection.html">Outliers Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outliers-detection.html">Outliers Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LOF.html">Local Outliers Factors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html">Klasifikasi Naive Bayes</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Materi</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Processing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sub%20bab%20materi%202.html">Materi 2</a></li>
 </ul>
 </details></li>
@@ -261,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata-preprocessing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata-preparation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="_sources/data-preprocessing.ipynb" target="_blank"
+      <li><a href="_sources/data-preparation.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,6 +377,17 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-data-preparation"><strong>Penjelasan Data Preparation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-data-preparation"><strong>Fungsi Data Preparation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meningkatkan-kualitas-data"><em>Meningkatkan kualitas data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sesuai-dengan-analis"><em>Membuat Sesuai dengan Analis</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-kompleksitas-data"><em>Mengurangi Kompleksitas Data</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-data-preparation"><strong>Cara Kerja Data Preparation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-data-cleaning-data"><em>Pembersihan Data ( Cleaning Data)</em></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-naive-bayes">Klasifikasi Naive Bayes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class">Class :</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur">Fitur</a></li>
@@ -398,10 +409,37 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-preparation">
 <h1><strong>DATA PREPARATION</strong><a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h1>
+<section id="penjelasan-data-preparation">
+<h2><strong>Penjelasan Data Preparation</strong><a class="headerlink" href="#penjelasan-data-preparation" title="Link to this heading">#</a></h2>
+<p>Jika pada materi Data Understanding kita hanya terbatas pada pengenalan data yang akan kita proses, di materi ini kita akan mempersiapkan data agar dapat diproses dan dijadikan sumber informasi yang lebih akurat. Pada materi ini akan berkaitan dengan menghapus data yang tidak diperlukan, mengganti data agar lebih relevan dengan tujuannya, dan menghubungka data satu dengan yang lainnya menjadi satu kesatuan, dan proses proses lain yang dapat dilakukan.</p>
+<p>Data Preparation ini tidak kalah penting dibandingkan dengan Data Understanding dikarenakan jika kita salah memproses data maka informasi yang akan dihasilkan juga bisa salah. Pada Data Mining ada istilah yang dinamakan dengan <em>Garbage in Garbage Out</em>, istilah ini mengacu pada jika data yang diproses salah dari awal maka hasil informasinya juga akan salah dan tidak dapat digunakan sama sekali.</p>
+</section>
+<section id="fungsi-data-preparation">
+<h2><strong>Fungsi Data Preparation</strong><a class="headerlink" href="#fungsi-data-preparation" title="Link to this heading">#</a></h2>
+<section id="meningkatkan-kualitas-data">
+<h3><em>Meningkatkan kualitas data</em><a class="headerlink" href="#meningkatkan-kualitas-data" title="Link to this heading">#</a></h3>
+<p>Sering kali jika kita ingin memproses suatu data, data tersebut masih banyak mempunyai data sampah seperti data outliers, data missing, kesalahan data dan yang lainnya. Nahh pada materi ini kita akan benar benar menghilangkan atau mengganti kumpulan data tersebut menjadi lebih akurat. Jadi dengan data yang bersih kita bisa mendapatkan informasi yang akurat juga.</p>
+</section>
+<section id="membuat-sesuai-dengan-analis">
+<h3><em>Membuat Sesuai dengan Analis</em><a class="headerlink" href="#membuat-sesuai-dengan-analis" title="Link to this heading">#</a></h3>
+<p>Pada data preparation kita juga akan mempersiapkan data apa saja yang mungkin dibutuhkan. Data juga sebenarnya tidak semuanya akan diproses, karena akan memperlambat pemprosesan data untuk mendapatkan informasi. Data yang nanti diproses biasanya harus sesuai dengan tujuan instansi. Semisal jika kita ingin mengklasifikasikan data pasien rumah sakit, tidak mungkinkan kalau kita memproses data parkiran motor yang ada dirumah sakit. Contoh lain semisal sekolah ingin memprediksi kira kira berapa murid yang mungkin akan masuk ke sekolah, tidak mungkinkan sekolah mempersiapkan data berat badan siswa.</p>
+</section>
+<section id="mengurangi-kompleksitas-data">
+<h3><em>Mengurangi Kompleksitas Data</em><a class="headerlink" href="#mengurangi-kompleksitas-data" title="Link to this heading">#</a></h3>
+<p>Masih berkaitan dengan fungsi sebelumnya, data data yang sekiranya tidak diperlukan tidak perlu ikut untuk diproses karena akan memperlambat proses analisa dan juga akan membebani komputasi. Dengan tidak diikutkannya data yang tidak penting proses analisa akan jauh lebih cepat dan lebih akurat juga, karena tidak melibatkan data data yang tidak perlu.</p>
+</section>
+</section>
+<section id="cara-kerja-data-preparation">
+<h2><strong>Cara Kerja Data Preparation</strong><a class="headerlink" href="#cara-kerja-data-preparation" title="Link to this heading">#</a></h2>
+<section id="pembersihan-data-cleaning-data">
+<h3><em>Pembersihan Data ( Cleaning Data)</em><a class="headerlink" href="#pembersihan-data-cleaning-data" title="Link to this heading">#</a></h3>
+<p>Pada Proses ini penulis akan mengani data data yang dianggap bermasalah</p>
 <p>Cupidatat enim ex in anim nisi nisi esse fugiat aliqua. Consectetur velit labore ipsum irure nostrud laborum magna cupidatat velit. Ut aliquip ut ea labore mollit nulla cupidatat commodo ex exercitation velit occaecat.</p>
 <p>Aute amet velit Lorem nisi minim commodo tempor. Anim laboris sunt exercitation tempor do deserunt consequat consequat voluptate. Qui cillum esse ipsum consectetur exercitation velit duis exercitation eiusmod. Consectetur aliqua tempor in cillum ex do proident eiusmod eiusmod enim dolore et proident. Culpa Lorem laboris incididunt ad esse ipsum. Nulla occaecat elit commodo aliquip ut esse deserunt amet aute culpa ipsum ad. Ex esse ea sit cupidatat reprehenderit id dolor deserunt.</p>
 <p>Velit Lorem incididunt qui Lorem labore deserunt. Occaecat tempor elit sit enim magna sint duis tempor. Sunt adipisicing ex sunt nisi id magna reprehenderit incididunt culpa. Magna non mollit anim aute minim amet pariatur non.</p>
 <p>Cillum pariatur sunt ipsum laboris elit sunt. Reprehenderit sunt cillum dolore culpa Lorem cupidatat esse consequat. Eu officia sint mollit magna veniam aliqua ut aute in mollit eiusmod ad in. Nulla in veniam nostrud irure amet eu exercitation. Sunt proident occaecat cupidatat qui dolor consectetur ut. Ea cupidatat exercitation magna aliqua. Aliquip cupidatat labore nisi pariatur adipisicing et ipsum qui esse do Lorem excepteur qui.</p>
+</section>
+</section>
 <section id="klasifikasi-naive-bayes">
 <h2>Klasifikasi Naive Bayes<a class="headerlink" href="#klasifikasi-naive-bayes" title="Link to this heading">#</a></h2>
 <section id="class">
@@ -512,6 +550,17 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-data-preparation"><strong>Penjelasan Data Preparation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-data-preparation"><strong>Fungsi Data Preparation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meningkatkan-kualitas-data"><em>Meningkatkan kualitas data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-sesuai-dengan-analis"><em>Membuat Sesuai dengan Analis</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurangi-kompleksitas-data"><em>Mengurangi Kompleksitas Data</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-data-preparation"><strong>Cara Kerja Data Preparation</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-data-cleaning-data"><em>Pembersihan Data ( Cleaning Data)</em></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-naive-bayes">Klasifikasi Naive Bayes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class">Class :</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur">Fitur</a></li>
