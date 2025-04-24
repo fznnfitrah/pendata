@@ -13,18 +13,15 @@ chapters:
     sections:
     - file: outliers-detection #ipynb
       title: Outliers Detection
+      
+  - file: data-preparation #markdown
+    title: Data Preparation
+    sections: 
     - file: LOF #ipynb
       title: Local Outliers Factors
-    - file: klasifikasi-naive-bayes #ipynb
-      title: Klasifikasi Naive Bayes
-
-  - file: data-preparation #markdown
-    title: Data Processing 
-    sections: 
-    - file: sub bab materi 2 #ipynb
 
   - file: materi 3 #ipynb
-    title: Materi 3
+    title: Modeling
     sections: 
-    - file: sub bab 3 #ipynb
+    - file: klasifikasi-naive-bayes #ipynb
 
