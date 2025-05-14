@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Understading &#8212; Data Mining</title>
+    <title>Ujian Tengah Semester &#8212; Data Mining</title>
   
   
   
@@ -61,6 +61,7 @@
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="K-Means" href="k-mean_clustering.html" />
     <link rel="prev" title="Klasifikasi Naive Bayes" href="klasifikasi-naive-bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,11 +194,8 @@
 <li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html"><em><strong>Klasifikasi Naive Bayes</strong></em></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Data Understading</strong></a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ujian Tengah Semester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
 </ul>
 
     </div>
@@ -383,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Understading</h1>
+    <h1>Ujian Tengah Semester</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,13 +391,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Data Understading</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-perkolom">Tipe Data Perkolom</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-nilai-setiap-kolom">Jenis Nilai Setiap Kolom</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprosesing"><strong>Data Preprosesing</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understading"><strong>Data Understading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-perkolom">Tipe Data Perkolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-nilai-setiap-kolom">Jenis Nilai Setiap Kolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprosesing"><strong>Data Preprosesing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -410,8 +407,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="data-understading">
-<h1><strong>Data Understading</strong><a class="headerlink" href="#data-understading" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ujian-tengah-semester">
+<h1><em><strong>Ujian Tengah Semester</strong></em><a class="headerlink" href="#ujian-tengah-semester" title="Link to this heading">#</a></h1>
+<section id="data-understading">
+<h2><strong>Data Understading</strong><a class="headerlink" href="#data-understading" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ucimlrepo</span>
@@ -587,7 +586,7 @@ dtype: int64
 </div>
 </section>
 <section id="tipe-data-perkolom">
-<h1>Tipe Data Perkolom<a class="headerlink" href="#tipe-data-perkolom" title="Link to this heading">#</a></h1>
+<h2>Tipe Data Perkolom<a class="headerlink" href="#tipe-data-perkolom" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Tipe data setiap fitur:&quot;</span><span class="p">)</span>
@@ -621,7 +620,7 @@ dtype: object
 </div>
 </section>
 <section id="jenis-nilai-setiap-kolom">
-<h1>Jenis Nilai Setiap Kolom<a class="headerlink" href="#jenis-nilai-setiap-kolom" title="Link to this heading">#</a></h1>
+<h2>Jenis Nilai Setiap Kolom<a class="headerlink" href="#jenis-nilai-setiap-kolom" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil fitur kategorikal</span>
@@ -747,7 +746,7 @@ Fitur kategorikal: [&#39;Drug&#39;, &#39;Sex&#39;, &#39;Ascites&#39;, &#39;Hepat
 </div>
 </section>
 <section id="data-preprosesing">
-<h1><strong>Data Preprosesing</strong><a class="headerlink" href="#data-preprosesing" title="Link to this heading">#</a></h1>
+<h2><strong>Data Preprosesing</strong><a class="headerlink" href="#data-preprosesing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
@@ -896,7 +895,7 @@ dtype: int64
 </div>
 </section>
 <section id="modeling">
-<h1><strong>Modeling</strong><a class="headerlink" href="#modeling" title="Link to this heading">#</a></h1>
+<h2><strong>Modeling</strong><a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1429,6 +1428,7 @@ C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1469,6 +1469,15 @@ C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.
         <p class="prev-next-title"><em><strong>Klasifikasi Naive Bayes</strong></em></p>
       </div>
     </a>
+    <a class="right-next"
+       href="k-mean_clustering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>K-Means</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1485,13 +1494,12 @@ C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Data Understading</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-perkolom">Tipe Data Perkolom</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-nilai-setiap-kolom">Jenis Nilai Setiap Kolom</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprosesing"><strong>Data Preprosesing</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understading"><strong>Data Understading</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-data-perkolom">Tipe Data Perkolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-nilai-setiap-kolom">Jenis Nilai Setiap Kolom</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprosesing"><strong>Data Preprosesing</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
