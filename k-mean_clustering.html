@@ -405,20 +405,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>clustering digunakan untuk</p>
-<p>eksplorasi data digunakan untuk menentukan berapa kelompok yang akan dibuat</p>
-<p>semakin dekat datanya maka semakin kecil variannya. meminimalkan variasi dalam kluster dan memaksimalkan variansi dalam beda kelompok.</p>
-<ol class="arabic simple">
-<li><p>menentukan jumlah kluster k</p></li>
-<li><p>memilih k centroid awal secara acak.</p></li>
-<li><p>menghitung jarak setiap data ke data centroid (exclaudia)</p></li>
-<li><p>hitung kembali dengan menggunakan rata rata yang diperoleh dari perhitungan data sebelumnya</p></li>
-<li><p>hitung sampai data tidak berubah kembali</p></li>
-</ol>
-<p>Evaluasi data clustering</p>
-<p>Perhitungan inersia digunakan untuk mengukur seberapa akurat jumlah kluster, semisal sudah</p>
-<p>rumus untuk menentukan jumlah kluster yang optimal = sum squre error, silhouette Analysis</p>
-<section class="tex2jax_ignore mathjax_ignore" id="k-means">
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means">
 <h1><em><strong>K-Means</strong></em><a class="headerlink" href="#k-means" title="Link to this heading">#</a></h1>
 <section id="penjelasan-algoritma-k-means">
 <h2><strong>Penjelasan Algoritma K-Means</strong><a class="headerlink" href="#penjelasan-algoritma-k-means" title="Link to this heading">#</a></h2>
@@ -489,7 +476,7 @@ document.write(`
 
 <span class="c1"># Coba jumlah cluster dari 2 sampai 4</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
     <span class="n">cluster_labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_iris</span><span class="p">)</span>
 
     <span class="n">sse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>  <span class="c1"># SSE</span>
