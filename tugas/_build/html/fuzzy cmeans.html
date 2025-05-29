@@ -398,10 +398,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-rumus-fuzzy-cmeans"><strong>Rumus Rumus Fuzzy-Cmeans</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-centroid"><em>Rumus Perhitungan Centroid</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-nilai-derajat-keanggotaan"><em>Rumus Perhitungan Nilai Derajat Keanggotaan</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-fungsi-objektif"><em>Rumus Perhitungan Fungsi Objektif</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-fungsi-objektif"><em>Rumus Perhitungan Fungsi Objektif</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual"><em>Contoh Perhitungan Manual</em></a></li>
 </ul>
 </li>
@@ -498,9 +495,6 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(\|x_k - v_i\|^2\)</span>: Kuadrat jarak Euclidean antara titik data <span class="math notranslate nohighlight">\(x_k\)</span> dan pusat <em>cluster</em> <span class="math notranslate nohighlight">\(v_i\)</span>.</p></li>
 </ul>
 <p>Tujuan algoritma ini adalah mencari <span class="math notranslate nohighlight">\(U\)</span> dan <span class="math notranslate nohighlight">\(V\)</span> yang meminimalkan <span class="math notranslate nohighlight">\(J_m\)</span>.</p>
-<section id="id1">
-<h4><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-</section>
 </section>
 <section id="contoh-perhitungan-manual">
 <h3><em>Contoh Perhitungan Manual</em><a class="headerlink" href="#contoh-perhitungan-manual" title="Link to this heading">#</a></h3>
@@ -788,9 +782,314 @@ $<span class="math notranslate nohighlight">\(u_{ji} = \frac{1}{\sum_{k=1}^{C} \
 <h2><strong>Implementasi Fuzzy C-means</strong><a class="headerlink" href="#implementasi-fuzzy-c-means" title="Link to this heading">#</a></h2>
 <section id="penggunaan-algortima-fuzzy-c-means-pada-contoh-data">
 <h3><em>Penggunaan Algortima Fuzzy C-Means Pada Contoh data</em><a class="headerlink" href="#penggunaan-algortima-fuzzy-c-means-pada-contoh-data" title="Link to this heading">#</a></h3>
+<p>Berikut ini adalah implementasi Penggunaan algoritma Fuzzy C-Means Clustering dengan menggunakan python. Data yang digunakan pada code dibawah ini sama dengan data yang sudah penulis hitung sebelumnya. Perbedaannya hanya pada penggunaan bahasa python untuk mendapatkan hasil yang cepat dan juga akurat. Penulis juga menggunakan fungsi objektif serta menghitung konvergensinya agar tidak melakukan iterasi sampai dengan ambang batas maksimal. Sedangkan untuk ambang batas maksimalnya pada code dibawah ini adalah 100 iterasi, akan tetapi karena sudah mencapai batas konvergensinya maka hanya dilakukan 8 iterasi saja.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># -------------------------------------------</span>
+<span class="c1"># DATA &amp; PARAMETER</span>
+<span class="c1"># -------------------------------------------</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># Inisialisasi keanggotaan awal (baris: cluster, kolom: data)</span>
+<span class="n">membership</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.4345</span><span class="p">,</span> <span class="mf">0.3963</span><span class="p">,</span> <span class="mf">0.2582</span><span class="p">,</span> <span class="mf">0.5758</span><span class="p">,</span> <span class="mf">0.5531</span><span class="p">],</span>   <span class="c1"># cluster 1</span>
+    <span class="p">[</span><span class="mf">0.5655</span><span class="p">,</span> <span class="mf">0.6037</span><span class="p">,</span> <span class="mf">0.7418</span><span class="p">,</span> <span class="mf">0.4242</span><span class="p">,</span> <span class="mf">0.4469</span><span class="p">]</span>    <span class="c1"># cluster 2</span>
+<span class="p">])</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-5</span>  <span class="c1"># ambang konvergensi</span>
+
+
+<span class="c1"># -------------------------------------------</span>
+<span class="c1"># FUNGSI UTAMA</span>
+<span class="c1"># -------------------------------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_centroids</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">membership</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">um</span> <span class="o">=</span> <span class="n">membership</span> <span class="o">**</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">um</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_clusters</span> <span class="o">=</span> <span class="n">centroids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">expo</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">centroids</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dist</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+    <span class="n">membership</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist</span><span class="p">[:,</span> <span class="n">j</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">/</span> <span class="n">dist</span><span class="p">)</span> <span class="o">**</span> <span class="n">expo</span>
+        <span class="n">membership</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">ratio</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">membership</span>
+
+
+<span class="c1"># -------------------------------------------</span>
+<span class="c1"># ITERASI FCM SAMPAI KONVERGEN</span>
+<span class="c1"># -------------------------------------------</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+    <span class="n">prev_centroids</span> <span class="o">=</span> <span class="n">compute_centroids</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">membership</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">membership</span> <span class="o">=</span> <span class="n">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">prev_centroids</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">new_centroids</span> <span class="o">=</span> <span class="n">compute_centroids</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">membership</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">new_centroids</span> <span class="o">-</span> <span class="n">prev_centroids</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iterasi </span><span class="si">{</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">new_centroids</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Centroid Cluster </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Derajat keanggotaan:</span><span class="se">\n</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">membership</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Selisih konvergensi: </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Konvergen tercapai pada iterasi </span><span class="si">{</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> dengan selisih </span><span class="si">{</span><span class="n">diff</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Maksimal iterasi tercapai tanpa konvergen.&quot;</span><span class="p">)</span>
+
+<span class="n">final_centroids</span> <span class="o">=</span> <span class="n">new_centroids</span>
+<span class="n">final_membership</span> <span class="o">=</span> <span class="n">membership</span>
+<span class="n">final_diff</span> <span class="o">=</span> <span class="n">diff</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1
+  Centroid Cluster 1: [6.00989178 7.00989178]
+  Centroid Cluster 2: [2.43824853 3.43824853]
+  Derajat keanggotaan:
+[[0.2728 0.177  0.0164 0.8    0.7147]
+ [0.7272 0.823  0.9836 0.2    0.2853]]
+  Selisih konvergensi: 2.266857
+
+Iterasi 2
+  Centroid Cluster 1: [6.45808038 7.45808038]
+  Centroid Cluster 2: [2.03269005 3.03269005]
+  Derajat keanggotaan:
+[[0.0761 0.0118 0.0337 1.     0.955 ]
+ [0.9239 0.9882 0.9663 0.     0.045 ]]
+  Selisih konvergensi: 0.854811
+
+Iterasi 3
+  Centroid Cluster 1: [6.48792812 7.48792812]
+  Centroid Cluster 2: [1.97473224 2.97473224]
+  Derajat keanggotaan:
+[[3.460e-02 1.000e-04 7.260e-02 9.868e-01 9.882e-01]
+ [9.654e-01 9.999e-01 9.274e-01 1.320e-02 1.180e-02]]
+  Selisih konvergensi: 0.092195
+
+Iterasi 4
+  Centroid Cluster 1: [6.48818659 7.48818659]
+  Centroid Cluster 2: [1.96729962 2.96729962]
+  Derajat keanggotaan:
+[[0.0306 0.     0.0795 0.9855 0.9897]
+ [0.9694 1.     0.9205 0.0145 0.0103]]
+  Selisih konvergensi: 0.010518
+
+Iterasi 5
+  Centroid Cluster 1: [6.48796579 7.48796579]
+  Centroid Cluster 2: [1.96627268 2.96627268]
+  Derajat keanggotaan:
+[[3.010e-02 1.000e-04 8.060e-02 9.856e-01 9.898e-01]
+ [9.699e-01 9.999e-01 9.194e-01 1.440e-02 1.020e-02]]
+  Selisih konvergensi: 0.001486
+
+Iterasi 6
+  Centroid Cluster 1: [6.48791854 7.48791854]
+  Centroid Cluster 2: [1.9661248 2.9661248]
+  Derajat keanggotaan:
+[[3.010e-02 1.000e-04 8.070e-02 9.856e-01 9.898e-01]
+ [9.699e-01 9.999e-01 9.193e-01 1.440e-02 1.020e-02]]
+  Selisih konvergensi: 0.000220
+
+Iterasi 7
+  Centroid Cluster 1: [6.48791075 7.48791075]
+  Centroid Cluster 2: [1.96610315 2.96610315]
+  Derajat keanggotaan:
+[[3.010e-02 1.000e-04 8.080e-02 9.856e-01 9.898e-01]
+ [9.699e-01 9.999e-01 9.192e-01 1.440e-02 1.020e-02]]
+  Selisih konvergensi: 0.000033
+
+Iterasi 8
+  Centroid Cluster 1: [6.48790955 7.48790955]
+  Centroid Cluster 2: [1.96609996 2.96609996]
+  Derajat keanggotaan:
+[[3.010e-02 1.000e-04 8.080e-02 9.856e-01 9.898e-01]
+ [9.699e-01 9.999e-01 9.192e-01 1.440e-02 1.020e-02]]
+  Selisih konvergensi: 0.000005
+
+Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="penggunaan-algoritma-fuzzy-c-means-pada-data-iris">
 <h3><em>Penggunaan Algoritma Fuzzy C-Means Pada Data Iris</em><a class="headerlink" href="#penggunaan-algoritma-fuzzy-c-means-pada-data-iris" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">minmax_scale</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengkoneksi database dengan python</span>
+
+<span class="c1"># for mysql</span>
+<span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf8mb4&quot;</span><span class="p">,</span>
+    <span class="n">connect_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="n">cursorclass</span><span class="o">=</span><span class="n">pymysql</span><span class="o">.</span><span class="n">cursors</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">,</span>
+    <span class="n">db</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-726cd75-mysqlpendata-11.h.aivencloud.com&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_LHA80D-LNsKI6wncjfc&quot;</span><span class="p">,</span>
+    <span class="n">read_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">20734</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+    <span class="n">write_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">mysql_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;mysql+pymysql://avnadmin:AVNS_LHA80D-LNsKI6wncjfc@mysql-726cd75-mysqlpendata-11.h.aivencloud.com:20734/defaultdb&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1"># for postgre</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;postgres://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb?sslmode=require&#39;</span><span class="p">)</span>
+
+    <span class="n">query_sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT VERSION()&#39;</span>
+
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_sql</span><span class="p">)</span>
+
+    <span class="n">version</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql+psycopg2://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PostgreSQL 16.9 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 14.2.1 20240912 (Red Hat 14.2.1-3), 64-bit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil data dari MySQL</span>
+<span class="n">mysql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM iris_data&quot;</span>
+<span class="n">mysql_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">mysql_query</span><span class="p">,</span> <span class="n">mysql_engine</span><span class="p">)</span>
+
+<span class="c1"># Ambil data dari PostgreSQL</span>
+<span class="n">pg_query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM postgre&#39;</span>
+<span class="n">pg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">pg_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan kedua databases</span>
+<span class="n">merge_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mysql_df</span><span class="p">,</span> <span class="n">pg_df</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan data yang diambil database dan ditampilkan dalam bentuk tabel</span>
+<span class="n">selected_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal width&quot;</span><span class="p">]</span>  
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">merge_df</span><span class="p">[</span><span class="n">selected_columns</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Berikut ini adalah tampilan data yang diambil dari database :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berikut ini adalah tampilan data yang diambil dari database :
+
+      id           class  petal_length  petal_width  sepal length  sepal width
+0      1     Iris-setosa          86.4         70.0          20.1         30.5
+1      2     Iris-setosa           1.4          0.2           4.9          3.0
+2      3     Iris-setosa           1.3          0.2           4.7          3.2
+3      4     Iris-setosa           1.5          0.2           4.6          3.1
+4      5     Iris-setosa           1.4          0.2           5.0          3.6
+..   ...             ...           ...          ...           ...          ...
+145  146  Iris-virginica           5.2          2.3           6.7          3.0
+146  147  Iris-virginica           5.0          1.9           6.3          2.5
+147  148  Iris-virginica           5.2          2.0           6.5          3.0
+148  149  Iris-virginica           5.4          2.3           6.2          3.4
+149  150  Iris-virginica           5.1          1.8           5.9          3.0
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengubah dataset </span>
+<span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;petal_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.4</span>
+<span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sepal length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.1</span>
+<span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_iris</span> <span class="o">=</span> <span class="n">filtered_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normal_iris</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      id           class  petal_length  petal_width  sepal length  sepal width
+0      1     Iris-setosa           1.4          0.2           5.1          3.5
+1      2     Iris-setosa           1.4          0.2           4.9          3.0
+2      3     Iris-setosa           1.3          0.2           4.7          3.2
+3      4     Iris-setosa           1.5          0.2           4.6          3.1
+4      5     Iris-setosa           1.4          0.2           5.0          3.6
+..   ...             ...           ...          ...           ...          ...
+145  146  Iris-virginica           5.2          2.3           6.7          3.0
+146  147  Iris-virginica           5.0          1.9           6.3          2.5
+147  148  Iris-virginica           5.2          2.0           6.5          3.0
+148  149  Iris-virginica           5.4          2.3           6.2          3.4
+149  150  Iris-virginica           5.1          1.8           5.9          3.0
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_column</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">]</span>
+<span class="n">data_selected</span> <span class="o">=</span> <span class="n">normal_iris</span><span class="p">[</span><span class="n">data_column</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -855,10 +1154,7 @@ $<span class="math notranslate nohighlight">\(u_{ji} = \frac{1}{\sum_{k=1}^{C} \
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-rumus-fuzzy-cmeans"><strong>Rumus Rumus Fuzzy-Cmeans</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-centroid"><em>Rumus Perhitungan Centroid</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-nilai-derajat-keanggotaan"><em>Rumus Perhitungan Nilai Derajat Keanggotaan</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-fungsi-objektif"><em>Rumus Perhitungan Fungsi Objektif</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-perhitungan-fungsi-objektif"><em>Rumus Perhitungan Fungsi Objektif</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual"><em>Contoh Perhitungan Manual</em></a></li>
 </ul>
 </li>
