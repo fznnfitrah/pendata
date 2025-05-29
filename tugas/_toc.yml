@@ -28,5 +28,8 @@ chapters:
   - file: uts #ipynb
     title: Ujian Tengah Semester
 
-  - file: k-mean_clustering
+  - file: k-mean_clustering #ipynb
     title: Algoritma K-means Clustering
+
+  - file: fuzzy cmeans #ipynb
+    title: Algoritma Fuzzy Clustering
