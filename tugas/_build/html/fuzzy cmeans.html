@@ -945,7 +945,7 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">preprocessing</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">minmax_scale</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
 </pre></div>
 </div>
 </div>
@@ -1086,6 +1086,239 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_column</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">]</span>
 <span class="n">data_selected</span> <span class="o">=</span> <span class="n">normal_iris</span><span class="p">[</span><span class="n">data_column</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi data</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_selected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">initialize_membership</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">u</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># bentuk: (n_clusters, n_samples)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_centroids</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">um</span> <span class="o">=</span> <span class="n">u</span> <span class="o">**</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">um</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">centroids</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-10</span>
+    <span class="n">exp</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">/</span> <span class="n">dist</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:])</span> <span class="o">**</span> <span class="n">exp</span>
+    <span class="n">u_new</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">temp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">u_new</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fuzzy_c_means</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">initialize_membership</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">centroids</span> <span class="o">=</span> <span class="n">compute_centroids</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">u_new</span> <span class="o">=</span> <span class="n">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u_new</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Konvergen pada iterasi ke-</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">u_new</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterasi </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> - Centroid:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">centroids</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Cluster </span><span class="si">{</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">u</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroids</span><span class="p">,</span> <span class="n">membership</span> <span class="o">=</span> <span class="n">fuzzy_c_means</span><span class="p">(</span><span class="n">data_scaled</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Centroid:
+  Cluster 1: [0.44467107 0.42700184 0.4144863  0.41264519]
+  Cluster 2: [0.49162695 0.49699399 0.42929206 0.44320483]
+  Cluster 3: [0.45190976 0.44052456 0.42600109 0.46340754]
+Iterasi 2 - Centroid:
+  Cluster 1: [0.41828169 0.40320826 0.39144383 0.43316328]
+  Cluster 2: [0.54283382 0.53683205 0.47258995 0.42246294]
+  Cluster 3: [0.42704792 0.41780515 0.41165215 0.46463873]
+Iterasi 3 - Centroid:
+  Cluster 1: [0.33189564 0.31713177 0.33537784 0.46347497]
+  Cluster 2: [0.61721653 0.60988    0.52543171 0.40100053]
+  Cluster 3: [0.3523352  0.34066729 0.35898091 0.47984064]
+Iterasi 4 - Centroid:
+  Cluster 1: [0.20750113 0.18862532 0.25681644 0.50626075]
+  Cluster 2: [0.67725429 0.67591298 0.5703336  0.39098138]
+  Cluster 3: [0.25085776 0.23246391 0.28550899 0.49663689]
+Iterasi 5 - Centroid:
+  Cluster 1: [0.13491219 0.11483622 0.21681017 0.5421671 ]
+  Cluster 2: [0.69808129 0.70207516 0.58698315 0.39041138]
+  Cluster 3: [0.22438289 0.2027163  0.26075574 0.49036501]
+Iterasi 6 - Centroid:
+  Cluster 1: [0.10629537 0.08554886 0.20434153 0.56369336]
+  Cluster 2: [0.70217137 0.70759856 0.59079328 0.39127461]
+  Cluster 3: [0.29370625 0.27118224 0.28515798 0.42810775]
+Iterasi 7 - Centroid:
+  Cluster 1: [0.09143437 0.07053487 0.19948882 0.57889278]
+  Cluster 2: [0.70970375 0.7176719  0.59926204 0.3955477 ]
+  Cluster 3: [0.43534158 0.40706899 0.33761643 0.30956219]
+Iterasi 8 - Centroid:
+  Cluster 1: [0.08357006 0.06334046 0.19707735 0.58697045]
+  Cluster 2: [0.72949804 0.74539447 0.62249441 0.40905634]
+  Cluster 3: [0.51008219 0.47341786 0.37583665 0.27590484]
+Iterasi 9 - Centroid:
+  Cluster 1: [0.08245927 0.06241901 0.19644727 0.58759101]
+  Cluster 2: [0.74524384 0.76867061 0.64177437 0.42174488]
+  Cluster 3: [0.53441341 0.49517798 0.39809362 0.2838499 ]
+Iterasi 10 - Centroid:
+  Cluster 1: [0.0824258  0.06243657 0.19604461 0.58681641]
+  Cluster 2: [0.75610752 0.78441396 0.65458937 0.42927165]
+  Cluster 3: [0.54657824 0.5072099  0.4119598  0.29243717]
+Iterasi 11 - Centroid:
+  Cluster 1: [0.08252988 0.06256271 0.19577573 0.58608273]
+  Cluster 2: [0.76323316 0.79458378 0.66292097 0.43378011]
+  Cluster 3: [0.55397529 0.51507607 0.42085367 0.29832099]
+Iterasi 12 - Centroid:
+  Cluster 1: [0.08264439 0.06269015 0.19561366 0.58555313]
+  Cluster 2: [0.76775767 0.80099864 0.66828116 0.43658381]
+  Cluster 3: [0.55869488 0.52032382 0.42657291 0.30208408]
+Iterasi 13 - Centroid:
+  Cluster 1: [0.0827387  0.06279279 0.19551831 0.5851955 ]
+  Cluster 2: [0.77059134 0.80500165 0.67169767 0.43835095]
+  Cluster 3: [0.56172258 0.52378073 0.43022608 0.30445254]
+Iterasi 14 - Centroid:
+  Cluster 1: [0.08280792 0.06286738 0.19546178 0.5849606 ]
+  Cluster 2: [0.77235742 0.80748994 0.67385937 0.43946525]
+  Cluster 3: [0.56365498 0.52602248 0.43254299 0.30593653]
+Iterasi 15 - Centroid:
+  Cluster 1: [0.08285564 0.06291851 0.19542779 0.58480883]
+  Cluster 2: [0.77345672 0.80903557 0.67522007 0.44016583]
+  Cluster 3: [0.56488049 0.52745804 0.43400439 0.30686488]
+Iterasi 16 - Centroid:
+  Cluster 1: [0.08288731 0.06295235 0.19540709 0.58471188]
+  Cluster 2: [0.774141   0.80999617 0.67607365 0.44060505]
+  Cluster 3: [0.56565363 0.52836914 0.43492269 0.30744516]
+Iterasi 17 - Centroid:
+  Cluster 1: [0.08290786 0.06297425 0.19539437 0.58465043]
+  Cluster 2: [0.77456713 0.81059369 0.67660796 0.44087986]
+  Cluster 3: [0.56613952 0.52894387 0.43549824 0.30780768]
+Iterasi 18 - Centroid:
+  Cluster 1: [0.082921   0.06298823 0.19538651 0.58461169]
+  Cluster 2: [0.77483262 0.81096567 0.67694195 0.44105159]
+  Cluster 3: [0.5664441  0.52930497 0.43585837 0.30803407]
+Iterasi 19 - Centroid:
+  Cluster 1: [0.08292932 0.06299708 0.19538163 0.58458736]
+  Cluster 2: [0.77499809 0.81119739 0.67715057 0.44115882]
+  Cluster 3: [0.56663469 0.52953126 0.43608346 0.30817541]
+Iterasi 20 - Centroid:
+  Cluster 1: [0.08293456 0.06300266 0.1953786  0.58457212]
+  Cluster 2: [0.77510125 0.8113418  0.6772808  0.44122575]
+  Cluster 3: [0.56675382 0.52967283 0.43622405 0.30826362]
+Iterasi 21 - Centroid:
+  Cluster 1: [0.08293785 0.06300615 0.19537671 0.58456258]
+  Cluster 2: [0.77516558 0.81143183 0.67736208 0.44126752]
+  Cluster 3: [0.56682823 0.5297613  0.43631183 0.30831867]
+Iterasi 22 - Centroid:
+  Cluster 1: [0.08293991 0.06300834 0.19537554 0.58455662]
+  Cluster 2: [0.7752057  0.81148798 0.6774128  0.44129358]
+  Cluster 3: [0.56687469 0.52981655 0.43636661 0.30835302]
+Iterasi 23 - Centroid:
+  Cluster 1: [0.0829412  0.06300971 0.1953748  0.5845529 ]
+  Cluster 2: [0.77523072 0.81152299 0.67744444 0.44130984]
+  Cluster 3: [0.56690368 0.52985104 0.43640079 0.30837445]
+Iterasi 24 - Centroid:
+  Cluster 1: [0.08294201 0.06301056 0.19537435 0.58455058]
+  Cluster 2: [0.77524633 0.81154483 0.67746419 0.44131999]
+  Cluster 3: [0.56692177 0.52987257 0.43642212 0.30838782]
+Iterasi 25 - Centroid:
+  Cluster 1: [0.08294251 0.0630111  0.19537406 0.58454913]
+  Cluster 2: [0.77525606 0.81155845 0.6774765  0.44132631]
+  Cluster 3: [0.56693306 0.529886   0.43643543 0.30839616]
+Iterasi 26 - Centroid:
+  Cluster 1: [0.08294282 0.06301143 0.19537388 0.58454822]
+  Cluster 2: [0.77526213 0.81156695 0.67748419 0.44133026]
+  Cluster 3: [0.5669401  0.52989439 0.43644373 0.30840136]
+Iterasi 27 - Centroid:
+  Cluster 1: [0.08294302 0.06301164 0.19537377 0.58454766]
+  Cluster 2: [0.77526592 0.81157225 0.67748898 0.44133272]
+  Cluster 3: [0.5669445  0.52989961 0.43644891 0.30840461]
+Iterasi 28 - Centroid:
+  Cluster 1: [0.08294314 0.06301177 0.1953737  0.5845473 ]
+  Cluster 2: [0.77526829 0.81157556 0.67749197 0.44133426]
+  Cluster 3: [0.56694724 0.52990288 0.43645214 0.30840664]
+Iterasi 29 - Centroid:
+  Cluster 1: [0.08294322 0.06301185 0.19537366 0.58454708]
+  Cluster 2: [0.77526976 0.81157762 0.67749383 0.44133522]
+  Cluster 3: [0.56694895 0.52990491 0.43645416 0.3084079 ]
+Iterasi 30 - Centroid:
+  Cluster 1: [0.08294326 0.0630119  0.19537363 0.58454695]
+  Cluster 2: [0.77527068 0.81157891 0.677495   0.44133582]
+  Cluster 3: [0.56695002 0.52990618 0.43645542 0.30840869]
+Iterasi 31 - Centroid:
+  Cluster 1: [0.08294329 0.06301193 0.19537362 0.58454686]
+  Cluster 2: [0.77527125 0.81157971 0.67749572 0.44133619]
+  Cluster 3: [0.56695068 0.52990697 0.4364562  0.30840918]
+Iterasi 32 - Centroid:
+  Cluster 1: [0.08294331 0.06301195 0.19537361 0.58454681]
+  Cluster 2: [0.77527161 0.81158021 0.67749618 0.44133642]
+  Cluster 3: [0.5669511  0.52990747 0.43645669 0.30840949]
+Iterasi 33 - Centroid:
+  Cluster 1: [0.08294332 0.06301196 0.1953736  0.58454678]
+  Cluster 2: [0.77527184 0.81158052 0.67749646 0.44133657]
+  Cluster 3: [0.56695136 0.52990778 0.436457   0.30840968]
+Konvergen pada iterasi ke-34
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroids_original_scale</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">centroids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat DataFrame hasil</span>
+<span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normal_iris</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;petal_width&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal length&#39;</span><span class="p">,</span> <span class="s1">&#39;sepal width&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">membership</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">df_result</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Cluster_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">_Membership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">membership</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_result</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   petal_length  petal_width  sepal length  sepal width  Cluster_1_Membership  \
+0           1.4          0.2           5.1          3.5              0.992968   
+1           1.4          0.2           4.9          3.0              0.931252   
+2           1.3          0.2           4.7          3.2              0.965978   
+3           1.5          0.2           4.6          3.1              0.937062   
+4           1.4          0.2           5.0          3.6              0.983855   
+
+   Cluster_2_Membership  Cluster_3_Membership  
+0              0.002264              0.004767  
+1              0.020409              0.048338  
+2              0.010542              0.023480  
+3              0.019060              0.043878  
+4              0.005307              0.010838  
 </pre></div>
 </div>
 </div>
