@@ -403,31 +403,34 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penerapan-algoritma-pada-data"><strong>Penerapan Algoritma pada Data</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong>Data</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual"><strong>Perhitungan Manual</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
-</ul>
-</li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-untuk-fitur-cuaca"><strong>Split entropy untuk fitur Cuaca:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-cuaca"><strong>Split entropy total fitur Cuaca</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain"><strong>Information Gain:</strong></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Information Gain:</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-menggunakan-fungsi"><strong>Perhitungan Menggunakan Fungsi</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-menggunakan-scikit-learn"><strong>Perhitungan Menggunakan Scikit Learn</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-decision-tree"><strong>Visualisasi Decision Tree</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-2-data-baru"><strong>Pengujian 2 Data Baru</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Perhitungan Manual</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -620,11 +623,12 @@ H(S) = -\left(\frac{4}{15} \log_2 \frac{4}{15} + \frac{6}{15} \log_2 \frac{6}{15
 H(S) ≈ \boxed{1.566}
 \]</div>
 <p><img alt="entropi class" src="_images/entropiclass.png" /></p>
+</section>
 <hr class="docutils" />
 <section id="split-entropi-cuaca">
-<h5><strong>Split Entropi Cuaca</strong><a class="headerlink" href="#split-entropi-cuaca" title="Link to this heading">#</a></h5>
+<h4><strong>Split Entropi Cuaca</strong><a class="headerlink" href="#split-entropi-cuaca" title="Link to this heading">#</a></h4>
 <section id="cerah-6-data">
-<h6>1. Cerah (6 data)<a class="headerlink" href="#cerah-6-data" title="Link to this heading">#</a></h6>
+<h5>1. Cerah (6 data)<a class="headerlink" href="#cerah-6-data" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Olahraga = 2</p></li>
 <li><p>Bekerja = 2</p></li>
@@ -638,7 +642,7 @@ H(Cerah) = -3 \cdot \left(\frac{2}{6} \log_2 \frac{2}{6}\right) = -3 \cdot \left
 <p><img alt="cerah" src="_images/cerah.png" /></p>
 </section>
 <section id="hujan-4-data">
-<h6>2. Hujan (4 data)<a class="headerlink" href="#hujan-4-data" title="Link to this heading">#</a></h6>
+<h5>2. Hujan (4 data)<a class="headerlink" href="#hujan-4-data" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Menonton TV = 3</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -654,7 +658,7 @@ H(Hujan) = -\left(\frac{3}{4} \log_2 \frac{3}{4} + \frac{1}{4} \log_2 \frac{1}{4
 <p><img alt="hujan.png" src="_images/hujan.png" /></p>
 </section>
 <section id="mendung-5-data">
-<h6>3. Mendung (5 data)<a class="headerlink" href="#mendung-5-data" title="Link to this heading">#</a></h6>
+<h5>3. Mendung (5 data)<a class="headerlink" href="#mendung-5-data" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Bekerja = 2</p></li>
 <li><p>Olahraga = 2</p></li>
@@ -670,9 +674,8 @@ H(Mendung) = -\left(2/5 \log_2 2/5 + 2/5 \log_2 2/5 + 1/5 \log_2 1/5\right) ≈ 
 \]</div>
 <p><img alt="mendung.png" src="_images/mendung.png" /></p>
 </section>
-</section>
-<section id="split-entropy-untuk-fitur-cuaca">
-<h5><strong>Split entropy untuk fitur Cuaca:</strong><a class="headerlink" href="#split-entropy-untuk-fitur-cuaca" title="Link to this heading">#</a></h5>
+<section id="split-entropy-total-fitur-cuaca">
+<h5><strong>Split entropy total fitur Cuaca</strong><a class="headerlink" href="#split-entropy-total-fitur-cuaca" title="Link to this heading">#</a></h5>
 <p>Gabungkan semua:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -695,11 +698,12 @@ IG(Cuaca) = 1.566 - 1.3576 = \boxed{0.207}
 \]</div>
 <p><img alt="splitentropicuaca" src="_images/split_entropi_cuaca.png" /></p>
 </section>
+</section>
 <hr class="docutils" />
 <section id="split-entropi-waktu">
-<h5><strong>Split Entropi Waktu</strong><a class="headerlink" href="#split-entropi-waktu" title="Link to this heading">#</a></h5>
+<h4><strong>Split Entropi Waktu</strong><a class="headerlink" href="#split-entropi-waktu" title="Link to this heading">#</a></h4>
 <section id="entropi-pagi-5-data">
-<h6>1. Entropi Pagi (5 data)<a class="headerlink" href="#entropi-pagi-5-data" title="Link to this heading">#</a></h6>
+<h5>1. Entropi Pagi (5 data)<a class="headerlink" href="#entropi-pagi-5-data" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Olahraga = 4</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -723,14 +727,14 @@ H(Pagi) = -\left(\frac{4}{5} \log_2 \frac{4}{5} + \frac{1}{5} \log_2 \frac{1}{5}
 <p><img alt="pagi" src="_images/pagi.png" /></p>
 </section>
 <section id="entropi-siang-3-data-semua-bekerja">
-<h6>2.  Entropi Siang (3 data, semua bekerja)<a class="headerlink" href="#entropi-siang-3-data-semua-bekerja" title="Link to this heading">#</a></h6>
+<h5>2.  Entropi Siang (3 data, semua bekerja)<a class="headerlink" href="#entropi-siang-3-data-semua-bekerja" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Pure class → Entropi = <span class="math notranslate nohighlight">\(\boxed{0}\)</span></p></li>
 </ul>
 <p><img alt="siang" src="_images/siang.png" /></p>
 </section>
 <section id="entropi-malam-7-data">
-<h6>3. Entropi Malam (7 data)<a class="headerlink" href="#entropi-malam-7-data" title="Link to this heading">#</a></h6>
+<h5>3. Entropi Malam (7 data)<a class="headerlink" href="#entropi-malam-7-data" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p>Menonton TV = 6</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -752,7 +756,6 @@ H(Malam) = -\left(\frac{6}{7} \log_2 \frac{6}{7} + \frac{1}{7} \log_2 \frac{1}{7
 ≈ 0.190 + 0.401 = \boxed{0.591}
 \]</div>
 <p><img alt="malam" src="_images/malam.png" /></p>
-</section>
 </section>
 <section id="split-entropy-total-fitur-waktu">
 <h5><strong>Split entropy total fitur Waktu</strong><a class="headerlink" href="#split-entropy-total-fitur-waktu" title="Link to this heading">#</a></h5>
@@ -782,6 +785,8 @@ IG(Waktu) = 1.566 - 0.516 = \boxed{1.050}
 <hr class="docutils" />
 <section id="perhitungan-dengan-python">
 <h3><strong>Perhitungan dengan Python</strong><a class="headerlink" href="#perhitungan-dengan-python" title="Link to this heading">#</a></h3>
+<section id="perhitungan-menggunakan-fungsi">
+<h4><strong>Perhitungan Menggunakan Fungsi</strong><a class="headerlink" href="#perhitungan-menggunakan-fungsi" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
@@ -848,6 +853,73 @@ Information Gain (Waktu): 1.049
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># Fungsi untuk menghitung entropy dari daftar label</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">entropy</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="nb">sum</span><span class="p">((</span><span class="n">count</span><span class="o">/</span><span class="n">total</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">count</span><span class="o">/</span><span class="n">total</span><span class="p">)</span> <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># Dataset (15 data)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagi&quot;</span><span class="p">,</span>  <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Hujan&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Mendung&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Siang&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagi&quot;</span><span class="p">,</span>  <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Hujan&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Mendung&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagi&quot;</span><span class="p">,</span>  <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Mendung&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Hujan&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Siang&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagi&quot;</span><span class="p">,</span>  <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Mendung&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Siang&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Hujan&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Mendung&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Pagi&quot;</span><span class="p">,</span>  <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="s2">&quot;Malam&quot;</span><span class="p">,</span> <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Hitung entropy total</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;Aktivitas&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+<span class="n">entropy_total</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entropy total: </span><span class="si">{</span><span class="n">entropy_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hitung Information Gain untuk fitur &#39;Waktu&#39;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">information_gain</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">total_entropy</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+    
+    <span class="n">split_entropy</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">split_entropy</span> <span class="o">+=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">entropy</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+    
+    <span class="n">ig</span> <span class="o">=</span> <span class="n">total_entropy</span> <span class="o">-</span> <span class="n">split_entropy</span>
+    <span class="k">return</span> <span class="n">ig</span><span class="p">,</span> <span class="n">split_entropy</span>
+
+<span class="c1"># Hitung IG untuk fitur &#39;Waktu&#39;</span>
+<span class="n">ig_waktu</span><span class="p">,</span> <span class="n">split_entropy_waktu</span> <span class="o">=</span> <span class="n">information_gain</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;Cuaca&#39;</span><span class="p">,</span> <span class="s1">&#39;Aktivitas&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Split Entropy (Cuaca): </span><span class="si">{</span><span class="n">split_entropy_waktu</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Information Gain (Cuaca): </span><span class="si">{</span><span class="n">ig_waktu</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entropy total: 1.566
+Split Entropy (Cuaca): 1.358
+Information Gain (Cuaca): 0.208
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perhitungan-menggunakan-scikit-learn">
+<h4><strong>Perhitungan Menggunakan Scikit Learn</strong><a class="headerlink" href="#perhitungan-menggunakan-scikit-learn" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -859,16 +931,18 @@ Information Gain (Waktu): 1.049
     <span class="s2">&quot;Aktivitas&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Olahraga&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">,</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">,</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">,</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">,</span> <span class="s2">&quot;Bekerja&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">,</span> <span class="s2">&quot;Olahraga&quot;</span><span class="p">,</span> <span class="s2">&quot;Menonton TV&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># Buat DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># Label encoding</span>
+<span class="n">le_cuaca</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le_waktu</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le_aktivitas</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 
-<span class="c1"># Label Encoding (karena sklearn butuh numerik)</span>
-<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
-<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_cuaca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_waktu</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_aktivitas</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas&quot;</span><span class="p">])</span>
 
 <span class="c1"># Fitur dan target</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="s2">&quot;Aktivitas&quot;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu_enc&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas_enc&quot;</span><span class="p">]</span>
 
 <span class="c1"># Decision Tree dengan entropi (information gain)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;entropy&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -882,30 +956,23 @@ Information Gain (Waktu): 1.049
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Information Gain untuk fitur &#39;Cuaca&#39;: 0.125
-Information Gain untuk fitur &#39;Waktu&#39;: 0.875
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">le_waktu</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">le_aktivitas</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_cuaca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_waktu</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_aktivitas</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas&quot;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Label encoding</span>
-<span class="n">le_cuaca</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
-<span class="n">le_waktu</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
-<span class="n">le_aktivitas</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_cuaca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_waktu</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Waktu&quot;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas_enc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_aktivitas</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas&quot;</span><span class="p">])</span>
-
-<span class="c1"># Fitur dan target</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu_enc&quot;</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Aktivitas_enc&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section id="visualisasi-decision-tree">
+<h4><strong>Visualisasi Decision Tree</strong><a class="headerlink" href="#visualisasi-decision-tree" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_text</span>
@@ -924,10 +991,70 @@ Information Gain untuk fitur &#39;Waktu&#39;: 0.875
 <img alt="_images/e37346da9923d2570cf2659f2805545e7291587da8c9eb48d26a3ce26d07d186.png" src="_images/e37346da9923d2570cf2659f2805545e7291587da8c9eb48d26a3ce26d07d186.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cetak aturan</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">,</span> <span class="s2">&quot;Waktu&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rules dari Decision Tree:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rules dari Decision Tree:
+|--- Waktu &lt;= 0.50
+|   |--- Cuaca &lt;= 0.50
+|   |   |--- class: 1
+|   |--- Cuaca &gt;  0.50
+|   |   |--- class: 1
+|--- Waktu &gt;  0.50
+|   |--- Waktu &lt;= 1.50
+|   |   |--- Cuaca &lt;= 1.00
+|   |   |   |--- class: 2
+|   |   |--- Cuaca &gt;  1.00
+|   |   |   |--- class: 2
+|   |--- Waktu &gt;  1.50
+|   |   |--- class: 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pengujian-2-data-baru">
+<h4><strong>Pengujian 2 Data Baru</strong><a class="headerlink" href="#pengujian-2-data-baru" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data baru</span>
+<span class="n">data_baru</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Cuaca&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hujan&quot;</span><span class="p">,</span> <span class="s2">&quot;Cerah&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Waktu&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Pagi&quot;</span><span class="p">,</span> <span class="s2">&quot;Siang&quot;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Encode data baru dengan encoder yang sesuai</span>
+<span class="n">data_baru_enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Cuaca_enc&quot;</span><span class="p">:</span> <span class="n">le_cuaca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_baru</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">]),</span>
+    <span class="s2">&quot;Waktu_enc&quot;</span><span class="p">:</span> <span class="n">le_waktu</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_baru</span><span class="p">[</span><span class="s2">&quot;Waktu&quot;</span><span class="p">])</span>
+<span class="p">})</span>
+
+<span class="c1"># Prediksi</span>
+<span class="n">prediksi_enc</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_baru_enc</span><span class="p">)</span>
+<span class="n">prediksi_aktual</span> <span class="o">=</span> <span class="n">le_aktivitas</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">prediksi_enc</span><span class="p">)</span>
+
+<span class="c1"># Cetak hasil prediksi</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">cuaca</span><span class="p">,</span> <span class="n">waktu</span><span class="p">,</span> <span class="n">aktivitas</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">data_baru</span><span class="p">[</span><span class="s2">&quot;Cuaca&quot;</span><span class="p">],</span> <span class="n">data_baru</span><span class="p">[</span><span class="s2">&quot;Waktu&quot;</span><span class="p">],</span> <span class="n">prediksi_aktual</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Cuaca = </span><span class="si">{</span><span class="n">cuaca</span><span class="si">}</span><span class="s2">, Waktu = </span><span class="si">{</span><span class="n">waktu</span><span class="si">}</span><span class="s2"> → Prediksi Aktivitas = </span><span class="si">{</span><span class="n">aktivitas</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data 1: Cuaca = Hujan, Waktu = Pagi → Prediksi Aktivitas = Olahraga
+Data 2: Cuaca = Cerah, Waktu = Siang → Prediksi Aktivitas = Bekerja
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="id2">
-<h2><strong>Perhitungan Manual</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1003,31 +1130,34 @@ Information Gain untuk fitur &#39;Waktu&#39;: 0.875
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penerapan-algoritma-pada-data"><strong>Penerapan Algoritma pada Data</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong>Data</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual"><strong>Perhitungan Manual</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
-</ul>
-</li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-untuk-fitur-cuaca"><strong>Split entropy untuk fitur Cuaca:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-cuaca"><strong>Split entropy total fitur Cuaca</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain"><strong>Information Gain:</strong></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Information Gain:</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-menggunakan-fungsi"><strong>Perhitungan Menggunakan Fungsi</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-menggunakan-scikit-learn"><strong>Perhitungan Menggunakan Scikit Learn</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-decision-tree"><strong>Visualisasi Decision Tree</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-2-data-baru"><strong>Pengujian 2 Data Baru</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Perhitungan Manual</strong></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

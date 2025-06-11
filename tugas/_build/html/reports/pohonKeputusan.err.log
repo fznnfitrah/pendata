@@ -28,32 +28,50 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Mengimport Library yang digunakan dalam prosesnya
-import pymysql
-import psycopg2
-from sqlalchemy import create_engine
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy import stats
-import numpy as np
-import base64
-import os
-from dotenv import load_dotenv
-from sklearn.neighbors import NearestNeighbors
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+
+# Dataset
+data = {
+    "Cuaca": ["Cerah", "Hujan", "Mendung", "Cerah", "Hujan", "Cerah", "Mendung", "Mendung", "Hujan", "Cerah", "Mendung", "Cerah", "Hujan", "Mendung", "Cerah"],
+    "Waktu": ["Pagi", "Malam", "Siang", "Pagi", "Malam", "Malam", "Pagi", "Malam", "Siang", "Pagi", "Siang", "Malam", "Malam", "Pagi", "Malam"],
+    "Aktivitas": ["Olahraga", "Menonton TV", "Bekerja", "Bekerja", "Menonton TV", "Menonton TV", "Olahraga", "Menonton TV", "Bekerja", "Olahraga", "Bekerja", "Bekerja", "Menonton TV", "Olahraga", "Menonton TV"]
+}
+
+# Label encoding
+le_cuaca = LabelEncoder()
+le_waktu = LabelEncoder()
+le_aktivitas = LabelEncoder()
+
+df["Cuaca_enc"] = le_cuaca.fit_transform(df["Cuaca"])
+df["Waktu_enc"] = le_waktu.fit_transform(df["Waktu"])
+df["Aktivitas_enc"] = le_aktivitas.fit_transform(df["Aktivitas"])
+
+# Fitur dan target
+X = df[["Cuaca_enc", "Waktu_enc"]]
+y = df["Aktivitas_enc"]
+
+# Decision Tree dengan entropi (information gain)
+clf = DecisionTreeClassifier(criterion="entropy", random_state=42)
+clf.fit(X, y)
+
+# Tampilkan information gain (feature importance)
+feature_names = ["Cuaca", "Waktu"]
+for name, score in zip(feature_names, clf.feature_importances_):
+    print(f"Information Gain untuk fitur '{name}': {score:.3f}")
+
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 12[39m
-[32m     10[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mbase64[39;00m
-[32m     11[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mos[39;00m
-[32m---> [39m[32m12[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mdotenv[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m load_dotenv
-[32m     13[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mneighbors[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m NearestNeighbors
-[32m     14[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m StandardScaler
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 17[39m
+[32m     14[39m le_waktu = LabelEncoder()
+[32m     15[39m le_aktivitas = LabelEncoder()
+[32m---> [39m[32m17[39m df[[33m"[39m[33mCuaca_enc[39m[33m"[39m] = le_cuaca.fit_transform([43mdf[49m[[33m"[39m[33mCuaca[39m[33m"[39m])
+[32m     18[39m df[[33m"[39m[33mWaktu_enc[39m[33m"[39m] = le_waktu.fit_transform(df[[33m"[39m[33mWaktu[39m[33m"[39m])
+[32m     19[39m df[[33m"[39m[33mAktivitas_enc[39m[33m"[39m] = le_aktivitas.fit_transform(df[[33m"[39m[33mAktivitas[39m[33m"[39m])
 
-[31mModuleNotFoundError[39m: No module named 'dotenv'
+[31mNameError[39m: name 'df' is not defined
 
