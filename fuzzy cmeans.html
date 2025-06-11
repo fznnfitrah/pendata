@@ -63,6 +63,7 @@
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pohon Keputusan" href="pohonKeputusan.html" />
     <link rel="prev" title="K-Means" href="k-mean_clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,9 +196,10 @@
 <li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html"><em><strong>Klasifikasi Naive Bayes</strong></em></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Algoritma Fuzzy Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pohonKeputusan.html"><em><strong>Pohon Keputusan</strong></em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
 </ul>
 
     </div>
@@ -991,7 +993,65 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PostgreSQL 16.9 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 14.2.1 20240912 (Red Hat 14.2.1-3), 64-bit
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:649,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">649</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="k">break</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\socket.py:840,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">840</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">841</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\socket.py:977,</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span> <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">977</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="ne">gaierror</span>: [Errno 11001] getaddrinfo failed
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Mengkoneksi database dengan python</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># for mysql</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf8mb4&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">connect_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">cursorclass</span><span class="o">=</span><span class="n">pymysql</span><span class="o">.</span><span class="n">cursors</span><span class="o">.</span><span class="n">DictCursor</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">db</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-726cd75-mysqlpendata-11.h.aivencloud.com&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_LHA80D-LNsKI6wncjfc&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">read_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">port</span><span class="o">=</span><span class="mi">20734</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">write_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">mysql_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;mysql+pymysql://avnadmin:AVNS_LHA80D-LNsKI6wncjfc@mysql-726cd75-mysqlpendata-11.h.aivencloud.com:20734/defaultdb&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="c1"># for postgre</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:361,</span> in <span class="ni">Connection.__init__</span><span class="nt">(self, user, password, host, database, unix_socket, port, charset, collation, sql_mode, read_default_file, conv, use_unicode, client_flag, cursorclass, init_command, connect_timeout, read_default_group, autocommit, local_infile, max_allowed_packet, defer_connect, auth_plugin_map, read_timeout, write_timeout, bind_address, binary_prefix, program_name, server_public_key, ssl, ssl_ca, ssl_cert, ssl_disabled, ssl_key, ssl_key_password, ssl_verify_cert, ssl_verify_identity, compress, named_pipe, passwd, db)</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">361</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:716,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>         <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">traceback</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span>     <span class="k">raise</span> <span class="n">exc</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="c1"># If e is neither DatabaseError or IOError, It&#39;s a bug.</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span> <span class="c1"># But raising AssertionError hides original error.</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="c1"># So just reraise it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span> <span class="k">raise</span>
+
+<span class="ne">OperationalError</span>: (2003, &quot;Can&#39;t connect to MySQL server on &#39;mysql-726cd75-mysqlpendata-11.h.aivencloud.com&#39; ([Errno 11001] getaddrinfo failed)&quot;)
 </pre></div>
 </div>
 </div>
@@ -1151,138 +1211,82 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Centroid:
-  Cluster 1: [0.44467107 0.42700184 0.4144863  0.41264519]
-  Cluster 2: [0.49162695 0.49699399 0.42929206 0.44320483]
-  Cluster 3: [0.45190976 0.44052456 0.42600109 0.46340754]
+  Cluster 1: [0.49690698 0.49145071 0.45123211 0.43548364]
+  Cluster 2: [0.43487058 0.42502932 0.39230686 0.44389314]
+  Cluster 3: [0.48293246 0.47374733 0.45520947 0.42875282]
 Iterasi 2 - Centroid:
-  Cluster 1: [0.41828169 0.40320826 0.39144383 0.43316328]
-  Cluster 2: [0.54283382 0.53683205 0.47258995 0.42246294]
-  Cluster 3: [0.42704792 0.41780515 0.41165215 0.46463873]
+  Cluster 1: [0.53443995 0.52633894 0.4718453  0.42374232]
+  Cluster 2: [0.34358154 0.33218997 0.34616389 0.47179627]
+  Cluster 3: [0.50663467 0.49566972 0.45651216 0.42658516]
 Iterasi 3 - Centroid:
-  Cluster 1: [0.33189564 0.31713177 0.33537784 0.46347497]
-  Cluster 2: [0.61721653 0.60988    0.52543171 0.40100053]
-  Cluster 3: [0.3523352  0.34066729 0.35898091 0.47984064]
+  Cluster 1: [0.61308494 0.60653636 0.52226865 0.39853487]
+  Cluster 2: [0.17102215 0.15512434 0.24502619 0.53851987]
+  Cluster 3: [0.56655886 0.55623159 0.48542951 0.3990715 ]
 Iterasi 4 - Centroid:
-  Cluster 1: [0.20750113 0.18862532 0.25681644 0.50626075]
-  Cluster 2: [0.67725429 0.67591298 0.5703336  0.39098138]
-  Cluster 3: [0.25085776 0.23246391 0.28550899 0.49663689]
+  Cluster 1: [0.6902788  0.69426465 0.57926818 0.38521409]
+  Cluster 2: [0.09122869 0.07216122 0.19943986 0.57678582]
+  Cluster 3: [0.61836092 0.6018147  0.50385915 0.35885039]
 Iterasi 5 - Centroid:
-  Cluster 1: [0.13491219 0.11483622 0.21681017 0.5421671 ]
-  Cluster 2: [0.69808129 0.70207516 0.58698315 0.39041138]
-  Cluster 3: [0.22438289 0.2027163  0.26075574 0.49036501]
+  Cluster 1: [0.72739294 0.74616695 0.61732394 0.40382939]
+  Cluster 2: [0.08538062 0.06545967 0.19568659 0.58088642]
+  Cluster 3: [0.60431349 0.57572124 0.48445574 0.34091699]
 Iterasi 6 - Centroid:
-  Cluster 1: [0.10629537 0.08554886 0.20434153 0.56369336]
-  Cluster 2: [0.70217137 0.70759856 0.59079328 0.39127461]
-  Cluster 3: [0.29370625 0.27118224 0.28515798 0.42810775]
+  Cluster 1: [0.75478387 0.78488455 0.64885447 0.42385519]
+  Cluster 2: [0.08436432 0.06441406 0.19529213 0.58195928]
+  Cluster 3: [0.58371216 0.54766511 0.45995482 0.32506992]
 Iterasi 7 - Centroid:
-  Cluster 1: [0.09143437 0.07053487 0.19948882 0.57889278]
-  Cluster 2: [0.70970375 0.7176719  0.59926204 0.3955477 ]
-  Cluster 3: [0.43534158 0.40706899 0.33761643 0.30956219]
+  Cluster 1: [0.76808205 0.80336752 0.66629405 0.43482385]
+  Cluster 2: [0.0834864  0.06354077 0.19515206 0.58316362]
+  Cluster 3: [0.57268072 0.53507367 0.44557403 0.31537516]
 Iterasi 8 - Centroid:
-  Cluster 1: [0.08357006 0.06334046 0.19707735 0.58697045]
-  Cluster 2: [0.72949804 0.74539447 0.62249441 0.40905634]
-  Cluster 3: [0.51008219 0.47341786 0.37583665 0.27590484]
+  Cluster 1: [0.77295395 0.8093879  0.67349265 0.43913058]
+  Cluster 2: [0.08311226 0.06316975 0.19522345 0.58395418]
+  Cluster 3: [0.56872706 0.53127003 0.43969558 0.31100178]
 Iterasi 9 - Centroid:
-  Cluster 1: [0.08245927 0.06241901 0.19644727 0.58759101]
-  Cluster 2: [0.74524384 0.76867061 0.64177437 0.42174488]
-  Cluster 3: [0.53441341 0.49517798 0.39809362 0.2838499 ]
+  Cluster 1: [0.77454957 0.81103849 0.67612078 0.44061609]
+  Cluster 2: [0.08299595 0.06305858 0.1953052  0.58432052]
+  Cluster 3: [0.56750115 0.53026795 0.43758874 0.30932689]
 Iterasi 10 - Centroid:
-  Cluster 1: [0.0824258  0.06243657 0.19604461 0.58681641]
-  Cluster 2: [0.75610752 0.78441396 0.65458937 0.42927165]
-  Cluster 3: [0.54657824 0.5072099  0.4119598  0.29243717]
+  Cluster 1: [0.77505222 0.81146013 0.677036   0.44110638]
+  Cluster 2: [0.08296051 0.06302663 0.19534707 0.58446506]
+  Cluster 3: [0.56713014 0.53001142 0.43685693 0.30873021]
 Iterasi 11 - Centroid:
-  Cluster 1: [0.08252988 0.06256271 0.19577573 0.58608273]
-  Cluster 2: [0.76323316 0.79458378 0.66292097 0.43378011]
-  Cluster 3: [0.55397529 0.51507607 0.42085367 0.29832099]
+  Cluster 1: [0.77520813 0.81156182 0.67734726 0.44126529]
+  Cluster 2: [0.08294924 0.06301695 0.19536398 0.5845178 ]
+  Cluster 3: [0.56701464 0.52994366 0.43660225 0.30852312]
 Iterasi 12 - Centroid:
-  Cluster 1: [0.08264439 0.06269015 0.19561366 0.58555313]
-  Cluster 2: [0.76775767 0.80099864 0.66828116 0.43658381]
-  Cluster 3: [0.55869488 0.52032382 0.42657291 0.30208408]
+  Cluster 1: [0.77525559 0.81158349 0.67745094 0.44131593]
+  Cluster 2: [0.08294549 0.06301382 0.19537018 0.58453638]
+  Cluster 3: [0.5669765  0.52992368 0.43651225 0.30845133]
 Iterasi 13 - Centroid:
-  Cluster 1: [0.0827387  0.06279279 0.19551831 0.5851955 ]
-  Cluster 2: [0.77059134 0.80500165 0.67169767 0.43835095]
-  Cluster 3: [0.56172258 0.52378073 0.43022608 0.30445254]
+  Cluster 1: [0.77526938 0.81158626 0.67748445 0.4413316 ]
+  Cluster 2: [0.08294419 0.06301273 0.19537237 0.58454288]
+  Cluster 3: [0.56696277 0.52991644 0.43647955 0.30842599]
 Iterasi 14 - Centroid:
-  Cluster 1: [0.08280792 0.06286738 0.19546178 0.5849606 ]
-  Cluster 2: [0.77235742 0.80748994 0.67385937 0.43946525]
-  Cluster 3: [0.56365498 0.52602248 0.43254299 0.30593653]
+  Cluster 1: [0.7752729  0.81158524 0.67749468 0.44133613]
+  Cluster 2: [0.08294371 0.06301232 0.19537313 0.5845452 ]
+  Cluster 3: [0.56695726 0.52991309 0.43646714 0.30841671]
 Iterasi 15 - Centroid:
-  Cluster 1: [0.08285564 0.06291851 0.19542779 0.58480883]
-  Cluster 2: [0.77345672 0.80903557 0.67522007 0.44016583]
-  Cluster 3: [0.56488049 0.52745804 0.43400439 0.30686488]
+  Cluster 1: [0.77527344 0.8115839  0.67749741 0.44133724]
+  Cluster 2: [0.08294352 0.06301215 0.19537341 0.58454607]
+  Cluster 3: [0.56695476 0.52991124 0.43646212 0.3084131 ]
 Iterasi 16 - Centroid:
-  Cluster 1: [0.08288731 0.06295235 0.19540709 0.58471188]
-  Cluster 2: [0.774141   0.80999617 0.67607365 0.44060505]
-  Cluster 3: [0.56565363 0.52836914 0.43492269 0.30744516]
+  Cluster 1: [0.77527324 0.81158288 0.67749787 0.44133736]
+  Cluster 2: [0.08294343 0.06301207 0.19537351 0.58454641]
+  Cluster 3: [0.5669535  0.52991013 0.43645991 0.30841157]
 Iterasi 17 - Centroid:
-  Cluster 1: [0.08290786 0.06297425 0.19539437 0.58465043]
-  Cluster 2: [0.77456713 0.81059369 0.67660796 0.44087986]
-  Cluster 3: [0.56613952 0.52894387 0.43549824 0.30780768]
+  Cluster 1: [0.77527294 0.81158221 0.67749773 0.44133724]
+  Cluster 2: [0.08294339 0.06301203 0.19537355 0.58454656]
+  Cluster 3: [0.56695281 0.52990944 0.43645884 0.30841085]
 Iterasi 18 - Centroid:
-  Cluster 1: [0.082921   0.06298823 0.19538651 0.58461169]
-  Cluster 2: [0.77483262 0.81096567 0.67694195 0.44105159]
-  Cluster 3: [0.5664441  0.52930497 0.43585837 0.30803407]
+  Cluster 1: [0.77527269 0.81158177 0.6774975  0.44133711]
+  Cluster 2: [0.08294337 0.06301201 0.19537357 0.58454663]
+  Cluster 3: [0.56695241 0.52990901 0.43645828 0.30841049]
 Iterasi 19 - Centroid:
-  Cluster 1: [0.08292932 0.06299708 0.19538163 0.58458736]
-  Cluster 2: [0.77499809 0.81119739 0.67715057 0.44115882]
-  Cluster 3: [0.56663469 0.52953126 0.43608346 0.30817541]
-Iterasi 20 - Centroid:
-  Cluster 1: [0.08293456 0.06300266 0.1953786  0.58457212]
-  Cluster 2: [0.77510125 0.8113418  0.6772808  0.44122575]
-  Cluster 3: [0.56675382 0.52967283 0.43622405 0.30826362]
-Iterasi 21 - Centroid:
-  Cluster 1: [0.08293785 0.06300615 0.19537671 0.58456258]
-  Cluster 2: [0.77516558 0.81143183 0.67736208 0.44126752]
-  Cluster 3: [0.56682823 0.5297613  0.43631183 0.30831867]
-Iterasi 22 - Centroid:
-  Cluster 1: [0.08293991 0.06300834 0.19537554 0.58455662]
-  Cluster 2: [0.7752057  0.81148798 0.6774128  0.44129358]
-  Cluster 3: [0.56687469 0.52981655 0.43636661 0.30835302]
-Iterasi 23 - Centroid:
-  Cluster 1: [0.0829412  0.06300971 0.1953748  0.5845529 ]
-  Cluster 2: [0.77523072 0.81152299 0.67744444 0.44130984]
-  Cluster 3: [0.56690368 0.52985104 0.43640079 0.30837445]
-Iterasi 24 - Centroid:
-  Cluster 1: [0.08294201 0.06301056 0.19537435 0.58455058]
-  Cluster 2: [0.77524633 0.81154483 0.67746419 0.44131999]
-  Cluster 3: [0.56692177 0.52987257 0.43642212 0.30838782]
-Iterasi 25 - Centroid:
-  Cluster 1: [0.08294251 0.0630111  0.19537406 0.58454913]
-  Cluster 2: [0.77525606 0.81155845 0.6774765  0.44132631]
-  Cluster 3: [0.56693306 0.529886   0.43643543 0.30839616]
-Iterasi 26 - Centroid:
-  Cluster 1: [0.08294282 0.06301143 0.19537388 0.58454822]
-  Cluster 2: [0.77526213 0.81156695 0.67748419 0.44133026]
-  Cluster 3: [0.5669401  0.52989439 0.43644373 0.30840136]
-Iterasi 27 - Centroid:
-  Cluster 1: [0.08294302 0.06301164 0.19537377 0.58454766]
-  Cluster 2: [0.77526592 0.81157225 0.67748898 0.44133272]
-  Cluster 3: [0.5669445  0.52989961 0.43644891 0.30840461]
-Iterasi 28 - Centroid:
-  Cluster 1: [0.08294314 0.06301177 0.1953737  0.5845473 ]
-  Cluster 2: [0.77526829 0.81157556 0.67749197 0.44133426]
-  Cluster 3: [0.56694724 0.52990288 0.43645214 0.30840664]
-Iterasi 29 - Centroid:
-  Cluster 1: [0.08294322 0.06301185 0.19537366 0.58454708]
-  Cluster 2: [0.77526976 0.81157762 0.67749383 0.44133522]
-  Cluster 3: [0.56694895 0.52990491 0.43645416 0.3084079 ]
-Iterasi 30 - Centroid:
-  Cluster 1: [0.08294326 0.0630119  0.19537363 0.58454695]
-  Cluster 2: [0.77527068 0.81157891 0.677495   0.44133582]
-  Cluster 3: [0.56695002 0.52990618 0.43645542 0.30840869]
-Iterasi 31 - Centroid:
-  Cluster 1: [0.08294329 0.06301193 0.19537362 0.58454686]
-  Cluster 2: [0.77527125 0.81157971 0.67749572 0.44133619]
-  Cluster 3: [0.56695068 0.52990697 0.4364562  0.30840918]
-Iterasi 32 - Centroid:
-  Cluster 1: [0.08294331 0.06301195 0.19537361 0.58454681]
-  Cluster 2: [0.77527161 0.81158021 0.67749618 0.44133642]
-  Cluster 3: [0.5669511  0.52990747 0.43645669 0.30840949]
-Iterasi 33 - Centroid:
-  Cluster 1: [0.08294332 0.06301196 0.1953736  0.58454678]
-  Cluster 2: [0.77527184 0.81158052 0.67749646 0.44133657]
-  Cluster 3: [0.56695136 0.52990778 0.436457   0.30840968]
-Konvergen pada iterasi ke-34
+  Cluster 1: [0.77527252 0.8115815  0.67749731 0.44133701]
+  Cluster 2: [0.08294336 0.063012   0.19537358 0.58454667]
+  Cluster 3: [0.56695217 0.52990874 0.43645797 0.30841029]
+Konvergen pada iterasi ke-20
 </pre></div>
 </div>
 </div>
@@ -1307,18 +1311,18 @@ Konvergen pada iterasi ke-34
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   petal_length  petal_width  sepal length  sepal width  Cluster_1_Membership  \
-0           1.4          0.2           5.1          3.5              0.992968   
-1           1.4          0.2           4.9          3.0              0.931252   
-2           1.3          0.2           4.7          3.2              0.965978   
-3           1.5          0.2           4.6          3.1              0.937062   
-4           1.4          0.2           5.0          3.6              0.983855   
+0           1.4          0.2           5.1          3.5              0.002264   
+1           1.4          0.2           4.9          3.0              0.020409   
+2           1.3          0.2           4.7          3.2              0.010542   
+3           1.5          0.2           4.6          3.1              0.019060   
+4           1.4          0.2           5.0          3.6              0.005307   
 
    Cluster_2_Membership  Cluster_3_Membership  
-0              0.002264              0.004767  
-1              0.020409              0.048338  
-2              0.010542              0.023480  
-3              0.019060              0.043878  
-4              0.005307              0.010838  
+0              0.992968              0.004767  
+1              0.931253              0.048338  
+2              0.965978              0.023480  
+3              0.937062              0.043878  
+4              0.983855              0.010838  
 </pre></div>
 </div>
 </div>
@@ -1365,6 +1369,15 @@ Konvergen pada iterasi ke-34
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><strong>K-Means</strong></p>
       </div>
+    </a>
+    <a class="right-next"
+       href="pohonKeputusan.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Pohon Keputusan</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

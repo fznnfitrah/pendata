@@ -25,11 +25,14 @@ chapters:
     sections:
       - file: klasifikasi-naive-bayes #ipynb
 
-  - file: uts #ipynb
-    title: Ujian Tengah Semester
-
   - file: k-mean_clustering #ipynb
     title: Algoritma K-means Clustering
 
   - file: fuzzy cmeans #ipynb
     title: Algoritma Fuzzy Clustering
+
+  - file: pohonKeputusan #ipynb
+    title: 
+
+  - file: uts #ipynb
+    title: Ujian Tengah Semester

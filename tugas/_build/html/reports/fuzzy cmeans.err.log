@@ -1,0 +1,131 @@
+Traceback (most recent call last):
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Mengkoneksi database dengan python
+
+# for mysql
+timeout = 10
+connection = pymysql.connect(
+    charset="utf8mb4",
+    connect_timeout=timeout,
+    cursorclass=pymysql.cursors.DictCursor,
+    db="defaultdb",
+    host="mysql-726cd75-mysqlpendata-11.h.aivencloud.com",
+    password="AVNS_LHA80D-LNsKI6wncjfc",
+    read_timeout=timeout,
+    port=20734,
+    user="avnadmin",
+    write_timeout=timeout,
+)
+mysql_engine = create_engine("mysql+pymysql://avnadmin:AVNS_LHA80D-LNsKI6wncjfc@mysql-726cd75-mysqlpendata-11.h.aivencloud.com:20734/defaultdb")
+
+
+
+# for postgre
+def main():
+    conn = psycopg2.connect('postgres://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb?sslmode=require')
+
+    query_sql = 'SELECT VERSION()'
+
+    cur = conn.cursor()
+    cur.execute(query_sql)
+
+    version = cur.fetchone()[0]
+    print(version)
+
+if __name__ == "__main__":
+    main()
+postgres_engine = create_engine("postgresql+psycopg2://avnadmin:AVNS__Y6I8K0T7rSnwnRgE1U@pg-3266d3cf-postgresqlpendata-11.h.aivencloud.com:20817/defaultdb")
+
+
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mgaierror[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:649[39m, in [36mConnection.connect[39m[34m(self, sock)[39m
+[32m    648[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m649[39m     sock = [43msocket[49m[43m.[49m[43mcreate_connection[49m[43m([49m
+[32m    650[39m [43m        [49m[43m([49m[38;5;28;43mself[39;49m[43m.[49m[43mhost[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mport[49m[43m)[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mconnect_timeout[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m
+[32m    651[39m [43m    [49m[43m)[49m
+[32m    652[39m     [38;5;28;01mbreak[39;00m
+
+[36mFile [39m[32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\socket.py:840[39m, in [36mcreate_connection[39m[34m(address, timeout, source_address, all_errors)[39m
+[32m    839[39m exceptions = []
+[32m--> [39m[32m840[39m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[32;43m0[39;49m[43m,[49m[43m [49m[43mSOCK_STREAM[49m[43m)[49m:
+[32m    841[39m     af, socktype, proto, canonname, sa = res
+
+[36mFile [39m[32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\socket.py:977[39m, in [36mgetaddrinfo[39m[34m(host, port, family, type, proto, flags)[39m
+[32m    976[39m addrlist = []
+[32m--> [39m[32m977[39m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43m_socket[49m[43m.[49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[38;5;28;43mtype[39;49m[43m,[49m[43m [49m[43mproto[49m[43m,[49m[43m [49m[43mflags[49m[43m)[49m:
+[32m    978[39m     af, socktype, proto, canonname, sa = res
+
+[31mgaierror[39m: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+[31mOperationalError[39m                          Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 5[39m
+[32m      1[39m [38;5;66;03m# Mengkoneksi database dengan python[39;00m
+[32m      2[39m 
+[32m      3[39m [38;5;66;03m# for mysql[39;00m
+[32m      4[39m timeout = [32m10[39m
+[32m----> [39m[32m5[39m connection = [43mpymysql[49m[43m.[49m[43mconnect[49m[43m([49m
+[32m      6[39m [43m    [49m[43mcharset[49m[43m=[49m[33;43m"[39;49m[33;43mutf8mb4[39;49m[33;43m"[39;49m[43m,[49m
+[32m      7[39m [43m    [49m[43mconnect_timeout[49m[43m=[49m[43mtimeout[49m[43m,[49m
+[32m      8[39m [43m    [49m[43mcursorclass[49m[43m=[49m[43mpymysql[49m[43m.[49m[43mcursors[49m[43m.[49m[43mDictCursor[49m[43m,[49m
+[32m      9[39m [43m    [49m[43mdb[49m[43m=[49m[33;43m"[39;49m[33;43mdefaultdb[39;49m[33;43m"[39;49m[43m,[49m
+[32m     10[39m [43m    [49m[43mhost[49m[43m=[49m[33;43m"[39;49m[33;43mmysql-726cd75-mysqlpendata-11.h.aivencloud.com[39;49m[33;43m"[39;49m[43m,[49m
+[32m     11[39m [43m    [49m[43mpassword[49m[43m=[49m[33;43m"[39;49m[33;43mAVNS_LHA80D-LNsKI6wncjfc[39;49m[33;43m"[39;49m[43m,[49m
+[32m     12[39m [43m    [49m[43mread_timeout[49m[43m=[49m[43mtimeout[49m[43m,[49m
+[32m     13[39m [43m    [49m[43mport[49m[43m=[49m[32;43m20734[39;49m[43m,[49m
+[32m     14[39m [43m    [49m[43muser[49m[43m=[49m[33;43m"[39;49m[33;43mavnadmin[39;49m[33;43m"[39;49m[43m,[49m
+[32m     15[39m [43m    [49m[43mwrite_timeout[49m[43m=[49m[43mtimeout[49m[43m,[49m
+[32m     16[39m [43m)[49m
+[32m     17[39m mysql_engine = create_engine([33m"[39m[33mmysql+pymysql://avnadmin:AVNS_LHA80D-LNsKI6wncjfc@mysql-726cd75-mysqlpendata-11.h.aivencloud.com:20734/defaultdb[39m[33m"[39m)
+[32m     21[39m [38;5;66;03m# for postgre[39;00m
+
+[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:361[39m, in [36mConnection.__init__[39m[34m(self, user, password, host, database, unix_socket, port, charset, collation, sql_mode, read_default_file, conv, use_unicode, client_flag, cursorclass, init_command, connect_timeout, read_default_group, autocommit, local_infile, max_allowed_packet, defer_connect, auth_plugin_map, read_timeout, write_timeout, bind_address, binary_prefix, program_name, server_public_key, ssl, ssl_ca, ssl_cert, ssl_disabled, ssl_key, ssl_key_password, ssl_verify_cert, ssl_verify_identity, compress, named_pipe, passwd, db)[39m
+[32m    359[39m     [38;5;28mself[39m._sock = [38;5;28;01mNone[39;00m
+[32m    360[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m361[39m     [38;5;28;43mself[39;49m[43m.[49m[43mconnect[49m[43m([49m[43m)[49m
+
+[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:716[39m, in [36mConnection.connect[39m[34m(self, sock)[39m
+[32m    714[39m     [38;5;28;01mif[39;00m DEBUG:
+[32m    715[39m         [38;5;28mprint[39m(exc.traceback)
+[32m--> [39m[32m716[39m     [38;5;28;01mraise[39;00m exc
+[32m    718[39m [38;5;66;03m# If e is neither DatabaseError or IOError, It's a bug.[39;00m
+[32m    719[39m [38;5;66;03m# But raising AssertionError hides original error.[39;00m
+[32m    720[39m [38;5;66;03m# So just reraise it.[39;00m
+[32m    721[39m [38;5;28;01mraise[39;00m
+
+[31mOperationalError[39m: (2003, "Can't connect to MySQL server on 'mysql-726cd75-mysqlpendata-11.h.aivencloud.com' ([Errno 11001] getaddrinfo failed)")
+
