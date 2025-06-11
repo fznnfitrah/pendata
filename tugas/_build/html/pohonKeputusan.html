@@ -198,7 +198,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fuzzy%20cmeans.html">Algoritma Fuzzy Clustering</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><em><strong>Pohon Keputusan</strong></em></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algoritma Decision Tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
 </ul>
 
@@ -404,28 +404,30 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong>Data</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual"><strong>Perhitungan Manual</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-untuk-fitur-cuaca"><strong>Split entropy untuk fitur Cuaca:</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain"><strong>Information Gain:</strong></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Information Gain:</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Perhitungan Manual</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -621,10 +623,8 @@ H(S) ≈ \boxed{1.566}
 <hr class="docutils" />
 <section id="split-entropi-cuaca">
 <h5><strong>Split Entropi Cuaca</strong><a class="headerlink" href="#split-entropi-cuaca" title="Link to this heading">#</a></h5>
-</section>
-</section>
 <section id="cerah-6-data">
-<h4>1. Cerah (6 data)<a class="headerlink" href="#cerah-6-data" title="Link to this heading">#</a></h4>
+<h6>1. Cerah (6 data)<a class="headerlink" href="#cerah-6-data" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Olahraga = 2</p></li>
 <li><p>Bekerja = 2</p></li>
@@ -635,10 +635,10 @@ H(S) ≈ \boxed{1.566}
 \[
 H(Cerah) = -3 \cdot \left(\frac{2}{6} \log_2 \frac{2}{6}\right) = -3 \cdot \left(\frac{1}{3} \log_2 \frac{1}{3}\right) ≈ 1.585
 \]</div>
-<p><img alt="cerah.png" src="attachment:cerah.png" /></p>
+<p><img alt="cerah" src="_images/cerah.png" /></p>
 </section>
 <section id="hujan-4-data">
-<h4>2. Hujan (4 data)<a class="headerlink" href="#hujan-4-data" title="Link to this heading">#</a></h4>
+<h6>2. Hujan (4 data)<a class="headerlink" href="#hujan-4-data" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Menonton TV = 3</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -651,10 +651,10 @@ H(Hujan) = -\left(\frac{3}{4} \log_2 \frac{3}{4} + \frac{1}{4} \log_2 \frac{1}{4
 \[
 = -(0.75 \cdot \log_2 0.75 + 0.25 \cdot \log_2 0.25) ≈ 0.811
 \]</div>
-<p><img alt="hujan.png" src="attachment:hujan.png" /></p>
+<p><img alt="hujan.png" src="_images/hujan.png" /></p>
 </section>
 <section id="mendung-5-data">
-<h4>3. Mendung (5 data)<a class="headerlink" href="#mendung-5-data" title="Link to this heading">#</a></h4>
+<h6>3. Mendung (5 data)<a class="headerlink" href="#mendung-5-data" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Bekerja = 2</p></li>
 <li><p>Olahraga = 2</p></li>
@@ -668,7 +668,9 @@ p = \frac{2}{5}, \frac{2}{5}, \frac{1}{5}
 \[
 H(Mendung) = -\left(2/5 \log_2 2/5 + 2/5 \log_2 2/5 + 1/5 \log_2 1/5\right) ≈ 1.522
 \]</div>
-<p><img alt="mendung.png" src="attachment:mendung.png" /></p>
+<p><img alt="mendung.png" src="_images/mendung.png" /></p>
+</section>
+</section>
 <section id="split-entropy-untuk-fitur-cuaca">
 <h5><strong>Split entropy untuk fitur Cuaca:</strong><a class="headerlink" href="#split-entropy-untuk-fitur-cuaca" title="Link to this heading">#</a></h5>
 <p>Gabungkan semua:</p>
@@ -691,15 +693,13 @@ H_{total} = 1.566
 \[
 IG(Cuaca) = 1.566 - 1.3576 = \boxed{0.207}
 \]</div>
-<p><img alt="split entropi cuaca.png" src="attachment:split%20entropi%20cuaca.png" /></p>
+<p><img alt="splitentropicuaca" src="_images/split_entropi_cuaca.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="split-entropi-waktu">
 <h5><strong>Split Entropi Waktu</strong><a class="headerlink" href="#split-entropi-waktu" title="Link to this heading">#</a></h5>
-</section>
-</section>
 <section id="entropi-pagi-5-data">
-<h4>1. Entropi Pagi (5 data)<a class="headerlink" href="#entropi-pagi-5-data" title="Link to this heading">#</a></h4>
+<h6>1. Entropi Pagi (5 data)<a class="headerlink" href="#entropi-pagi-5-data" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Olahraga = 4</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -720,17 +720,17 @@ H(Pagi) = -\left(\frac{4}{5} \log_2 \frac{4}{5} + \frac{1}{5} \log_2 \frac{1}{5}
 \[
 ≈ 0.258 + 0.464 = \boxed{0.722}
 \]</div>
-<p><img alt="pagi.png" src="attachment:pagi.png" /></p>
+<p><img alt="pagi" src="_images/pagi.png" /></p>
 </section>
 <section id="entropi-siang-3-data-semua-bekerja">
-<h4>2.  Entropi Siang (3 data, semua bekerja)<a class="headerlink" href="#entropi-siang-3-data-semua-bekerja" title="Link to this heading">#</a></h4>
+<h6>2.  Entropi Siang (3 data, semua bekerja)<a class="headerlink" href="#entropi-siang-3-data-semua-bekerja" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Pure class → Entropi = <span class="math notranslate nohighlight">\(\boxed{0}\)</span></p></li>
 </ul>
-<p><img alt="siang.png" src="attachment:siang.png" /></p>
+<p><img alt="siang" src="_images/siang.png" /></p>
 </section>
 <section id="entropi-malam-7-data">
-<h4>3. Entropi Malam (7 data)<a class="headerlink" href="#entropi-malam-7-data" title="Link to this heading">#</a></h4>
+<h6>3. Entropi Malam (7 data)<a class="headerlink" href="#entropi-malam-7-data" title="Link to this heading">#</a></h6>
 <ul class="simple">
 <li><p>Menonton TV = 6</p></li>
 <li><p>Bekerja = 1</p></li>
@@ -751,10 +751,11 @@ H(Malam) = -\left(\frac{6}{7} \log_2 \frac{6}{7} + \frac{1}{7} \log_2 \frac{1}{7
 \[
 ≈ 0.190 + 0.401 = \boxed{0.591}
 \]</div>
-<p><img alt="malam.png" src="attachment:malam.png" /></p>
+<p><img alt="malam" src="_images/malam.png" /></p>
+</section>
 </section>
 <section id="split-entropy-total-fitur-waktu">
-<h4><strong>Split entropy total fitur Waktu</strong><a class="headerlink" href="#split-entropy-total-fitur-waktu" title="Link to this heading">#</a></h4>
+<h5><strong>Split entropy total fitur Waktu</strong><a class="headerlink" href="#split-entropy-total-fitur-waktu" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight">
 \[
 H_{Waktu} = \frac{5}{15} \cdot 0.722 + \frac{3}{15} \cdot 0 + \frac{7}{15} \cdot 0.591
@@ -763,6 +764,7 @@ H_{Waktu} = \frac{5}{15} \cdot 0.722 + \frac{3}{15} \cdot 0 + \frac{7}{15} \cdot
 \[
 = 0.241 + 0 + 0.275 = \boxed{0.516}
 \]</div>
+</section>
 <section id="id1">
 <h5><strong>Information Gain:</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
 <div class="math notranslate nohighlight">
@@ -773,8 +775,13 @@ H_{total} = 1.566
 \[
 IG(Waktu) = 1.566 - 0.516 = \boxed{1.050}
 \]</div>
-<p><img alt="split entropi waktu.png" src="attachment:split%20entropi%20waktu.png" /></p>
+<p><img alt="split entropi waktu" src="_images/split_entropi_waktu.png" /></p>
+</section>
+</section>
+</section>
 <hr class="docutils" />
+<section id="perhitungan-dengan-python">
+<h3><strong>Perhitungan dengan Python</strong><a class="headerlink" href="#perhitungan-dengan-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
@@ -919,7 +926,8 @@ Information Gain untuk fitur &#39;Waktu&#39;: 0.875
 </div>
 </section>
 </section>
-</section>
+<section id="id2">
+<h2><strong>Perhitungan Manual</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -996,28 +1004,30 @@ Information Gain untuk fitur &#39;Waktu&#39;: 0.875
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong>Data</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual"><strong>Perhitungan Manual</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-class"><strong>Entropi Class</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-cuaca"><strong>Split Entropi Cuaca</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cerah-6-data">1. Cerah (6 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hujan-4-data">2. Hujan (4 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mendung-5-data">3. Mendung (5 data)</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-untuk-fitur-cuaca"><strong>Split entropy untuk fitur Cuaca:</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain"><strong>Information Gain:</strong></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropi-waktu"><strong>Split Entropi Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-pagi-5-data">1. Entropi Pagi (5 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-siang-3-data-semua-bekerja">2.  Entropi Siang (3 data, semua bekerja)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropi-malam-7-data">3. Entropi Malam (7 data)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#split-entropy-total-fitur-waktu"><strong>Split entropy total fitur Waktu</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Information Gain:</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dengan-python"><strong>Perhitungan dengan Python</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Perhitungan Manual</strong></a></li>
 </ul>
   </nav></div>
 
