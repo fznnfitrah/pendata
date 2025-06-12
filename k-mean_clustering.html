@@ -1,0 +1,1175 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>K-Means &#8212; Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'k-mean_clustering';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fuzzy C-mean" href="fuzzy%20cmeans.html" />
+    <link rel="prev" title="Klasifikasi Naive Bayes" href="klasifikasi-naive-bayes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Mining - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Data Mining - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Data Mining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="outliers-detection.html">Outliers Detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-preparation.html">Data Preparation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LOF.html">Local Outliers Factors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="materi%203.html">Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html"><em><strong>Klasifikasi Naive Bayes</strong></em></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algoritma K-means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fuzzy%20cmeans.html">Algoritma Fuzzy Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pohonKeputusan.html">Algoritma Decision Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fk-mean_clustering.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/k-mean_clustering.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>K-Means</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-algoritma-k-means"><em><strong>Penjelasan Algoritma K-Means</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-k-means"><em><strong>Cara Kerja K-Means</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-jumlah-cluster"><em><strong>Evaluasi Jumlah Cluster</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-algoritma-k-means-menggunakan-python"><em><strong>Implementasi Algoritma K-Means Menggunakan Python</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemberian-nilai-sse-dan-silhouette-serta-penggambaran-grafiknya"><strong>Pemberian Nilai SSE dan Silhouette Serta Penggambaran Grafiknya</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-anggota-setiap-cluster"><strong>List Anggota Setiap Cluster</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akurasi-cluster-3"><strong>Akurasi Cluster 3</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means">
+<h1><strong>K-Means</strong><a class="headerlink" href="#k-means" title="Link to this heading">#</a></h1>
+<section id="penjelasan-algoritma-k-means">
+<h2><em><strong>Penjelasan Algoritma K-Means</strong></em><a class="headerlink" href="#penjelasan-algoritma-k-means" title="Link to this heading">#</a></h2>
+<p>K-means adalah suatu algoritma yang biasanya dipakai oleh suatu program untuk membagi data kedalam beberapa kelompok berdasarkan kemiripan yang ada pada suatu data. Algoritma ini cukup populer penggunaanya dalam program mechine learning. K-means juga adalah suatu algoritma yang pengelompokannya berbasis centroid berulang yang mempartisi kumpulan data menjadi kelompok yang serupa berdasarkan jarak dari centroid datanya.</p>
+</section>
+<section id="cara-kerja-k-means">
+<h2><em><strong>Cara Kerja K-Means</strong></em><a class="headerlink" href="#cara-kerja-k-means" title="Link to this heading">#</a></h2>
+<p>Algoritma ini biasanya menggunakan titik data dimana biasanya diukur antar data satu dan yang lainya dengan perhitungan matematis seperti perhitungan Euclidean, dari titik pusat clusternya. Tujuannya adalah meminimalkan perbedaan dari setiap anggota data, dan memaksimalkan perbedaan antara kelompok atau cluster yang sudah ditentukan. Jadi titik data yang dekat dengan titik pusat atau centroid akan berdekatan dengan kelompok atau clusternya dan yang berbeda akan semakin jauh jarak antar datanya.</p>
+<p>Biasanya tahap pertama dari prosesnya adalah dengan menentukan salah satu data menjadi pusat kelompok atau clusteringnya, lalu diukurlah jarak antar datanya dengan menggunakan perhitungan matematis seperti Euclidean. Biasanya proses ini tidak hanya dilakukan hanya satu dua kali, akan tetapi dilakukan berulang kali sampai hasil perhitungan nilai mean atau nilai tengah tidak berubah lagi, atau titik datanya tidak mengalami perpindahan lagi.</p>
+<p>Algoritma ini bisa dibilang cukup sederhana dibandingkan dengan algoritma yang lain akan tetapi, karena algoritma ini cukup sederhana maka proses pengolahan datanya bisa dibilang cukup sensitif pada suatu data yang outlier. Mungkin ini adalah salah satu kelemahan dari penggunaan algoritma K-means ini.</p>
+</section>
+<section id="evaluasi-jumlah-cluster">
+<h2><em><strong>Evaluasi Jumlah Cluster</strong></em><a class="headerlink" href="#evaluasi-jumlah-cluster" title="Link to this heading">#</a></h2>
+<p>Setelah dilakukannya pengelompokan dan juga perhitungan pada data, proses pengolahan data tidak berhenti sampai disana saja. Selanjutnya adalah proses analisa hasil dari jumlah kelompok yang sudah ditentukan sebelum mengelompokkan data. Jadi pada prosesnya tidak hanya sekedar mengelompokkan data ada dibagian kelompok mana, akan tetapi juga dilakukan proses evaluasi untuk menentukan berapa kelompok kira kira yang optimal dan bagus. Evaluasi ini juga memiliki berbagai cara dan juga metoda yang biasanya dipakai. Namun pada penerapannya kali ini saya memilih dua metode yaitu metode silhouette dan SSE (Sum of Squared Error).</p>
+</section>
+<section id="implementasi-algoritma-k-means-menggunakan-python">
+<h2><em><strong>Implementasi Algoritma K-Means Menggunakan Python</strong></em><a class="headerlink" href="#implementasi-algoritma-k-means-menggunakan-python" title="Link to this heading">#</a></h2>
+<section id="pemberian-nilai-sse-dan-silhouette-serta-penggambaran-grafiknya">
+<h3><strong>Pemberian Nilai SSE dan Silhouette Serta Penggambaran Grafiknya</strong><a class="headerlink" href="#pemberian-nilai-sse-dan-silhouette-serta-penggambaran-grafiknya" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris.csv&quot;</span><span class="p">)</span>
+
+
+<span class="n">df_class</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">df_iris</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simpan hasil untuk SSE dan Silhouette</span>
+<span class="n">sse</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">silhouette</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Coba jumlah cluster dari 2 sampai 4</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
+    <span class="n">cluster_labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_iris</span><span class="p">)</span>
+
+    <span class="n">sse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>  <span class="c1"># SSE</span>
+    <span class="n">silhouette</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">df_iris</span><span class="p">,</span> <span class="n">cluster_labels</span><span class="p">))</span>  <span class="c1"># Silhouette</span>
+
+<span class="c1"># Tampilkan hasil</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah Cluster: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  SSE: </span><span class="si">{</span><span class="n">sse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Silhouette Score: </span><span class="si">{</span><span class="n">silhouette</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SSE vs Jumlah Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;SSE&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">silhouette</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Silhouette Score vs Jumlah Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Silhouette Score&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Cluster: 2
+  SSE: 223.73200573676348
+  Silhouette Score: 0.580184463257396
+
+Jumlah Cluster: 3
+  SSE: 192.03717409190023
+  Silhouette Score: 0.4787241921049546
+
+Jumlah Cluster: 4
+  SSE: 114.68221609937967
+  Silhouette Score: 0.3872467945612881
+</pre></div>
+</div>
+<img alt="_images/268fca5270dba251d6f27a47f38940335dc05167a4f182a9bd10b8ee90a0f929.png" src="_images/268fca5270dba251d6f27a47f38940335dc05167a4f182a9bd10b8ee90a0f929.png" />
+</div>
+</div>
+</section>
+<section id="list-anggota-setiap-cluster">
+<h3><strong>List Anggota Setiap Cluster</strong><a class="headerlink" href="#list-anggota-setiap-cluster" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span> 
+
+<span class="n">x_scaler</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">labels_2</span> <span class="o">=</span> <span class="n">kmeans_2</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">x_scaler</span><span class="p">)</span>
+
+<span class="n">df_with_cluster</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_2</span>
+
+<span class="k">for</span> <span class="n">cluster_id</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Anggota Cluster </span><span class="si">{</span><span class="n">cluster_id</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anggota Cluster 0:
+
+    id  petal length  petal width  sepal length  sepal width  cluster
+0    1           1.4          0.2           5.1          3.5        0
+1    2           1.4          0.2           4.9          3.0        0
+2    3           1.3          0.2           4.7          3.2        0
+3    4           1.5          0.2           4.6          3.1        0
+4    5           1.4          0.2           5.0          3.6        0
+5    6           1.7          0.4           5.4          3.9        0
+6    7           1.4          0.3           4.6          3.4        0
+7    8           1.5          0.2           5.0          3.4        0
+8    9           1.4          0.2           4.4          2.9        0
+9   10           1.5          0.1           4.9          3.1        0
+10  11           1.5          0.2           5.4          3.7        0
+11  12           1.6          0.2           4.8          3.4        0
+12  13           1.4          0.1           4.8          3.0        0
+13  14           1.1          0.1           4.3          3.0        0
+14  15           1.2          0.2           5.8          4.0        0
+15  16           1.5          0.4           5.7          4.4        0
+16  17           1.3          0.4           5.4          3.9        0
+17  18           1.4          0.3           5.1          3.5        0
+18  19           1.7          0.3           5.7          3.8        0
+19  20           1.5          0.3           5.1          3.8        0
+20  21           1.7          0.2           5.4          3.4        0
+21  22           1.5          0.4           5.1          3.7        0
+22  23           1.0          0.2           4.6          3.6        0
+23  24           1.7          0.5           5.1          3.3        0
+24  25           1.9          0.2           4.8          3.4        0
+25  26           1.6          0.2           5.0          3.0        0
+26  27           1.6          0.4           5.0          3.4        0
+27  28           1.5          0.2           5.2          3.5        0
+28  29           1.4          0.2           5.2          3.4        0
+29  30           1.6          0.2           4.7          3.2        0
+30  31           1.6          0.2           4.8          3.1        0
+31  32           1.5          0.4           5.4          3.4        0
+32  33           1.5          0.1           5.2          4.1        0
+33  34           1.4          0.2           5.5          4.2        0
+34  35           1.5          0.1           4.9          3.1        0
+35  36           1.2          0.2           5.0          3.2        0
+36  37           1.3          0.2           5.5          3.5        0
+37  38           1.5          0.1           4.9          3.1        0
+38  39           1.3          0.2           4.4          3.0        0
+39  40           1.5          0.2           5.1          3.4        0
+40  41           1.3          0.3           5.0          3.5        0
+41  42           1.3          0.3           4.5          2.3        0
+42  43           1.3          0.2           4.4          3.2        0
+43  44           1.6          0.6           5.0          3.5        0
+44  45           1.9          0.4           5.1          3.8        0
+45  46           1.4          0.3           4.8          3.0        0
+46  47           1.6          0.2           5.1          3.8        0
+47  48           1.4          0.2           4.6          3.2        0
+48  49           1.5          0.2           5.3          3.7        0
+49  50           1.4          0.2           5.0          3.3        0
+
+Anggota Cluster 1:
+
+      id  petal length  petal width  sepal length  sepal width  cluster
+50    51           4.7          1.4           7.0          3.2        1
+51    52           4.5          1.5           6.4          3.2        1
+52    53           4.9          1.5           6.9          3.1        1
+53    54           4.0          1.3           5.5          2.3        1
+54    55           4.6          1.5           6.5          2.8        1
+..   ...           ...          ...           ...          ...      ...
+145  146           5.2          2.3           6.7          3.0        1
+146  147           5.0          1.9           6.3          2.5        1
+147  148           5.2          2.0           6.5          3.0        1
+148  149           5.4          2.3           6.2          3.4        1
+149  150           5.1          1.8           5.9          3.0        1
+
+[100 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_3</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">labels_3</span> <span class="o">=</span> <span class="n">kmeans_3</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">x_scaler</span><span class="p">)</span>
+
+<span class="n">df_with_cluster</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_3</span>
+
+<span class="k">for</span> <span class="n">cluster_id</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Anggota Cluster </span><span class="si">{</span><span class="n">cluster_id</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anggota Cluster 1:
+
+      id  petal length  petal width  sepal length  sepal width  cluster
+77    78           5.0          1.7           6.7          3.0        0
+86    87           4.7          1.5           6.7          3.1        0
+100  101           6.0          2.5           6.3          3.3        0
+102  103           5.9          2.1           7.1          3.0        0
+103  104           5.6          1.8           6.3          2.9        0
+104  105           5.8          2.2           6.5          3.0        0
+105  106           6.6          2.1           7.6          3.0        0
+107  108           6.3          1.8           7.3          2.9        0
+108  109           5.8          1.8           6.7          2.5        0
+109  110           6.1          2.5           7.2          3.6        0
+110  111           5.1          2.0           6.5          3.2        0
+111  112           5.3          1.9           6.4          2.7        0
+112  113           5.5          2.1           6.8          3.0        0
+114  115           5.1          2.4           5.8          2.8        0
+115  116           5.3          2.3           6.4          3.2        0
+116  117           5.5          1.8           6.5          3.0        0
+117  118           6.7          2.2           7.7          3.8        0
+118  119           6.9          2.3           7.7          2.6        0
+120  121           5.7          2.3           6.9          3.2        0
+122  123           6.7          2.0           7.7          2.8        0
+123  124           4.9          1.8           6.3          2.7        0
+124  125           5.7          2.1           6.7          3.3        0
+125  126           6.0          1.8           7.2          3.2        0
+126  127           4.8          1.8           6.2          2.8        0
+127  128           4.9          1.8           6.1          3.0        0
+128  129           5.6          2.1           6.4          2.8        0
+129  130           5.8          1.6           7.2          3.0        0
+130  131           6.1          1.9           7.4          2.8        0
+131  132           6.4          2.0           7.9          3.8        0
+132  133           5.6          2.2           6.4          2.8        0
+133  134           5.1          1.5           6.3          2.8        0
+134  135           5.6          1.4           6.1          2.6        0
+135  136           6.1          2.3           7.7          3.0        0
+136  137           5.6          2.4           6.3          3.4        0
+137  138           5.5          1.8           6.4          3.1        0
+138  139           4.8          1.8           6.0          3.0        0
+139  140           5.4          2.1           6.9          3.1        0
+140  141           5.6          2.4           6.7          3.1        0
+141  142           5.1          2.3           6.9          3.1        0
+142  143           5.1          1.9           5.8          2.7        0
+143  144           5.9          2.3           6.8          3.2        0
+144  145           5.7          2.5           6.7          3.3        0
+145  146           5.2          2.3           6.7          3.0        0
+146  147           5.0          1.9           6.3          2.5        0
+147  148           5.2          2.0           6.5          3.0        0
+148  149           5.4          2.3           6.2          3.4        0
+149  150           5.1          1.8           5.9          3.0        0
+
+Anggota Cluster 2:
+
+      id  petal length  petal width  sepal length  sepal width  cluster
+50    51           4.7          1.4           7.0          3.2        1
+51    52           4.5          1.5           6.4          3.2        1
+52    53           4.9          1.5           6.9          3.1        1
+53    54           4.0          1.3           5.5          2.3        1
+54    55           4.6          1.5           6.5          2.8        1
+55    56           4.5          1.3           5.7          2.8        1
+56    57           4.7          1.6           6.3          3.3        1
+57    58           3.3          1.0           4.9          2.4        1
+58    59           4.6          1.3           6.6          2.9        1
+59    60           3.9          1.4           5.2          2.7        1
+60    61           3.5          1.0           5.0          2.0        1
+61    62           4.2          1.5           5.9          3.0        1
+62    63           4.0          1.0           6.0          2.2        1
+63    64           4.7          1.4           6.1          2.9        1
+64    65           3.6          1.3           5.6          2.9        1
+65    66           4.4          1.4           6.7          3.1        1
+66    67           4.5          1.5           5.6          3.0        1
+67    68           4.1          1.0           5.8          2.7        1
+68    69           4.5          1.5           6.2          2.2        1
+69    70           3.9          1.1           5.6          2.5        1
+70    71           4.8          1.8           5.9          3.2        1
+71    72           4.0          1.3           6.1          2.8        1
+72    73           4.9          1.5           6.3          2.5        1
+73    74           4.7          1.2           6.1          2.8        1
+74    75           4.3          1.3           6.4          2.9        1
+75    76           4.4          1.4           6.6          3.0        1
+76    77           4.8          1.4           6.8          2.8        1
+78    79           4.5          1.5           6.0          2.9        1
+79    80           3.5          1.0           5.7          2.6        1
+80    81           3.8          1.1           5.5          2.4        1
+81    82           3.7          1.0           5.5          2.4        1
+82    83           3.9          1.2           5.8          2.7        1
+83    84           5.1          1.6           6.0          2.7        1
+84    85           4.5          1.5           5.4          3.0        1
+85    86           4.5          1.6           6.0          3.4        1
+87    88           4.4          1.3           6.3          2.3        1
+88    89           4.1          1.3           5.6          3.0        1
+89    90           4.0          1.3           5.5          2.5        1
+90    91           4.4          1.2           5.5          2.6        1
+91    92           4.6          1.4           6.1          3.0        1
+92    93           4.0          1.2           5.8          2.6        1
+93    94           3.3          1.0           5.0          2.3        1
+94    95           4.2          1.3           5.6          2.7        1
+95    96           4.2          1.2           5.7          3.0        1
+96    97           4.2          1.3           5.7          2.9        1
+97    98           4.3          1.3           6.2          2.9        1
+98    99           3.0          1.1           5.1          2.5        1
+99   100           4.1          1.3           5.7          2.8        1
+101  102           5.1          1.9           5.8          2.7        1
+106  107           4.5          1.7           4.9          2.5        1
+113  114           5.0          2.0           5.7          2.5        1
+119  120           5.0          1.5           6.0          2.2        1
+121  122           4.9          2.0           5.6          2.8        1
+
+Anggota Cluster 3:
+
+    id  petal length  petal width  sepal length  sepal width  cluster
+0    1           1.4          0.2           5.1          3.5        2
+1    2           1.4          0.2           4.9          3.0        2
+2    3           1.3          0.2           4.7          3.2        2
+3    4           1.5          0.2           4.6          3.1        2
+4    5           1.4          0.2           5.0          3.6        2
+5    6           1.7          0.4           5.4          3.9        2
+6    7           1.4          0.3           4.6          3.4        2
+7    8           1.5          0.2           5.0          3.4        2
+8    9           1.4          0.2           4.4          2.9        2
+9   10           1.5          0.1           4.9          3.1        2
+10  11           1.5          0.2           5.4          3.7        2
+11  12           1.6          0.2           4.8          3.4        2
+12  13           1.4          0.1           4.8          3.0        2
+13  14           1.1          0.1           4.3          3.0        2
+14  15           1.2          0.2           5.8          4.0        2
+15  16           1.5          0.4           5.7          4.4        2
+16  17           1.3          0.4           5.4          3.9        2
+17  18           1.4          0.3           5.1          3.5        2
+18  19           1.7          0.3           5.7          3.8        2
+19  20           1.5          0.3           5.1          3.8        2
+20  21           1.7          0.2           5.4          3.4        2
+21  22           1.5          0.4           5.1          3.7        2
+22  23           1.0          0.2           4.6          3.6        2
+23  24           1.7          0.5           5.1          3.3        2
+24  25           1.9          0.2           4.8          3.4        2
+25  26           1.6          0.2           5.0          3.0        2
+26  27           1.6          0.4           5.0          3.4        2
+27  28           1.5          0.2           5.2          3.5        2
+28  29           1.4          0.2           5.2          3.4        2
+29  30           1.6          0.2           4.7          3.2        2
+30  31           1.6          0.2           4.8          3.1        2
+31  32           1.5          0.4           5.4          3.4        2
+32  33           1.5          0.1           5.2          4.1        2
+33  34           1.4          0.2           5.5          4.2        2
+34  35           1.5          0.1           4.9          3.1        2
+35  36           1.2          0.2           5.0          3.2        2
+36  37           1.3          0.2           5.5          3.5        2
+37  38           1.5          0.1           4.9          3.1        2
+38  39           1.3          0.2           4.4          3.0        2
+39  40           1.5          0.2           5.1          3.4        2
+40  41           1.3          0.3           5.0          3.5        2
+41  42           1.3          0.3           4.5          2.3        2
+42  43           1.3          0.2           4.4          3.2        2
+43  44           1.6          0.6           5.0          3.5        2
+44  45           1.9          0.4           5.1          3.8        2
+45  46           1.4          0.3           4.8          3.0        2
+46  47           1.6          0.2           5.1          3.8        2
+47  48           1.4          0.2           4.6          3.2        2
+48  49           1.5          0.2           5.3          3.7        2
+49  50           1.4          0.2           5.0          3.3        2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_4</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">350</span><span class="p">)</span>
+<span class="n">labels_4</span> <span class="o">=</span> <span class="n">kmeans_4</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">x_scaler</span><span class="p">)</span>
+
+<span class="n">df_with_cluster</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_4</span>
+
+<span class="k">for</span> <span class="n">cluster_id</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Anggota Cluster </span><span class="si">{</span><span class="n">cluster_id</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="n">df_with_cluster</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anggota Cluster 0:
+
+    id  petal length  petal width  sepal length  sepal width  cluster
+50  51           4.7          1.4           7.0          3.2        0
+51  52           4.5          1.5           6.4          3.2        0
+52  53           4.9          1.5           6.9          3.1        0
+54  55           4.6          1.5           6.5          2.8        0
+56  57           4.7          1.6           6.3          3.3        0
+58  59           4.6          1.3           6.6          2.9        0
+61  62           4.2          1.5           5.9          3.0        0
+63  64           4.7          1.4           6.1          2.9        0
+65  66           4.4          1.4           6.7          3.1        0
+66  67           4.5          1.5           5.6          3.0        0
+70  71           4.8          1.8           5.9          3.2        0
+71  72           4.0          1.3           6.1          2.8        0
+73  74           4.7          1.2           6.1          2.8        0
+74  75           4.3          1.3           6.4          2.9        0
+75  76           4.4          1.4           6.6          3.0        0
+76  77           4.8          1.4           6.8          2.8        0
+77  78           5.0          1.7           6.7          3.0        0
+78  79           4.5          1.5           6.0          2.9        0
+85  86           4.5          1.6           6.0          3.4        0
+86  87           4.7          1.5           6.7          3.1        0
+91  92           4.6          1.4           6.1          3.0        0
+97  98           4.3          1.3           6.2          2.9        0
+
+Anggota Cluster 1:
+
+      id  petal length  petal width  sepal length  sepal width  cluster
+53    54           4.0          1.3           5.5          2.3        1
+55    56           4.5          1.3           5.7          2.8        1
+57    58           3.3          1.0           4.9          2.4        1
+59    60           3.9          1.4           5.2          2.7        1
+60    61           3.5          1.0           5.0          2.0        1
+62    63           4.0          1.0           6.0          2.2        1
+64    65           3.6          1.3           5.6          2.9        1
+67    68           4.1          1.0           5.8          2.7        1
+68    69           4.5          1.5           6.2          2.2        1
+69    70           3.9          1.1           5.6          2.5        1
+72    73           4.9          1.5           6.3          2.5        1
+79    80           3.5          1.0           5.7          2.6        1
+80    81           3.8          1.1           5.5          2.4        1
+81    82           3.7          1.0           5.5          2.4        1
+82    83           3.9          1.2           5.8          2.7        1
+83    84           5.1          1.6           6.0          2.7        1
+84    85           4.5          1.5           5.4          3.0        1
+87    88           4.4          1.3           6.3          2.3        1
+88    89           4.1          1.3           5.6          3.0        1
+89    90           4.0          1.3           5.5          2.5        1
+90    91           4.4          1.2           5.5          2.6        1
+92    93           4.0          1.2           5.8          2.6        1
+93    94           3.3          1.0           5.0          2.3        1
+94    95           4.2          1.3           5.6          2.7        1
+95    96           4.2          1.2           5.7          3.0        1
+96    97           4.2          1.3           5.7          2.9        1
+98    99           3.0          1.1           5.1          2.5        1
+99   100           4.1          1.3           5.7          2.8        1
+101  102           5.1          1.9           5.8          2.7        1
+106  107           4.5          1.7           4.9          2.5        1
+113  114           5.0          2.0           5.7          2.5        1
+119  120           5.0          1.5           6.0          2.2        1
+121  122           4.9          2.0           5.6          2.8        1
+134  135           5.6          1.4           6.1          2.6        1
+
+Anggota Cluster 2:
+
+    id  petal length  petal width  sepal length  sepal width  cluster
+0    1           1.4          0.2           5.1          3.5        2
+1    2           1.4          0.2           4.9          3.0        2
+2    3           1.3          0.2           4.7          3.2        2
+3    4           1.5          0.2           4.6          3.1        2
+4    5           1.4          0.2           5.0          3.6        2
+5    6           1.7          0.4           5.4          3.9        2
+6    7           1.4          0.3           4.6          3.4        2
+7    8           1.5          0.2           5.0          3.4        2
+8    9           1.4          0.2           4.4          2.9        2
+9   10           1.5          0.1           4.9          3.1        2
+10  11           1.5          0.2           5.4          3.7        2
+11  12           1.6          0.2           4.8          3.4        2
+12  13           1.4          0.1           4.8          3.0        2
+13  14           1.1          0.1           4.3          3.0        2
+14  15           1.2          0.2           5.8          4.0        2
+15  16           1.5          0.4           5.7          4.4        2
+16  17           1.3          0.4           5.4          3.9        2
+17  18           1.4          0.3           5.1          3.5        2
+18  19           1.7          0.3           5.7          3.8        2
+19  20           1.5          0.3           5.1          3.8        2
+20  21           1.7          0.2           5.4          3.4        2
+21  22           1.5          0.4           5.1          3.7        2
+22  23           1.0          0.2           4.6          3.6        2
+23  24           1.7          0.5           5.1          3.3        2
+24  25           1.9          0.2           4.8          3.4        2
+25  26           1.6          0.2           5.0          3.0        2
+26  27           1.6          0.4           5.0          3.4        2
+27  28           1.5          0.2           5.2          3.5        2
+28  29           1.4          0.2           5.2          3.4        2
+29  30           1.6          0.2           4.7          3.2        2
+30  31           1.6          0.2           4.8          3.1        2
+31  32           1.5          0.4           5.4          3.4        2
+32  33           1.5          0.1           5.2          4.1        2
+33  34           1.4          0.2           5.5          4.2        2
+34  35           1.5          0.1           4.9          3.1        2
+35  36           1.2          0.2           5.0          3.2        2
+36  37           1.3          0.2           5.5          3.5        2
+37  38           1.5          0.1           4.9          3.1        2
+38  39           1.3          0.2           4.4          3.0        2
+39  40           1.5          0.2           5.1          3.4        2
+40  41           1.3          0.3           5.0          3.5        2
+41  42           1.3          0.3           4.5          2.3        2
+42  43           1.3          0.2           4.4          3.2        2
+43  44           1.6          0.6           5.0          3.5        2
+44  45           1.9          0.4           5.1          3.8        2
+45  46           1.4          0.3           4.8          3.0        2
+46  47           1.6          0.2           5.1          3.8        2
+47  48           1.4          0.2           4.6          3.2        2
+48  49           1.5          0.2           5.3          3.7        2
+49  50           1.4          0.2           5.0          3.3        2
+
+Anggota Cluster 3:
+
+      id  petal length  petal width  sepal length  sepal width  cluster
+100  101           6.0          2.5           6.3          3.3        3
+102  103           5.9          2.1           7.1          3.0        3
+103  104           5.6          1.8           6.3          2.9        3
+104  105           5.8          2.2           6.5          3.0        3
+105  106           6.6          2.1           7.6          3.0        3
+107  108           6.3          1.8           7.3          2.9        3
+108  109           5.8          1.8           6.7          2.5        3
+109  110           6.1          2.5           7.2          3.6        3
+110  111           5.1          2.0           6.5          3.2        3
+111  112           5.3          1.9           6.4          2.7        3
+112  113           5.5          2.1           6.8          3.0        3
+114  115           5.1          2.4           5.8          2.8        3
+115  116           5.3          2.3           6.4          3.2        3
+116  117           5.5          1.8           6.5          3.0        3
+117  118           6.7          2.2           7.7          3.8        3
+118  119           6.9          2.3           7.7          2.6        3
+120  121           5.7          2.3           6.9          3.2        3
+122  123           6.7          2.0           7.7          2.8        3
+123  124           4.9          1.8           6.3          2.7        3
+124  125           5.7          2.1           6.7          3.3        3
+125  126           6.0          1.8           7.2          3.2        3
+126  127           4.8          1.8           6.2          2.8        3
+127  128           4.9          1.8           6.1          3.0        3
+128  129           5.6          2.1           6.4          2.8        3
+129  130           5.8          1.6           7.2          3.0        3
+130  131           6.1          1.9           7.4          2.8        3
+131  132           6.4          2.0           7.9          3.8        3
+132  133           5.6          2.2           6.4          2.8        3
+133  134           5.1          1.5           6.3          2.8        3
+135  136           6.1          2.3           7.7          3.0        3
+136  137           5.6          2.4           6.3          3.4        3
+137  138           5.5          1.8           6.4          3.1        3
+138  139           4.8          1.8           6.0          3.0        3
+139  140           5.4          2.1           6.9          3.1        3
+140  141           5.6          2.4           6.7          3.1        3
+141  142           5.1          2.3           6.9          3.1        3
+142  143           5.1          1.9           5.8          2.7        3
+143  144           5.9          2.3           6.8          3.2        3
+144  145           5.7          2.5           6.7          3.3        3
+145  146           5.2          2.3           6.7          3.0        3
+146  147           5.0          1.9           6.3          2.5        3
+147  148           5.2          2.0           6.5          3.0        3
+148  149           5.4          2.3           6.2          3.4        3
+149  150           5.1          1.8           5.9          3.0        3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="akurasi-cluster-3">
+<h3><strong>Akurasi Cluster 3</strong><a class="headerlink" href="#akurasi-cluster-3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">cluster_3</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cluster_3</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_3</span>
+
+<span class="k">for</span> <span class="n">cluster_id</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cluster_3</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi kelas dalam Cluster </span><span class="si">{</span><span class="n">cluster_id</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">cluster_data</span> <span class="o">=</span> <span class="n">cluster_3</span><span class="p">[</span><span class="n">cluster_3</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster_id</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cluster_data</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi kelas dalam Cluster 0:
+
+Class
+Iris-virginica     45
+Iris-versicolor     2
+Name: count, dtype: int64
+
+Distribusi kelas dalam Cluster 1:
+
+Class
+Iris-versicolor    48
+Iris-virginica      5
+Name: count, dtype: int64
+
+Distribusi kelas dalam Cluster 2:
+
+Class
+Iris-setosa    50
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="klasifikasi-naive-bayes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em><strong>Klasifikasi Naive Bayes</strong></em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fuzzy%20cmeans.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em><strong>Fuzzy C-mean</strong></em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-algoritma-k-means"><em><strong>Penjelasan Algoritma K-Means</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-k-means"><em><strong>Cara Kerja K-Means</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-jumlah-cluster"><em><strong>Evaluasi Jumlah Cluster</strong></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-algoritma-k-means-menggunakan-python"><em><strong>Implementasi Algoritma K-Means Menggunakan Python</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemberian-nilai-sse-dan-silhouette-serta-penggambaran-grafiknya"><strong>Pemberian Nilai SSE dan Silhouette Serta Penggambaran Grafiknya</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-anggota-setiap-cluster"><strong>List Anggota Setiap Cluster</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#akurasi-cluster-3"><strong>Akurasi Cluster 3</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fauzan Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

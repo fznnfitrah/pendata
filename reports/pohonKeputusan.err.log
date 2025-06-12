@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier
+
+# Dataset
+data = {
+    "Cuaca": ["Cerah", "Hujan", "Mendung", "Cerah", "Hujan", "Cerah", "Mendung", "Mendung", "Hujan", "Cerah", "Mendung", "Cerah", "Hujan", "Mendung", "Cerah"],
+    "Waktu": ["Pagi", "Malam", "Siang", "Pagi", "Malam", "Malam", "Pagi", "Malam", "Siang", "Pagi", "Siang", "Malam", "Malam", "Pagi", "Malam"],
+    "Aktivitas": ["Olahraga", "Menonton TV", "Bekerja", "Bekerja", "Menonton TV", "Menonton TV", "Olahraga", "Menonton TV", "Bekerja", "Olahraga", "Bekerja", "Bekerja", "Menonton TV", "Olahraga", "Menonton TV"]
+}
+
+# Label encoding
+le_cuaca = LabelEncoder()
+le_waktu = LabelEncoder()
+le_aktivitas = LabelEncoder()
+
+df["Cuaca_enc"] = le_cuaca.fit_transform(df["Cuaca"])
+df["Waktu_enc"] = le_waktu.fit_transform(df["Waktu"])
+df["Aktivitas_enc"] = le_aktivitas.fit_transform(df["Aktivitas"])
+
+# Fitur dan target
+X = df[["Cuaca_enc", "Waktu_enc"]]
+y = df["Aktivitas_enc"]
+
+# Decision Tree dengan entropi (information gain)
+clf = DecisionTreeClassifier(criterion="entropy", random_state=42)
+clf.fit(X, y)
+
+# Tampilkan information gain (feature importance)
+feature_names = ["Cuaca", "Waktu"]
+for name, score in zip(feature_names, clf.feature_importances_):
+    print(f"Information Gain untuk fitur '{name}': {score:.3f}")
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 17[39m
+[32m     14[39m le_waktu = LabelEncoder()
+[32m     15[39m le_aktivitas = LabelEncoder()
+[32m---> [39m[32m17[39m df[[33m"[39m[33mCuaca_enc[39m[33m"[39m] = le_cuaca.fit_transform([43mdf[49m[[33m"[39m[33mCuaca[39m[33m"[39m])
+[32m     18[39m df[[33m"[39m[33mWaktu_enc[39m[33m"[39m] = le_waktu.fit_transform(df[[33m"[39m[33mWaktu[39m[33m"[39m])
+[32m     19[39m df[[33m"[39m[33mAktivitas_enc[39m[33m"[39m] = le_aktivitas.fit_transform(df[[33m"[39m[33mAktivitas[39m[33m"[39m])
+
+[31mNameError[39m: name 'df' is not defined
+
