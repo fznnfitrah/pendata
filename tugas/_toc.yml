@@ -14,11 +14,13 @@ chapters:
       - file: outliers-detection #ipynb
         title: Outliers Detection
 
-  - file: data-preparation #markdown
-    title: Data Preparation
+  - file: data-preprocessing #markdown
+    title: Data Preprocessing
     sections:
       - file: LOF #ipynb
         title: Local Outliers Factors
+      # - file: binning # buat materi mengenai Deskritisasi
+      #   title: 
 
   - file: materi 3 #ipynb
     title: Modeling
@@ -33,6 +35,9 @@ chapters:
 
   - file: pohonKeputusan #ipynb
     title: Algoritma Decision Tree
+    sections:
+      - file: binning #ipynb
+        title: Binning Technique
 
   - file: uts #ipynb
     title: Ujian Tengah Semester
