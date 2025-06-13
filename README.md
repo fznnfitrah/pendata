@@ -34,4 +34,7 @@ Pada Repositori ini akan membahas materi mengenai Data Mining dimana akan diupda
 
 - Pertemuan ke- 11
   Materi Algoritma Decision Tree
-m
+
+- Pertemuan ke- 12
+  Materi teknik binning untuk klasifikasi
+  ref: https://hackmd.io/@DataminingFix/S1llmuwmle
