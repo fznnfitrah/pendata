@@ -408,7 +408,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value"><strong>Deteksi Missing Value</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-fitur"><strong>Korelasi Fitur</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1116,18 +1117,364 @@ dtype: int64
 <section id="data-preprocessing">
 <h2><strong>Data Preprocessing</strong><a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
 <p>Pada Tahapan berikutnya adalah memproses data yang kita punya menjadi suatu dataset yang baik agar ketika penulis membuat modelnya menjadi tidak error. Kolom yang memiliki missing value nantinya akan penulis ganti dengan data lain, mungkin akan diganti dengan menggunakan data mean pada kolom tersebut atau bahkan modus. Perlu diingat juga bahwa penulis tidak akan memasukkan semua fitur kolom untuk dianalisa, karena tentu saja nanti akan tidak relevan dengan apa yang ingin dituju. Jika memasukkan data yang tidak relevan dengan model bisa saja yang dihasilkan oleh model tersebut akan jelek atau bahkan sampah.</p>
-<section id="id1">
-<h3><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Sebelum melakukan data preprocessing, perlu di ingat bahwa sebisa mungkin jangan pernah menyentuh data asli. Hal ini dilakukan supaya ketika kita menganalisa datanya dan ada programnya salah maka kita masih bisa kembali ke data aslinya, tanpa melakukan hal hal yang ribet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<section id="deteksi-missing-value">
+<h3><strong>Deteksi Missing Value</strong><a class="headerlink" href="#deteksi-missing-value" title="Link to this heading">#</a></h3>
+<p>Pada tahap data preprocessing penulis akan mengidentifikasi type data pada kolom yang ada pada dataset terlebih dahulu. Identifikasi ini diperlukan agar program yang nanti dijalankan tidak salah mengganti data missing valuenya. Setelahnya penulis merubah dataset yang awalnya merupakan missing value menjadi ada, agar nanti ketika sudah diproses dan dijadikan model muncul hasil yang lebih baik. berikut ini adalah program yang akan mengganti missing valuenya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Daftar kolom numerik berdasarkan informasi dari kamu</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of sexual partners&#39;</span><span class="p">,</span> <span class="s1">&#39;First sexual intercourse&#39;</span><span class="p">,</span> <span class="s1">&#39;Num of pregnancies&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Hormonal Contraceptives (years)&#39;</span><span class="p">,</span> <span class="s1">&#39;IUD (years)&#39;</span><span class="p">,</span> <span class="s1">&#39;STDs (number)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;STDs: Number of diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;STDs: Time since first diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;STDs: Time since last diagnosis&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Kolom target yang tidak akan diimputasi</span>
+<span class="n">target_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Biopsy&#39;</span><span class="p">,</span> <span class="s1">&#39;Hinselmann&#39;</span><span class="p">,</span> <span class="s1">&#39;Schiller&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytology&#39;</span><span class="p">]</span>
+
+<span class="c1"># Sisanya kita anggap biner (berdasarkan bool di daftar kamu)</span>
+<span class="n">binary_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numeric_cols</span> <span class="o">+</span> <span class="n">target_cols</span><span class="p">]</span>
+
+<span class="c1"># Imputasi numerik: isi dengan mean</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+    <span class="n">mean_val</span> <span class="o">=</span> <span class="n">df_copy</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">df_copy</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mean_val</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Imputasi biner: isi dengan modus</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">binary_cols</span><span class="p">:</span>
+    <span class="n">mode_val</span> <span class="o">=</span> <span class="n">df_copy</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">df_copy</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mode_val</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Cek hasilnya</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total missing value setelah imputasi:&quot;</span><span class="p">,</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total missing value setelah imputasi: 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:17: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mean_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df_copy[col].fillna(mode_val, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_per_column_copy</span> <span class="o">=</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">missing_per_column_copy</span> <span class="o">=</span> <span class="n">missing_per_column_copy</span><span class="p">[</span><span class="n">missing_per_column_copy</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_per_column_copy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series([], dtype: int64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bisa dilihat setelah menjalankan program yang sudah dibuat missing value yang awalnya banyak tadi menjadi sudah kosong.</p>
+</section>
+<section id="korelasi-fitur">
+<h3><strong>Korelasi Fitur</strong><a class="headerlink" href="#korelasi-fitur" title="Link to this heading">#</a></h3>
+<p>Seperti yang sudah disinggung penulis sebelumnya, kolom fitur tidak mungkin semuanya dipakai karena kadang tujuan yang berbeda. Jadi Perlu ditekankan disini penulis akan memilih beberapa kolom fitur saja yang akan digunakan agar dataset yang diproses tidak terlalu banyak, serta menyebabkan program yang sia sia. Untuk Program yang perlu dijalankan adalah sebagai berikut ini.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Korelasi antar semua kolom di df_cleaned (fitur + target)</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan dalam bentuk heatmap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matriks Korelasi antar Fitur dan Target&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bef9e3d49d9602ef3ab3e554d6d94e2e66f301176e1eb1043394ebcdbab4d757.png" src="_images/bef9e3d49d9602ef3ab3e554d6d94e2e66f301176e1eb1043394ebcdbab4d757.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Korelasi semua fitur terhadap target &#39;Biopsy&#39;</span>
+<span class="n">biopsy_corr</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="p">[</span><span class="s1">&#39;Biopsy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Biopsy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Korelasi fitur terhadap target Biopsy:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">biopsy_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Korelasi fitur terhadap target Biopsy:
+Schiller                              0.733204
+Hinselmann                            0.547417
+Citology                              0.327466
+Dx:Cancer                             0.160905
+Dx:HPV                                0.160905
+Dx                                    0.157607
+STDs:genital herpes                   0.130523
+STDs:HIV                              0.127702
+STDs                                  0.114148
+Dx:CIN                                0.113172
+STDs: Number of diagnosis             0.097449
+STDs (number)                         0.096218
+STDs:vulvo-perineal condylomatosis    0.092548
+STDs:condylomatosis                   0.090164
+Hormonal Contraceptives (years)       0.078995
+Smokes (years)                        0.061204
+IUD                                   0.059231
+Age                                   0.055956
+Num of pregnancies                    0.043460
+IUD (years)                           0.032250
+Smokes                                0.028724
+Smokes (packs/year)                   0.024487
+First sexual intercourse              0.007262
+Number of sexual partners            -0.001429
+STDs:pelvic inflammatory disease     -0.008940
+STDs:Hepatitis B                     -0.008940
+STDs:molluscum contagiosum           -0.008940
+STDs:HPV                             -0.012650
+STDs:vaginal condylomatosis          -0.017911
+Hormonal Contraceptives              -0.018015
+STDs: Time since last diagnosis      -0.020221
+STDs: Time since first diagnosis     -0.029812
+STDs:syphilis                        -0.038311
+STDs:cervical condylomatosis               NaN
+STDs:AIDS                                  NaN
+Name: Biopsy, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Seperti yang bisa dilihat beberapa kolom memiliki korelasi yang cukup tinggi dengan Biopsy. Perlu dicatat kembali bahwa Biopsy, Schiller, Hinselmann, Cytology adalah metode pemeriksaan atau tes diagnostik. Bisa dibilang bahwa 3 kolom teratas tersebut merupakan penilaian kesehatan yang metodenya mungkin berbeda dengan Biopsy, Akan tetapi karena yang akan menjadi target utama atau classnya adalah Biopsy, maka penulis tidak akan memasukkannya dalam processing data.</p>
+<p>Jadi Berikutnya penulis akan memilih 5 kolom fitur mana yang paling mendekati korelasi terhadap class Biopsy. Setelah itu kolom pada data fitur tersebutlah yang akan diproses agar dapat dibentuk menjadi Model. Berikut ini adalah Programnya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">selected_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Dx:Cancer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Dx:HPV&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Dx&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;STDs:genital herpes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;STDs:HIV&#39;</span>
+<span class="p">]</span>
+
+
+<span class="c1"># Ambil fitur dan target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="s1">&#39;Biopsy&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dx:Cancer</th>
+      <th>Dx:HPV</th>
+      <th>Dx</th>
+      <th>STDs:genital herpes</th>
+      <th>STDs:HIV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>853</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>854</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>855</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>856</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>857</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>858 rows × 5 columns</p>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0
+1      0
+2      0
+3      0
+4      0
+      ..
+853    0
+854    0
+855    0
+856    0
+857    0
+Name: Biopsy, Length: 858, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bisa anda lihat sekarang Program yang nanti akan kita proses adalah data tersebut. Perlu penulis ingatkan lagi bahwa angka nol disini bukanlah nilai null, akan tetapi termasuk kedalam bilangan biner. Jadi artinya adalah antara “true” atau “false”</p>
 </section>
 </section>
 </section>
@@ -1199,7 +1546,8 @@ dtype: int64
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value"><strong>Deteksi Missing Value</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-fitur"><strong>Korelasi Fitur</strong></a></li>
 </ul>
 </li>
 </ul>
