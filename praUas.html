@@ -410,6 +410,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value"><strong>Deteksi Missing Value</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-fitur"><strong>Korelasi Fitur</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers"><strong>Deteksi Outliers</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardscaler-dan-normalisasi"><strong>StandardScaler Dan Normalisasi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model"><strong>Model</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smote-synthetic-minority-over-sampling-technique"><em>SMOTE(Synthetic Minority Over-sampling Technique)</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-decision-tree"><strong>Model Algoritma Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-smote"><em>Tanpa SMOTE</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smote"><em>SMOTE</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-naive-bayes"><strong>Model Algoritma Naive Bayes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-knn-k-nearest-neighbors"><strong>Model Algoritma KNN(K-Nearest Neighbors)</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1162,49 +1175,49 @@ dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total missing value setelah imputasi: 0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:17: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:17: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mean_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mode_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mode_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mode_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mode_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
 
 
   df_copy[col].fillna(mode_val, inplace=True)
-C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_21132\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+C:\Users\MyBook Z Series\AppData\Local\Temp\ipykernel_16496\3481396258.py:22: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
@@ -1476,6 +1489,258 @@ Name: Biopsy, Length: 858, dtype: int64
 </div>
 <p>Bisa anda lihat sekarang Program yang nanti akan kita proses adalah data tersebut. Perlu penulis ingatkan lagi bahwa angka nol disini bukanlah nilai null, akan tetapi termasuk kedalam bilangan biner. Jadi artinya adalah antara “true” atau “false”</p>
 </section>
+<section id="deteksi-outliers">
+<h3><strong>Deteksi Outliers</strong><a class="headerlink" href="#deteksi-outliers" title="Link to this heading">#</a></h3>
+<p>Karena tipe data yang saya miliki adalah tipe data biner atau lebih gampangnya disebut dengan kategorikal maka Deteksi Outliers tidak diperlukan</p>
+</section>
+<section id="standardscaler-dan-normalisasi">
+<h3><strong>StandardScaler Dan Normalisasi</strong><a class="headerlink" href="#standardscaler-dan-normalisasi" title="Link to this heading">#</a></h3>
+<p>Karena tipe data yang saya miliki adalah tipe data biner atau kategorikal maka Standarisasi dan Normalisasi tidak diperlukan</p>
+</section>
+</section>
+<section id="model">
+<h2><strong>Model</strong><a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="smote-synthetic-minority-over-sampling-technique">
+<h3><em>SMOTE(Synthetic Minority Over-sampling Technique)</em><a class="headerlink" href="#smote-synthetic-minority-over-sampling-technique" title="Link to this heading">#</a></h3>
+<p>Pada pembuatan model Decision Tree saya menggunakan metode SMOTE dikarenakan data yang saya miliki dominan pada sisi tertentu saja. Metode Smote ini juga akan saya lakukan bukan saat proses Data Preprocessing, karena jika dilakukan pada saat proses tersebut, akan terjadi kebocoran data yang akan menyebabkan rusaknya data yang ingin diproses. Proses SMOTE hanya dilakukan pada saat training Model nya saja tanpa menyentuh data aslinya.</p>
+</section>
+<section id="model-algoritma-decision-tree">
+<h3><strong>Model Algoritma Decision Tree</strong><a class="headerlink" href="#model-algoritma-decision-tree" title="Link to this heading">#</a></h3>
+<p>Berikut ini program untuk pembuatan model Algoritma Decision Tree</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decision_tree_X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">decision_tree_y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tanpa-smote">
+<h4><em>Tanpa SMOTE</em><a class="headerlink" href="#tanpa-smote" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">decision_tree_X</span><span class="p">,</span> <span class="n">decision_tree_y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. Buat model Decision Tree</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># max_depth bisa disesuaikan</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 5. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 6. Evaluasi hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.936046511627907
+
+Laporan Klasifikasi:
+               precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97       161
+           1       0.00      0.00      0.00        11
+
+    accuracy                           0.94       172
+   macro avg       0.47      0.50      0.48       172
+weighted avg       0.88      0.94      0.91       172
+
+
+Confusion Matrix:
+ [[161   0]
+ [ 11   0]]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+C:\Users\MyBook Z Series\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="smote">
+<h4><em>SMOTE</em><a class="headerlink" href="#smote" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">decision_tree_X</span><span class="p">,</span> <span class="n">decision_tree_y</span><span class="p">)</span>
+
+<span class="c1"># 4. Split data SMOTE ke train/test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_resampled</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Buat model dan latih</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 7. Evaluasi performa</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.5838509316770186
+
+Laporan Klasifikasi:
+               precision    recall  f1-score   support
+
+           0       0.55      0.99      0.70       161
+           1       0.94      0.18      0.30       161
+
+    accuracy                           0.58       322
+   macro avg       0.74      0.58      0.50       322
+weighted avg       0.74      0.58      0.50       322
+
+
+Confusion Matrix:
+ [[159   2]
+ [132  29]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="model-algoritma-naive-bayes">
+<h3><strong>Model Algoritma Naive Bayes</strong><a class="headerlink" href="#model-algoritma-naive-bayes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive_bayes_X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">naive_bayes_y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">naive_bayes_X</span><span class="p">,</span> <span class="n">naive_bayes_y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. Terapkan SMOTE ke training data</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 5. Buat model Naive Bayes dan latih</span>
+<span class="n">nb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">nb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi terhadap test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">nb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 7. Evaluasi hasil model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9186046511627907
+
+Laporan Klasifikasi:
+               precision    recall  f1-score   support
+
+           0       0.93      0.98      0.96       161
+           1       0.00      0.00      0.00        11
+
+    accuracy                           0.92       172
+   macro avg       0.47      0.49      0.48       172
+weighted avg       0.88      0.92      0.90       172
+
+
+Confusion Matrix:
+ [[158   3]
+ [ 11   0]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-algoritma-knn-k-nearest-neighbors">
+<h3><strong>Model Algoritma KNN(K-Nearest Neighbors)</strong><a class="headerlink" href="#model-algoritma-knn-k-nearest-neighbors" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">knn_y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">knn_X</span><span class="p">,</span> <span class="n">knn_y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Terapkan SMOTE</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 4. Latih model KNN tanpa scaling</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">)</span>
+
+<span class="c1"># 5. Prediksi dan evaluasi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9244186046511628
+
+Laporan Klasifikasi:
+               precision    recall  f1-score   support
+
+           0       0.94      0.99      0.96       161
+           1       0.00      0.00      0.00        11
+
+    accuracy                           0.92       172
+   macro avg       0.47      0.49      0.48       172
+weighted avg       0.88      0.92      0.90       172
+
+
+Confusion Matrix:
+ [[159   2]
+ [ 11   0]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1548,6 +1813,19 @@ Name: Biopsy, Length: 858, dtype: int64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value"><strong>Deteksi Missing Value</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-fitur"><strong>Korelasi Fitur</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outliers"><strong>Deteksi Outliers</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardscaler-dan-normalisasi"><strong>StandardScaler Dan Normalisasi</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model"><strong>Model</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smote-synthetic-minority-over-sampling-technique"><em>SMOTE(Synthetic Minority Over-sampling Technique)</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-decision-tree"><strong>Model Algoritma Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-smote"><em>Tanpa SMOTE</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smote"><em>SMOTE</em></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-naive-bayes"><strong>Model Algoritma Naive Bayes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-algoritma-knn-k-nearest-neighbors"><strong>Model Algoritma KNN(K-Nearest Neighbors)</strong></a></li>
 </ul>
 </li>
 </ul>
