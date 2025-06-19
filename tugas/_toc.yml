@@ -26,6 +26,7 @@ chapters:
     title: Modeling
     sections:
       - file: klasifikasi-naive-bayes #ipynb
+        title: Algoritma Naive bayes
 
   - file: k-mean_clustering #ipynb
     title: Algoritma K-means Clustering
@@ -41,3 +42,6 @@ chapters:
 
   - file: uts #ipynb
     title: Ujian Tengah Semester
+
+  - file: praUas #ipynb
+    title: Tugas praUas

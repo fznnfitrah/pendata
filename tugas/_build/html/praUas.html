@@ -1,0 +1,1214 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Understanding &#8212; Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'praUas';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Ujian Tengah Semester" href="uts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Mining - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Data Mining - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Data Mining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="outliers-detection.html">Outliers Detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-preprocessing.html">Data Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LOF.html">Local Outliers Factors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="materi%203.html">Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html">Algoritma Naive bayes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fuzzy%20cmeans.html">Algoritma Fuzzy Clustering</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pohonKeputusan.html">Algoritma Decision Tree</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binning.html">Binning Technique</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas praUas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FpraUas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/praUas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Understanding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intergrasi-data"><strong>Intergrasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset"><strong>Struktur Dataset</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-perkolom"><em>Penjelasan Perkolom</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-dataset"><strong>Identifikasi Kualitas Dataset</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
+<h1><em><strong>Data Understanding</strong></em><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<section id="intergrasi-data">
+<h2><strong>Intergrasi Data</strong><a class="headerlink" href="#intergrasi-data" title="Link to this heading">#</a></h2>
+<p>Import Data dari link berikut ini <a class="reference external" href="https://archive.ics.uci.edu/dataset/383/cervical+cancer+risk+factors">https://archive.ics.uci.edu/dataset/383/cervical+cancer+risk+factors</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ucimlrepo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_ucirepo</span>
+
+<span class="c1"># Fetch dataset</span>
+<span class="n">cervical_cancer_risk_factors</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">383</span><span class="p">)</span>
+
+<span class="c1"># Semua data (fitur + target) jadi satu DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">cervical_cancer_risk_factors</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span>
+
+<span class="c1"># Cek 5 baris pertama</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Age  Number of sexual partners  First sexual intercourse  \
+0   18                        4.0                      15.0   
+1   15                        1.0                      14.0   
+2   34                        1.0                       NaN   
+3   52                        5.0                      16.0   
+4   46                        3.0                      21.0   
+
+   Num of pregnancies  Smokes  Smokes (years)  Smokes (packs/year)  \
+0                 1.0     0.0             0.0                  0.0   
+1                 1.0     0.0             0.0                  0.0   
+2                 1.0     0.0             0.0                  0.0   
+3                 4.0     1.0            37.0                 37.0   
+4                 4.0     0.0             0.0                  0.0   
+
+   Hormonal Contraceptives  Hormonal Contraceptives (years)  IUD  ...  \
+0                      0.0                              0.0  0.0  ...   
+1                      0.0                              0.0  0.0  ...   
+2                      0.0                              0.0  0.0  ...   
+3                      1.0                              3.0  0.0  ...   
+4                      1.0                             15.0  0.0  ...   
+
+   STDs: Time since first diagnosis  STDs: Time since last diagnosis  \
+0                               NaN                              NaN   
+1                               NaN                              NaN   
+2                               NaN                              NaN   
+3                               NaN                              NaN   
+4                               NaN                              NaN   
+
+   Dx:Cancer  Dx:CIN  Dx:HPV  Dx  Hinselmann  Schiller  Citology  Biopsy  
+0          0       0       0   0           0         0         0       0  
+1          0       0       0   0           0         0         0       0  
+2          0       0       0   0           0         0         0       0  
+3          1       0       1   0           0         0         0       0  
+4          0       0       0   0           0         0         0       0  
+
+[5 rows x 36 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eksplorasi-data">
+<h2><strong>Eksplorasi Data</strong><a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Number of sexual partners</th>
+      <th>First sexual intercourse</th>
+      <th>Num of pregnancies</th>
+      <th>Smokes</th>
+      <th>Smokes (years)</th>
+      <th>Smokes (packs/year)</th>
+      <th>Hormonal Contraceptives</th>
+      <th>Hormonal Contraceptives (years)</th>
+      <th>IUD</th>
+      <th>...</th>
+      <th>STDs: Time since first diagnosis</th>
+      <th>STDs: Time since last diagnosis</th>
+      <th>Dx:Cancer</th>
+      <th>Dx:CIN</th>
+      <th>Dx:HPV</th>
+      <th>Dx</th>
+      <th>Hinselmann</th>
+      <th>Schiller</th>
+      <th>Citology</th>
+      <th>Biopsy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18</td>
+      <td>4.0</td>
+      <td>15.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15</td>
+      <td>1.0</td>
+      <td>14.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>52</td>
+      <td>5.0</td>
+      <td>16.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>37.0</td>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>3.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>46</td>
+      <td>3.0</td>
+      <td>21.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>15.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>853</th>
+      <td>34</td>
+      <td>3.0</td>
+      <td>18.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>854</th>
+      <td>32</td>
+      <td>2.0</td>
+      <td>19.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.00</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>855</th>
+      <td>25</td>
+      <td>2.0</td>
+      <td>17.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.08</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>856</th>
+      <td>33</td>
+      <td>2.0</td>
+      <td>24.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.08</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>857</th>
+      <td>29</td>
+      <td>2.0</td>
+      <td>20.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.50</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>858 rows × 36 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="struktur-dataset">
+<h2><strong>Struktur Dataset</strong><a class="headerlink" href="#struktur-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- Age
+- Number of sexual partners
+- First sexual intercourse
+- Num of pregnancies
+- Smokes
+- Smokes (years)
+- Smokes (packs/year)
+- Hormonal Contraceptives
+- Hormonal Contraceptives (years)
+- IUD
+- IUD (years)
+- STDs
+- STDs (number)
+- STDs:condylomatosis
+- STDs:cervical condylomatosis
+- STDs:vaginal condylomatosis
+- STDs:vulvo-perineal condylomatosis
+- STDs:syphilis
+- STDs:pelvic inflammatory disease
+- STDs:genital herpes
+- STDs:molluscum contagiosum
+- STDs:AIDS
+- STDs:HIV
+- STDs:Hepatitis B
+- STDs:HPV
+- STDs: Number of diagnosis
+- STDs: Time since first diagnosis
+- STDs: Time since last diagnosis
+- Dx:Cancer
+- Dx:CIN
+- Dx:HPV
+- Dx
+- Hinselmann
+- Schiller
+- Citology
+- Biopsy
+</pre></div>
+</div>
+</div>
+</div>
+<section id="penjelasan-perkolom">
+<h3><em>Penjelasan Perkolom</em><a class="headerlink" href="#penjelasan-perkolom" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolom</p></th>
+<th class="head"><p>Keterangan</p></th>
+<th class="head"><p>Tipe</p></th>
+<th class="head"><p>Contoh Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Age</p></td>
+<td><p>Umur pasien</p></td>
+<td><p>Numerik</p></td>
+<td><p>18, 45</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of sexual partners</p></td>
+<td><p>Jumlah pasangan seksual</p></td>
+<td><p>Numerik</p></td>
+<td><p>1, 3</p></td>
+</tr>
+<tr class="row-even"><td><p>First sexual intercourse (age)</p></td>
+<td><p>Usia saat pertama kali berhubungan</p></td>
+<td><p>Numerik</p></td>
+<td><p>15, 20</p></td>
+</tr>
+<tr class="row-odd"><td><p>Num of pregnancies</p></td>
+<td><p>Jumlah kehamilan</p></td>
+<td><p>Numerik</p></td>
+<td><p>2, 4</p></td>
+</tr>
+<tr class="row-even"><td><p>Smokes</p></td>
+<td><p>Merokok (ya/tidak)</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Smokes (years)</p></td>
+<td><p>Berapa lama merokok</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 10</p></td>
+</tr>
+<tr class="row-even"><td><p>Smokes (packs/year)</p></td>
+<td><p>Intensitas merokok</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 2.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hormonal Contraceptives</p></td>
+<td><p>Menggunakan KB hormonal</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Hormonal Contraceptives (years)</p></td>
+<td><p>Lama menggunakan KB hormonal</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>IUD</p></td>
+<td><p>Pernah pakai IUD</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>IUD (years)</p></td>
+<td><p>Lama pakai IUD</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs</p></td>
+<td><p>Memiliki penyakit menular seksual</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs (number)</p></td>
+<td><p>Jumlah jenis STD</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:condylomatosis</p></td>
+<td><p>Jenis STD spesifik</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs:cervical condylomatosis</p></td>
+<td><p>STD di leher rahim</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:vaginal condylomatosis</p></td>
+<td><p>STD di vagina</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs:syphilis</p></td>
+<td><p>Pernah sifilis</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:pelvic inflammatory disease</p></td>
+<td><p>Infeksi panggul</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs:genital herpes</p></td>
+<td><p>Herpes kelamin</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:molluscum contagiosum</p></td>
+<td><p>Penyakit kulit menular</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs:AIDS</p></td>
+<td><p>Pernah HIV/AIDS</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:HIV</p></td>
+<td><p>Pernah HIV</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs:Hepatitis B</p></td>
+<td><p>Pernah Hepatitis B</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs:HPV</p></td>
+<td><p>Pernah HPV</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs: Number of diagnosis</p></td>
+<td><p>Jumlah STD terdiagnosis</p></td>
+<td><p>Numerik</p></td>
+<td><p>0, 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>STDs: Time since first diagnosis</p></td>
+<td><p>Waktu sejak diagnosis pertama STD</p></td>
+<td><p>Numerik</p></td>
+<td><p>NaN, 3</p></td>
+</tr>
+<tr class="row-even"><td><p>STDs: Time since last diagnosis</p></td>
+<td><p>Waktu sejak diagnosis terakhir STD</p></td>
+<td><p>Numerik</p></td>
+<td><p>NaN, 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dx:Cancer</p></td>
+<td><p>Pernah didiagnosis kanker</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Dx:CIN</p></td>
+<td><p>Cervical intraepithelial neoplasia</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dx:HPV</p></td>
+<td><p>Didiagnosis HPV</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Dx</p></td>
+<td><p>Diagnosa umum</p></td>
+<td><p>Biner</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hinselmann</p></td>
+<td><p>Hasil tes Hinselmann</p></td>
+<td><p>Biner (target)</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Schiller</p></td>
+<td><p>Hasil tes Schiller</p></td>
+<td><p>Biner (target)</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cytology</p></td>
+<td><p>Hasil sitologi</p></td>
+<td><p>Biner (target)</p></td>
+<td><p>0, 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Biopsy</p></td>
+<td><p>Hasil biopsi (indikator utama kanker serviks)</p></td>
+<td><p>Biner (target utama)</p></td>
+<td><p>0, 1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="identifikasi-kualitas-dataset">
+<h2><strong>Identifikasi Kualitas Dataset</strong><a class="headerlink" href="#identifikasi-kualitas-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_per_column</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">missing_per_column</span> <span class="o">=</span> <span class="n">missing_per_column</span><span class="p">[</span><span class="n">missing_per_column</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_per_column</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sexual partners              26
+First sexual intercourse                7
+Num of pregnancies                     56
+Smokes                                 13
+Smokes (years)                         13
+Smokes (packs/year)                    13
+Hormonal Contraceptives               108
+Hormonal Contraceptives (years)       108
+IUD                                   117
+IUD (years)                           117
+STDs                                  105
+STDs (number)                         105
+STDs:condylomatosis                   105
+STDs:cervical condylomatosis          105
+STDs:vaginal condylomatosis           105
+STDs:vulvo-perineal condylomatosis    105
+STDs:syphilis                         105
+STDs:pelvic inflammatory disease      105
+STDs:genital herpes                   105
+STDs:molluscum contagiosum            105
+STDs:AIDS                             105
+STDs:HIV                              105
+STDs:Hepatitis B                      105
+STDs:HPV                              105
+STDs: Time since first diagnosis      787
+STDs: Time since last diagnosis       787
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="uts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em><strong>Ujian Tengah Semester</strong></em></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intergrasi-data"><strong>Intergrasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data"><strong>Eksplorasi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset"><strong>Struktur Dataset</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-perkolom"><em>Penjelasan Perkolom</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-dataset"><strong>Identifikasi Kualitas Dataset</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fauzan Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'binning';</script>
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -191,7 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="materi%203.html">Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html"><em><strong>Klasifikasi Naive Bayes</strong></em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html">Algoritma Naive bayes</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
@@ -201,6 +203,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="praUas.html">Tugas praUas</a></li>
 </ul>
 
     </div>
@@ -396,12 +399,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-technique-dengan-kmeans"><strong>Binning Technique dengan Kmeans</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree"><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-numerik"><strong>Algoritma Naive Bayes Data Numerik</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-kategorikal"><strong>Algoritma Naive Bayes Data Kategorikal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-kategorikal"><strong>Algoritma Decision Tree Data Kategorikal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-numerik"><strong>Algoritma Decision Tree Data Numerik</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-teknik-binning"><strong>Pengertian Teknik Binning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-teknik-binning"><strong>Jenis Teknik Binning</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-technique-dengan-kmeans"><strong>Binning Technique dengan Kmeans</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree"><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-numerik"><strong>Algoritma Naive Bayes Data Numerik</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-kategorikal"><strong>Algoritma Naive Bayes Data Kategorikal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-kategorikal"><strong>Algoritma Decision Tree Data Kategorikal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-numerik"><strong>Algoritma Decision Tree Data Numerik</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -417,8 +424,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="binning-techneque">
 <h1><em><strong>Binning Techneque</strong></em><a class="headerlink" href="#binning-techneque" title="Link to this heading">#</a></h1>
+<section id="pengertian-teknik-binning">
+<h2><strong>Pengertian Teknik Binning</strong><a class="headerlink" href="#pengertian-teknik-binning" title="Link to this heading">#</a></h2>
+<p>Binning (atau bucketing) adalah teknik pra-pemrosesan data yang membagi nilai-nilai numerik berkelanjutan menjadi interval (bin) dan mengganti nilai asli dengan nilai representatif (misalnya rata-rata bin). Tujuannya adalah menyederhanakan data dan meminimalkan efek variasi kecil (noise) dengan menghaluskan data sehingga model lebih tahan terhadap fluktuasi minor. Dalam proses binning, atribut numerik diubah menjadi atribut kategorikal dengan membentuk kelas-kelas nominal pada rentang nilai tertentu. Keuntungan utama binning antara lain pengurangan dimensi data, peningkatan kecepatan pemrosesan algoritma, serta penyederhanaan interpretasi pola. Dengan data yang telah di-binning, algoritma seperti pohon keputusan atau Naïve Bayes dapat bekerja lebih efektif, bahkan meningkatkan akurasi klasifikasi.</p>
+</section>
+<section id="jenis-teknik-binning">
+<h2><strong>Jenis Teknik Binning</strong><a class="headerlink" href="#jenis-teknik-binning" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Equal-Width Binning (Lebar Sama): Data kontinu dibagi menjadi 𝑘 interval yang memiliki panjang (rentang) sama. Lebar tiap bin dihitung dengan rumus <span class="math notranslate nohighlight">\((max−min)/𝑘(max−min)/k\)</span>. Kelebihannya adalah sederhana dan mudah diimplementasikan. Namun, jika data terdistribusi tidak merata, metode ini dapat menghasilkan bin dengan jumlah elemen yang sangat tidak seimbang (beberapa bin kosong sementara yang lain penuh)</p></li>
+<li><p>Equal-Frequency Binning (Frekuensi Sama): Setiap bin memuat jumlah data (frekuensi) yang kurang lebih sama. Metode ini memastikan setiap bin berisi banyak elemen yang seimbang, sehingga menghindari bin bernilai jarang atau kosong. Kekurangannya, lebar interval tiap bin bisa sangat bervariasi: bin yang berisi data yang rapat akan punya rentang sempit, sedangkan bin pada ujung distribusi bisa meliputi rentang luas.</p></li>
+<li><p>Binning Berbasis Klaster/Statistik: Metode ini menggunakan pola data untuk menentukan bin. Misalnya, clustering-based binning menggunakan algoritma klaster (seperti k-means) untuk mengelompokkan nilai satu dimensi menjadi beberapa cluster (bin) berdasarkan kemiripan. Pendekatan ini berguna jika data memiliki kelompok alami (mode) tersembunyi. Selain itu, terdapat pendekatan berbasis statistik, seperti pembagian menurut kuantil/persentil atau smoothing nilai dengan mean/median/bin boundary. Dalam smoothing, setiap nilai dalam bin diganti dengan rata-rata bin (bin mean), median bin (bin median), atau nilai batas terdekat dalam bin (bin boundary). Pendekatan berbasis klaster atau statistik ini dapat menangkap struktur distribusi data yang kompleks, tetapi umumnya lebih rumit dan berisiko menghasilkan batas bin yang sulit diinterpretasi</p></li>
+</ul>
 <section id="binning-technique-dengan-kmeans">
-<h2><strong>Binning Technique dengan Kmeans</strong><a class="headerlink" href="#binning-technique-dengan-kmeans" title="Link to this heading">#</a></h2>
+<h3><strong>Binning Technique dengan Kmeans</strong><a class="headerlink" href="#binning-technique-dengan-kmeans" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -715,7 +733,7 @@ document.write(`
 </div>
 </section>
 <section id="prosesing-data-algoritma-naive-bayes-dan-decision-tree">
-<h2><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong><a class="headerlink" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree" title="Link to this heading">#</a></h2>
+<h3><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong><a class="headerlink" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data_numeric</span><span class="p">))</span>
@@ -788,7 +806,7 @@ document.write(`
 </div>
 </div>
 <section id="algoritma-naive-bayes-data-numerik">
-<h3><strong>Algoritma Naive Bayes Data Numerik</strong><a class="headerlink" href="#algoritma-naive-bayes-data-numerik" title="Link to this heading">#</a></h3>
+<h4><strong>Algoritma Naive Bayes Data Numerik</strong><a class="headerlink" href="#algoritma-naive-bayes-data-numerik" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -840,7 +858,7 @@ Iris-versicolor       0.90      1.00      0.95         9
 </div>
 </section>
 <section id="algoritma-naive-bayes-data-kategorikal">
-<h3><strong>Algoritma Naive Bayes Data Kategorikal</strong><a class="headerlink" href="#algoritma-naive-bayes-data-kategorikal" title="Link to this heading">#</a></h3>
+<h4><strong>Algoritma Naive Bayes Data Kategorikal</strong><a class="headerlink" href="#algoritma-naive-bayes-data-kategorikal" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -899,7 +917,7 @@ weighted avg       0.92      0.90      0.90        30
 </div>
 </section>
 <section id="algoritma-decision-tree-data-kategorikal">
-<h3><strong>Algoritma Decision Tree Data Kategorikal</strong><a class="headerlink" href="#algoritma-decision-tree-data-kategorikal" title="Link to this heading">#</a></h3>
+<h4><strong>Algoritma Decision Tree Data Kategorikal</strong><a class="headerlink" href="#algoritma-decision-tree-data-kategorikal" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -927,7 +945,10 @@ weighted avg       0.92      0.90      0.90        30
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0.9
 
 Laporan klasifikasi:
                   precision    recall  f1-score   support
@@ -945,7 +966,7 @@ Iris-versicolor       0.80      0.89      0.84         9
 </div>
 </section>
 <section id="algoritma-decision-tree-data-numerik">
-<h3><strong>Algoritma Decision Tree Data Numerik</strong><a class="headerlink" href="#algoritma-decision-tree-data-numerik" title="Link to this heading">#</a></h3>
+<h4><strong>Algoritma Decision Tree Data Numerik</strong><a class="headerlink" href="#algoritma-decision-tree-data-numerik" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
@@ -989,6 +1010,7 @@ Iris-versicolor       1.00      1.00      1.00         9
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 </section>
@@ -1057,12 +1079,16 @@ Iris-versicolor       1.00      1.00      1.00         9
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-technique-dengan-kmeans"><strong>Binning Technique dengan Kmeans</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree"><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-numerik"><strong>Algoritma Naive Bayes Data Numerik</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-kategorikal"><strong>Algoritma Naive Bayes Data Kategorikal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-kategorikal"><strong>Algoritma Decision Tree Data Kategorikal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-numerik"><strong>Algoritma Decision Tree Data Numerik</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-teknik-binning"><strong>Pengertian Teknik Binning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-teknik-binning"><strong>Jenis Teknik Binning</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-technique-dengan-kmeans"><strong>Binning Technique dengan Kmeans</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prosesing-data-algoritma-naive-bayes-dan-decision-tree"><strong>Prosesing Data Algoritma Naive Bayes dan Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-numerik"><strong>Algoritma Naive Bayes Data Numerik</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-naive-bayes-data-kategorikal"><strong>Algoritma Naive Bayes Data Kategorikal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-kategorikal"><strong>Algoritma Decision Tree Data Kategorikal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-decision-tree-data-numerik"><strong>Algoritma Decision Tree Data Numerik</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
