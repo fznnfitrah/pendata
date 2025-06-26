@@ -45,3 +45,6 @@ chapters:
 
   - file: praUas #ipynb
     title: Tugas praUas
+  
+  - file: uas # ipynb
+    title: Ujian Akhir Semester

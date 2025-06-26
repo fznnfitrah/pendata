@@ -1,0 +1,1916 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ujian Akhir Semester &#8212; Data Mining</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uas';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tugas Pra-UAS" href="praUas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Data Mining - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Data Mining - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Data Mining
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="prepare.html">Tools and Materials</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="outliers-detection.html">Outliers Detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-preprocessing.html">Data Preprocessing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LOF.html">Local Outliers Factors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="materi%203.html">Modeling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="klasifikasi-naive-bayes.html">Algoritma Naive bayes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="k-mean_clustering.html">Algoritma K-means Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fuzzy%20cmeans.html">Algoritma Fuzzy Clustering</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pohonKeputusan.html">Algoritma Decision Tree</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="binning.html">Binning Technique</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="praUas.html">Tugas praUas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ujian Akhir Semester</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fuas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ujian Akhir Semester</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>Data Understanding</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-kolom-data"><em>Deskripsi Kolom Data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><em>Missing Value</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlies-detection"><em>Outlies Detection</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-tidak-digunakan"><em>Missing Value(tidak digunakan)</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-kolom-dengan-korelasi-terhadap-data-akhir"><em>Memilih Kolom dengan Korelasi terhadap Data Akhir</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier"><em>Deteksi Outlier</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#winsorizing-teknik">Winsorizing Teknik</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data"><em>Standarisasi Data</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data-training-and-test"><em>Split Data Training and Test</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linier-regression"><em>Linier Regression</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-regresi"><em>Decision Tree Regresi</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-neighbors-regressor"><em>K-Neighbors Regressor</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi"><strong>Evaluasi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-linier-regression"><em>Evaluasi Linier Regression</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-decision-tree"><em>Evaluasi Decision Tree</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-sementara">💡 Kesimpulan Sementara:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-model"><strong>Deploy Model</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ujian-akhir-semester">
+<h1><em><strong>Ujian Akhir Semester</strong></em><a class="headerlink" href="#ujian-akhir-semester" title="Link to this heading">#</a></h1>
+<p>hubungkan terlebih dahulu data yang ingin kita analisa dengan code yang nantinya kita akan proses</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ucimlrepo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_ucirepo</span> 
+  
+<span class="c1"># fetch dataset </span>
+<span class="n">student_performance</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">320</span><span class="p">)</span> 
+  
+<span class="c1"># data (as pandas dataframes) </span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">student_performance</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">student_performance</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span> 
+  
+<span class="c1"># metadata </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">student_performance</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> 
+  
+<span class="c1"># variable information </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">student_performance</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;uci_id&#39;: 320, &#39;name&#39;: &#39;Student Performance&#39;, &#39;repository_url&#39;: &#39;https://archive.ics.uci.edu/dataset/320/student+performance&#39;, &#39;data_url&#39;: &#39;https://archive.ics.uci.edu/static/public/320/data.csv&#39;, &#39;abstract&#39;: &#39;Predict student performance in secondary education (high school). &#39;, &#39;area&#39;: &#39;Social Science&#39;, &#39;tasks&#39;: [&#39;Classification&#39;, &#39;Regression&#39;], &#39;characteristics&#39;: [&#39;Multivariate&#39;], &#39;num_instances&#39;: 649, &#39;num_features&#39;: 30, &#39;feature_types&#39;: [&#39;Integer&#39;], &#39;demographics&#39;: [&#39;Sex&#39;, &#39;Age&#39;, &#39;Other&#39;, &#39;Education Level&#39;, &#39;Occupation&#39;], &#39;target_col&#39;: [&#39;G1&#39;, &#39;G2&#39;, &#39;G3&#39;], &#39;index_col&#39;: None, &#39;has_missing_values&#39;: &#39;no&#39;, &#39;missing_values_symbol&#39;: None, &#39;year_of_dataset_creation&#39;: 2008, &#39;last_updated&#39;: &#39;Fri Jan 05 2024&#39;, &#39;dataset_doi&#39;: &#39;10.24432/C5TG7T&#39;, &#39;creators&#39;: [&#39;Paulo Cortez&#39;], &#39;intro_paper&#39;: {&#39;ID&#39;: 360, &#39;type&#39;: &#39;NATIVE&#39;, &#39;title&#39;: &#39;Using data mining to predict secondary school student performance&#39;, &#39;authors&#39;: &#39;P. Cortez, A. M. G. Silva&#39;, &#39;venue&#39;: &#39;Proceedings of 5th Annual Future Business Technology Conference&#39;, &#39;year&#39;: 2008, &#39;journal&#39;: None, &#39;DOI&#39;: None, &#39;URL&#39;: &#39;https://www.semanticscholar.org/paper/61d468d5254730bbecf822c6b60d7d6595d9889c&#39;, &#39;sha&#39;: None, &#39;corpus&#39;: &#39;16621299&#39;, &#39;arxiv&#39;: None, &#39;mag&#39;: None, &#39;acl&#39;: None, &#39;pmid&#39;: None, &#39;pmcid&#39;: None}, &#39;additional_info&#39;: {&#39;summary&#39;: &#39;This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). In [Cortez and Silva, 2008], the two datasets were modeled under binary/five-level classification and regression tasks. Important note: the target attribute G3 has a strong correlation with attributes G2 and G1. This occurs because G3 is the final year grade (issued at the 3rd period), while G1 and G2 correspond to the 1st and 2nd period grades. It is more difficult to predict G3 without G2 and G1, but such prediction is much more useful (see paper source for more details).&#39;, &#39;purpose&#39;: None, &#39;funded_by&#39;: None, &#39;instances_represent&#39;: None, &#39;recommended_data_splits&#39;: None, &#39;sensitive_data&#39;: None, &#39;preprocessing_description&#39;: None, &#39;variable_info&#39;: &quot;# Attributes for both student-mat.csv (Math course) and student-por.csv (Portuguese language course) datasets:\r\n1 school - student&#39;s school (binary: &#39;GP&#39; - Gabriel Pereira or &#39;MS&#39; - Mousinho da Silveira)\r\n2 sex - student&#39;s sex (binary: &#39;F&#39; - female or &#39;M&#39; - male)\r\n3 age - student&#39;s age (numeric: from 15 to 22)\r\n4 address - student&#39;s home address type (binary: &#39;U&#39; - urban or &#39;R&#39; - rural)\r\n5 famsize - family size (binary: &#39;LE3&#39; - less or equal to 3 or &#39;GT3&#39; - greater than 3)\r\n6 Pstatus - parent&#39;s cohabitation status (binary: &#39;T&#39; - living together or &#39;A&#39; - apart)\r\n7 Medu - mother&#39;s education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)\r\n8 Fedu - father&#39;s education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)\r\n9 Mjob - mother&#39;s job (nominal: &#39;teacher&#39;, &#39;health&#39; care related, civil &#39;services&#39; (e.g. administrative or police), &#39;at_home&#39; or &#39;other&#39;)\r\n10 Fjob - father&#39;s job (nominal: &#39;teacher&#39;, &#39;health&#39; care related, civil &#39;services&#39; (e.g. administrative or police), &#39;at_home&#39; or &#39;other&#39;)\r\n11 reason - reason to choose this school (nominal: close to &#39;home&#39;, school &#39;reputation&#39;, &#39;course&#39; preference or &#39;other&#39;)\r\n12 guardian - student&#39;s guardian (nominal: &#39;mother&#39;, &#39;father&#39; or &#39;other&#39;)\r\n13 traveltime - home to school travel time (numeric: 1 - &lt;15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - &gt;1 hour)\r\n14 studytime - weekly study time (numeric: 1 - &lt;2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - &gt;10 hours)\r\n15 failures - number of past class failures (numeric: n if 1&lt;=n&lt;3, else 4)\r\n16 schoolsup - extra educational support (binary: yes or no)\r\n17 famsup - family educational support (binary: yes or no)\r\n18 paid - extra paid classes within the course subject (Math or Portuguese) (binary: yes or no)\r\n19 activities - extra-curricular activities (binary: yes or no)\r\n20 nursery - attended nursery school (binary: yes or no)\r\n21 higher - wants to take higher education (binary: yes or no)\r\n22 internet - Internet access at home (binary: yes or no)\r\n23 romantic - with a romantic relationship (binary: yes or no)\r\n24 famrel - quality of family relationships (numeric: from 1 - very bad to 5 - excellent)\r\n25 freetime - free time after school (numeric: from 1 - very low to 5 - very high)\r\n26 goout - going out with friends (numeric: from 1 - very low to 5 - very high)\r\n27 Dalc - workday alcohol consumption (numeric: from 1 - very low to 5 - very high)\r\n28 Walc - weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)\r\n29 health - current health status (numeric: from 1 - very bad to 5 - very good)\r\n30 absences - number of school absences (numeric: from 0 to 93)\r\n\r\n# these grades are related with the course subject, Math or Portuguese:\r\n31 G1 - first period grade (numeric: from 0 to 20)\r\n31 G2 - second period grade (numeric: from 0 to 20)\r\n32 G3 - final grade (numeric: from 0 to 20, output target)&quot;, &#39;citation&#39;: None}}
+          name     role         type      demographic  \
+0       school  Feature  Categorical             None   
+1          sex  Feature       Binary              Sex   
+2          age  Feature      Integer              Age   
+3      address  Feature  Categorical             None   
+4      famsize  Feature  Categorical            Other   
+5      Pstatus  Feature  Categorical            Other   
+6         Medu  Feature      Integer  Education Level   
+7         Fedu  Feature      Integer  Education Level   
+8         Mjob  Feature  Categorical       Occupation   
+9         Fjob  Feature  Categorical       Occupation   
+10      reason  Feature  Categorical             None   
+11    guardian  Feature  Categorical             None   
+12  traveltime  Feature      Integer             None   
+13   studytime  Feature      Integer             None   
+14    failures  Feature      Integer             None   
+15   schoolsup  Feature       Binary             None   
+16      famsup  Feature       Binary             None   
+17        paid  Feature       Binary             None   
+18  activities  Feature       Binary             None   
+19     nursery  Feature       Binary             None   
+20      higher  Feature       Binary             None   
+21    internet  Feature       Binary             None   
+22    romantic  Feature       Binary             None   
+23      famrel  Feature      Integer             None   
+24    freetime  Feature      Integer             None   
+25       goout  Feature      Integer             None   
+26        Dalc  Feature      Integer             None   
+27        Walc  Feature      Integer             None   
+28      health  Feature      Integer             None   
+29    absences  Feature      Integer             None   
+30          G1   Target  Categorical             None   
+31          G2   Target  Categorical             None   
+32          G3   Target      Integer             None   
+
+                                          description units missing_values  
+0   student&#39;s school (binary: &#39;GP&#39; - Gabriel Perei...  None             no  
+1   student&#39;s sex (binary: &#39;F&#39; - female or &#39;M&#39; - m...  None             no  
+2              student&#39;s age (numeric: from 15 to 22)  None             no  
+3   student&#39;s home address type (binary: &#39;U&#39; - urb...  None             no  
+4   family size (binary: &#39;LE3&#39; - less or equal to ...  None             no  
+5   parent&#39;s cohabitation status (binary: &#39;T&#39; - li...  None             no  
+6   mother&#39;s education (numeric: 0 - none,  1 - pr...  None             no  
+7   father&#39;s education (numeric: 0 - none,  1 - pr...  None             no  
+8   mother&#39;s job (nominal: &#39;teacher&#39;, &#39;health&#39; car...  None             no  
+9   father&#39;s job (nominal: &#39;teacher&#39;, &#39;health&#39; car...  None             no  
+10  reason to choose this school (nominal: close t...  None             no  
+11  student&#39;s guardian (nominal: &#39;mother&#39;, &#39;father...  None             no  
+12  home to school travel time (numeric: 1 - &lt;15 m...  None             no  
+13  weekly study time (numeric: 1 - &lt;2 hours, 2 - ...  None             no  
+14  number of past class failures (numeric: n if 1...  None             no  
+15      extra educational support (binary: yes or no)  None             no  
+16     family educational support (binary: yes or no)  None             no  
+17  extra paid classes within the course subject (...  None             no  
+18    extra-curricular activities (binary: yes or no)  None             no  
+19        attended nursery school (binary: yes or no)  None             no  
+20  wants to take higher education (binary: yes or...  None             no  
+21        Internet access at home (binary: yes or no)  None             no  
+22   with a romantic relationship (binary: yes or no)  None             no  
+23  quality of family relationships (numeric: from...  None             no  
+24  free time after school (numeric: from 1 - very...  None             no  
+25  going out with friends (numeric: from 1 - very...  None             no  
+26  workday alcohol consumption (numeric: from 1 -...  None             no  
+27  weekend alcohol consumption (numeric: from 1 -...  None             no  
+28  current health status (numeric: from 1 - very ...  None             no  
+29  number of school absences (numeric: from 0 to 93)  None             no  
+30         first period grade (numeric: from 0 to 20)  None             no  
+31        second period grade (numeric: from 0 to 20)  None             no  
+32  final grade (numeric: from 0 to 20, output tar...  None             no  
+</pre></div>
+</div>
+</div>
+</div>
+<p>bisa terlihat bahwa data yang saya pilih berjumlah 33 featur selanjutnya kita akan masuk ke dalam data understanding</p>
+<section id="data-understanding">
+<h2><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">zscore</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="deskripsi-kolom-data">
+<h3><em>Deskripsi Kolom Data</em><a class="headerlink" href="#deskripsi-kolom-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+
+<span class="c1"># 1. Tampilkan informasi dasar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Info Dataset ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Info Dataset ===
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 649 entries, 0 to 648
+Data columns (total 33 columns):
+ #   Column      Non-Null Count  Dtype 
+---  ------      --------------  ----- 
+ 0   school      649 non-null    object
+ 1   sex         649 non-null    object
+ 2   age         649 non-null    int64 
+ 3   address     649 non-null    object
+ 4   famsize     649 non-null    object
+ 5   Pstatus     649 non-null    object
+ 6   Medu        649 non-null    int64 
+ 7   Fedu        649 non-null    int64 
+ 8   Mjob        649 non-null    object
+ 9   Fjob        649 non-null    object
+ 10  reason      649 non-null    object
+ 11  guardian    649 non-null    object
+ 12  traveltime  649 non-null    int64 
+ 13  studytime   649 non-null    int64 
+ 14  failures    649 non-null    int64 
+ 15  schoolsup   649 non-null    object
+ 16  famsup      649 non-null    object
+ 17  paid        649 non-null    object
+ 18  activities  649 non-null    object
+ 19  nursery     649 non-null    object
+ 20  higher      649 non-null    object
+ 21  internet    649 non-null    object
+ 22  romantic    649 non-null    object
+ 23  famrel      649 non-null    int64 
+ 24  freetime    649 non-null    int64 
+ 25  goout       649 non-null    int64 
+ 26  Dalc        649 non-null    int64 
+ 27  Walc        649 non-null    int64 
+ 28  health      649 non-null    int64 
+ 29  absences    649 non-null    int64 
+ 30  G1          649 non-null    int64 
+ 31  G2          649 non-null    int64 
+ 32  G3          649 non-null    int64 
+dtypes: int64(16), object(17)
+memory usage: 167.4+ KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Statistik deskriptif kolom numerik</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Statistik Deskriptif ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Statistik Deskriptif ===
+              age        Medu        Fedu  traveltime   studytime    failures  \
+count  649.000000  649.000000  649.000000  649.000000  649.000000  649.000000   
+mean    16.744222    2.514638    2.306626    1.568567    1.930663    0.221880   
+std      1.218138    1.134552    1.099931    0.748660    0.829510    0.593235   
+min     15.000000    0.000000    0.000000    1.000000    1.000000    0.000000   
+25%     16.000000    2.000000    1.000000    1.000000    1.000000    0.000000   
+50%     17.000000    2.000000    2.000000    1.000000    2.000000    0.000000   
+75%     18.000000    4.000000    3.000000    2.000000    2.000000    0.000000   
+max     22.000000    4.000000    4.000000    4.000000    4.000000    3.000000   
+
+           famrel    freetime       goout        Dalc        Walc      health  \
+count  649.000000  649.000000  649.000000  649.000000  649.000000  649.000000   
+mean     3.930663    3.180277    3.184900    1.502311    2.280431    3.536210   
+std      0.955717    1.051093    1.175766    0.924834    1.284380    1.446259   
+min      1.000000    1.000000    1.000000    1.000000    1.000000    1.000000   
+25%      4.000000    3.000000    2.000000    1.000000    1.000000    2.000000   
+50%      4.000000    3.000000    3.000000    1.000000    2.000000    4.000000   
+75%      5.000000    4.000000    4.000000    2.000000    3.000000    5.000000   
+max      5.000000    5.000000    5.000000    5.000000    5.000000    5.000000   
+
+         absences          G1          G2          G3  
+count  649.000000  649.000000  649.000000  649.000000  
+mean     3.659476   11.399076   11.570108   11.906009  
+std      4.640759    2.745265    2.913639    3.230656  
+min      0.000000    0.000000    0.000000    0.000000  
+25%      0.000000   10.000000   10.000000   10.000000  
+50%      2.000000   11.000000   11.000000   12.000000  
+75%      6.000000   13.000000   13.000000   14.000000  
+max     32.000000   19.000000   19.000000   19.000000  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 5 Data Teratas ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 5 Data Teratas ===
+  school sex  age address famsize Pstatus  Medu  Fedu     Mjob      Fjob  ...  \
+0     GP   F   18       U     GT3       A     4     4  at_home   teacher  ...   
+1     GP   F   17       U     GT3       T     1     1  at_home     other  ...   
+2     GP   F   15       U     LE3       T     1     1  at_home     other  ...   
+3     GP   F   15       U     GT3       T     4     2   health  services  ...   
+4     GP   F   16       U     GT3       T     3     3    other     other  ...   
+
+  famrel freetime  goout  Dalc  Walc health absences  G1  G2  G3  
+0      4        3      4     1     1      3        4   0  11  11  
+1      5        3      3     1     1      3        2   9  11  11  
+2      4        3      2     2     3      3        6  12  13  12  
+3      3        2      2     1     1      5        0  14  14  14  
+4      4        3      2     1     2      5        0  11  13  13  
+
+[5 rows x 33 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Jumlah data unik tiap kolom (untuk cek kategorikal vs numerik)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Nilai Unik Tiap Kolom ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Nilai Unik Tiap Kolom ===
+school: 2
+sex: 2
+age: 8
+address: 2
+famsize: 2
+Pstatus: 2
+Medu: 5
+Fedu: 5
+Mjob: 5
+Fjob: 5
+reason: 4
+guardian: 3
+traveltime: 4
+studytime: 4
+failures: 4
+schoolsup: 2
+famsup: 2
+paid: 2
+activities: 2
+nursery: 2
+higher: 2
+internet: 2
+romantic: 2
+famrel: 5
+freetime: 5
+goout: 5
+Dalc: 5
+Walc: 5
+health: 5
+absences: 24
+G1: 17
+G2: 16
+G3: 17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berikut ini adalah data penjelasan kolom yang saya miliki pada data:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kolom</p></th>
+<th class="head"><p>Tipe</p></th>
+<th class="head"><p>Deskripsi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">school</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Sekolah tempat siswa belajar: <code class="docutils literal notranslate"><span class="pre">'GP'</span></code> (Gabriel Pereira) atau <code class="docutils literal notranslate"><span class="pre">'MS'</span></code> (Mousinho da Silveira)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sex</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Jenis kelamin siswa: <code class="docutils literal notranslate"><span class="pre">'F'</span></code> = perempuan, <code class="docutils literal notranslate"><span class="pre">'M'</span></code> = laki-laki</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">age</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Usia siswa (15–22 tahun)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">address</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Tempat tinggal: <code class="docutils literal notranslate"><span class="pre">'U'</span></code> = urban, <code class="docutils literal notranslate"><span class="pre">'R'</span></code> = rural</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">famsize</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Ukuran keluarga: <code class="docutils literal notranslate"><span class="pre">'LE3'</span></code> = ≤3 orang, <code class="docutils literal notranslate"><span class="pre">'GT3'</span></code> = &gt;3 orang</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pstatus</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Status hidup bersama orang tua: <code class="docutils literal notranslate"><span class="pre">'T'</span></code> = tinggal bersama, <code class="docutils literal notranslate"><span class="pre">'A'</span></code> = terpisah</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Medu</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Tingkat pendidikan ibu (0: tidak sekolah – 4: pendidikan tinggi)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Fedu</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Tingkat pendidikan ayah (0–4 seperti di atas)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Mjob</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Pekerjaan ibu: <code class="docutils literal notranslate"><span class="pre">'teacher'</span></code>, <code class="docutils literal notranslate"><span class="pre">'health'</span></code>, <code class="docutils literal notranslate"><span class="pre">'services'</span></code>, <code class="docutils literal notranslate"><span class="pre">'at_home'</span></code>, <code class="docutils literal notranslate"><span class="pre">'other'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Fjob</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Pekerjaan ayah: (sama seperti <code class="docutils literal notranslate"><span class="pre">Mjob</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reason</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Alasan memilih sekolah: <code class="docutils literal notranslate"><span class="pre">'home'</span></code>, <code class="docutils literal notranslate"><span class="pre">'reputation'</span></code>, <code class="docutils literal notranslate"><span class="pre">'course'</span></code>, <code class="docutils literal notranslate"><span class="pre">'other'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">guardian</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Wali utama siswa: <code class="docutils literal notranslate"><span class="pre">'mother'</span></code>, <code class="docutils literal notranslate"><span class="pre">'father'</span></code>, <code class="docutils literal notranslate"><span class="pre">'other'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">traveltime</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Waktu perjalanan ke sekolah (1: &lt;15min, 2: 15–30min, 3: 30min–1h, 4: &gt;1h)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">studytime</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Waktu belajar mingguan (1: &lt;2h, 2: 2–5h, 3: 5–10h, 4: &gt;10h)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">failures</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Jumlah kegagalan kelas sebelumnya (0–3, lebih dari 3 juga dikodekan sebagai 3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schoolsup</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Dukungan tambahan dari sekolah (support class): <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">famsup</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Dukungan belajar dari keluarga: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">paid</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Ikut les privat pelajaran matematika: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activities</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Ikut kegiatan ekstrakurikuler: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nursery</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Pernah ikut pendidikan pra-sekolah: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">higher</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Ingin melanjutkan ke pendidikan tinggi: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">internet</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Akses internet di rumah: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">romantic</span></code></p></td>
+<td><p>object</p></td>
+<td><p>Sedang menjalin hubungan romantis: <code class="docutils literal notranslate"><span class="pre">'yes'</span></code> atau <code class="docutils literal notranslate"><span class="pre">'no'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">famrel</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Kualitas hubungan dalam keluarga (1 – sangat buruk hingga 5 – sangat baik)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">freetime</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Waktu luang setelah sekolah (1 – sangat sedikit hingga 5 – sangat banyak)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">goout</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Frekuensi pergi keluar dengan teman (1 – sangat jarang hingga 5 – sangat sering)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Dalc</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Konsumsi alkohol di hari kerja (1 – sangat rendah hingga 5 – sangat tinggi)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Walc</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Konsumsi alkohol di akhir pekan (weekend)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">health</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Status kesehatan saat ini (1 – sangat buruk hingga 5 – sangat baik)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">absences</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Jumlah ketidakhadiran</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G1</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Nilai ujian pertama (0–20)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G2</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Nilai ujian kedua (0–20)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G3</span></code></p></td>
+<td><p>int</p></td>
+<td><p><strong>Nilai akhir</strong> (target prediksi)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="missing-value">
+<h3><em>Missing Value</em><a class="headerlink" href="#missing-value" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan jumlah missing value per kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah Missing Value per Kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Missing Value per Kolom:
+school        0
+sex           0
+age           0
+address       0
+famsize       0
+Pstatus       0
+Medu          0
+Fedu          0
+Mjob          0
+Fjob          0
+reason        0
+guardian      0
+traveltime    0
+studytime     0
+failures      0
+schoolsup     0
+famsup        0
+paid          0
+activities    0
+nursery       0
+higher        0
+internet      0
+romantic      0
+famrel        0
+freetime      0
+goout         0
+Dalc          0
+Walc          0
+health        0
+absences      0
+G1            0
+G2            0
+G3            0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan persentase missing value per kolom (opsional)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Persentase Missing Value per Kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Persentase Missing Value per Kolom:
+school        0.0
+sex           0.0
+age           0.0
+address       0.0
+famsize       0.0
+Pstatus       0.0
+Medu          0.0
+Fedu          0.0
+Mjob          0.0
+Fjob          0.0
+reason        0.0
+guardian      0.0
+traveltime    0.0
+studytime     0.0
+failures      0.0
+schoolsup     0.0
+famsup        0.0
+paid          0.0
+activities    0.0
+nursery       0.0
+higher        0.0
+internet      0.0
+romantic      0.0
+famrel        0.0
+freetime      0.0
+goout         0.0
+Dalc          0.0
+Walc          0.0
+health        0.0
+absences      0.0
+G1            0.0
+G2            0.0
+G3            0.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="outlies-detection">
+<h3><em>Outlies Detection</em><a class="headerlink" href="#outlies-detection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom numerik</span>
+<span class="n">numeric_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== DETEKSI OUTLIER MENGGUNAKAN Z-SCORE ===&quot;</span><span class="p">)</span>
+<span class="c1"># Hitung Z-score untuk semua kolom numerik</span>
+<span class="n">z_scores</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">)</span>
+
+<span class="c1"># Tandai outlier: nilai Z-score &gt; 3 atau &lt; -3</span>
+<span class="n">outliers_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_scores</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan jumlah outlier per kolom</span>
+<span class="n">outlier_count_z</span> <span class="o">=</span> <span class="n">outliers_z</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outlier_count_z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== DETEKSI OUTLIER MENGGUNAKAN IQR ===&quot;</span><span class="p">)</span>
+<span class="n">outlier_count_iqr</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Hitung outlier per kolom berdasarkan IQR</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Q3</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="p">[(</span><span class="n">numeric_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">numeric_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+    <span class="n">outlier_count_iqr</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan jumlah outlier per kolom</span>
+<span class="n">outlier_count_iqr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">outlier_count_iqr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outlier_count_iqr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== DETEKSI OUTLIER MENGGUNAKAN Z-SCORE ===
+age            3
+Medu           0
+Fedu           0
+traveltime    16
+studytime      0
+failures      14
+famrel        22
+freetime       0
+goout          0
+Dalc          17
+Walc           0
+health         0
+absences      11
+G1             1
+G2             7
+G3            16
+dtype: int64
+
+=== DETEKSI OUTLIER MENGGUNAKAN IQR ===
+age             1
+Medu            0
+Fedu            0
+traveltime     16
+studytime      35
+failures      100
+famrel         51
+freetime       45
+goout           0
+Dalc           34
+Walc            0
+health          0
+absences       21
+G1             16
+G2             25
+G3             16
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya fitur numerik</span>
+<span class="n">numeric_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+
+<span class="c1"># Hitung korelasi antar fitur numerik</span>
+<span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># Tampilkan heatmap korelasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heatmap Korelasi Antar Fitur Numerik&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Tampilkan korelasi fitur terhadap target G3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Korelasi terhadap G3 (nilai akhir) ===&quot;</span><span class="p">)</span>
+<span class="n">target_corr</span> <span class="o">=</span> <span class="n">correlation_matrix</span><span class="p">[</span><span class="s2">&quot;G3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;G3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">target_corr</span><span class="p">)</span>
+
+<span class="c1"># Jika ingin melihat fitur dengan korelasi tinggi (misalnya &gt; 0.5 atau &lt; -0.5)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Fitur dengan Korelasi Tinggi dengan G3 (|corr| &gt; 0.5) ===&quot;</span><span class="p">)</span>
+<span class="n">strong_corr</span> <span class="o">=</span> <span class="n">target_corr</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">target_corr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">strong_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9b0d8f217261d822cb4cc9d58032d5787de1404f25354137c3e4466b54e11288.png" src="_images/9b0d8f217261d822cb4cc9d58032d5787de1404f25354137c3e4466b54e11288.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Korelasi terhadap G3 (nilai akhir) ===
+G2            0.918548
+G1            0.826387
+studytime     0.249789
+Medu          0.240151
+Fedu          0.211800
+famrel        0.063361
+goout        -0.087641
+absences     -0.091379
+health       -0.098851
+age          -0.106505
+freetime     -0.122705
+traveltime   -0.127173
+Walc         -0.176619
+Dalc         -0.204719
+failures     -0.393316
+Name: G3, dtype: float64
+
+=== Fitur dengan Korelasi Tinggi dengan G3 (|corr| &gt; 0.5) ===
+G2    0.918548
+G1    0.826387
+Name: G3, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>📊 <strong>Fitur yang Sangat Berkorelasi dengan <code class="docutils literal notranslate"><span class="pre">G3</span></code> (Target)</strong></p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fitur</p></th>
+<th class="head"><p>Korelasi dengan G3</p></th>
+<th class="head"><p>Penjelasan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G2</span></code></p></td>
+<td><p><strong>0.92</strong></p></td>
+<td><p>Korelasi sangat kuat. Nilai ujian ke-2 sangat menentukan hasil akhir (<code class="docutils literal notranslate"><span class="pre">G3</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">G1</span></code></p></td>
+<td><p><strong>0.83</strong></p></td>
+<td><p>Korelasi kuat juga. Nilai ujian pertama juga sangat memengaruhi hasil akhir</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>✅ Kedua fitur ini <strong>wajib dipertahankan dalam modeling</strong>, karena sangat informatif untuk prediksi.</p>
+<hr class="docutils" />
+<ol class="arabic simple" start="2">
+<li><p>📉 <strong>Fitur Lain dengan Korelasi Lemah–Sedang (positif):</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">studytime</span></code>: 0.25 → Lebih banyak waktu belajar cenderung menghasilkan nilai akhir lebih tinggi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Medu</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Fedu</span></code>: ~0.21–0.24 → Pendidikan orang tua memberi kontribusi kecil.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">famrel</span></code>: 0.06 → Kualitas hubungan keluarga sedikit berpengaruh.</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple" start="3">
+<li><p>❌ <strong>Fitur dengan Korelasi Negatif terhadap G3:</strong></p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fitur</p></th>
+<th class="head"><p>Korelasi</p></th>
+<th class="head"><p>Interpretasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">failures</span></code></p></td>
+<td><p><strong>-0.39</strong></p></td>
+<td><p>Gagal di masa lalu menurunkan kemungkinan nilai akhir bagus</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Dalc</span></code>, <code class="docutils literal notranslate"><span class="pre">Walc</span></code></p></td>
+<td><p>-0.20 &amp; -0.18</p></td>
+<td><p>Konsumsi alkohol cenderung menurunkan prestasi</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">absences</span></code></p></td>
+<td><p>-0.09</p></td>
+<td><p>Siswa yang sering absen cenderung punya nilai lebih rendah</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="data-preprocessing">
+<h2><strong>Data Preprocessing</strong><a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
+<section id="missing-value-tidak-digunakan">
+<h3><em>Missing Value(tidak digunakan)</em><a class="headerlink" href="#missing-value-tidak-digunakan" title="Link to this heading">#</a></h3>
+</section>
+<section id="memilih-kolom-dengan-korelasi-terhadap-data-akhir">
+<h3><em>Memilih Kolom dengan Korelasi terhadap Data Akhir</em><a class="headerlink" href="#memilih-kolom-dengan-korelasi-terhadap-data-akhir" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom numerik</span>
+<span class="n">numeric_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+
+<span class="c1"># Hitung korelasi dengan G3</span>
+<span class="n">correlation_with_target</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s2">&quot;G3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;G3&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ambil fitur dengan korelasi kuat (positif atau negatif)</span>
+<span class="n">selected_features</span> <span class="o">=</span> <span class="n">correlation_with_target</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">correlation_with_target</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Tambahkan target G3</span>
+<span class="n">selected_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;G3&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buat dataset baru hanya dengan fitur terpilih</span>
+<span class="n">df_selected</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+
+<span class="c1"># Tampilkan fitur yang dipilih</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fitur yang dipilih berdasarkan korelasi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selected_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitur yang dipilih berdasarkan korelasi:
+[&#39;Medu&#39;, &#39;Fedu&#39;, &#39;studytime&#39;, &#39;failures&#39;, &#39;Dalc&#39;, &#39;G1&#39;, &#39;G2&#39;, &#39;G3&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_selected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Medu  Fedu  studytime  failures  Dalc  G1  G2  G3
+0       4     4          2         0     1   0  11  11
+1       1     1          2         0     1   9  11  11
+2       1     1          2         0     2  12  13  12
+3       4     2          3         0     1  14  14  14
+4       3     3          2         0     1  11  13  13
+..    ...   ...        ...       ...   ...  ..  ..  ..
+644     2     3          3         1     1  10  11  10
+645     3     1          2         0     1  15  15  16
+646     1     1          2         0     1  11  12   9
+647     3     1          1         0     3  10  10  10
+648     3     2          1         0     3  10  11  11
+
+[649 rows x 8 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="deteksi-outlier">
+<h3><em>Deteksi Outlier</em><a class="headerlink" href="#deteksi-outlier" title="Link to this heading">#</a></h3>
+<p>Apa Itu IQR (Interquartile Range)
+IQR singkatan dari Interquartile Range, atau dalam Bahasa Indonesia sering disebut Jangkauan Antarkuartil. Dalam statistika deskriptif, IQR adalah ukuran penyebaran data yang memberikan informasi tentang rentang tengah 50% dari suatu distribusi data.</p>
+<p>Bayangkan Anda memiliki kumpulan data yang sudah diurutkan dari yang terkecil hingga terbesar. IQR akan memberitahu Anda seberapa jauh jarak antara nilai yang memisahkan 25% data terbawah dengan nilai yang memisahkan 25% data teratas.</p>
+<p>Konsep Dasar: Kuartil
+Untuk memahami IQR, kita perlu memahami konsep kuartil. Kuartil membagi kumpulan data yang sudah diurutkan menjadi empat bagian yang sama besar, atau masing-masing 25% data. Ada tiga kuartil utama:</p>
+<ol class="arabic simple">
+<li><p>Kuartil Pertama (Q1): Ini adalah nilai di mana 25% data berada di bawahnya dan 75% data berada di atasnya. Q1 juga disebut kuartil bawah.</p></li>
+<li><p>Kuartil Kedua (Q2): Ini adalah median dari seluruh kumpulan data. Q2 membagi data menjadi dua bagian yang sama besar (50% di bawah dan 50% di atas).</p></li>
+<li><p>Kuartil Ketiga (Q3): Ini adalah nilai di mana 75% data berada di bawahnya dan 25% data berada di atasnya. Q3 juga disebut kuartil atas.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Cara Menghitung IQR
+Setelah Anda menemukan nilai Q1 dan Q3, perhitungan IQR sangat sederhana:</p></li>
+</ul>
+<p>IQR=Q3−Q1</p>
+<ul class="simple">
+<li><p>Langkah-langkah Menghitung IQR:</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Urutkan Data: Susun semua nilai data dari yang terkecil hingga terbesar.</p></li>
+<li><p>Temukan Median (Q2):</p>
+<ul class="simple">
+<li><p>Jika jumlah data (n) ganjil, median adalah nilai tengah setelah diurutkan.</p></li>
+<li><p>Jika jumlah data (n) genap, median adalah rata-rata dari dua nilai tengah.</p></li>
+</ul>
+</li>
+<li><p>Temukan Kuartil Pertama (Q1): Q1 adalah median dari paruh bawah data (nilai-nilai di bawah Q2).</p></li>
+<li><p>Temukan Kuartil Ketiga (Q3): Q3 adalah median dari paruh atas data (nilai-nilai di atas Q2).</p></li>
+<li><p>Hitung IQR: Kurangkan Q1 dari Q3.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Salin data yang sudah diseleksi sebelumnya</span>
+<span class="n">df_outlier_check</span> <span class="o">=</span> <span class="n">df_selected</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Buat dictionary untuk menyimpan jumlah outlier tiap kolom</span>
+<span class="n">outlier_counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Loop untuk setiap kolom numerik</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_outlier_check</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span>  <span class="c1"># Kita skip target saat ini</span>
+        <span class="k">continue</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Q3</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+
+    <span class="c1"># Deteksi outlier</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[(</span><span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+    <span class="n">outlier_counts</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan jumlah outlier per kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah outlier per kolom berdasarkan IQR:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">outlier_counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah outlier per kolom berdasarkan IQR:
+Medu: 0
+Fedu: 0
+studytime: 35
+failures: 100
+Dalc: 34
+G1: 16
+G2: 25
+</pre></div>
+</div>
+</div>
+</div>
+<section id="winsorizing-teknik">
+<h4>Winsorizing Teknik<a class="headerlink" href="#winsorizing-teknik" title="Link to this heading">#</a></h4>
+<p>karena disini banyak sekali data outlies maka saya akan mencoba untuk menormalisasikannya dengan menggunakan metode Winsorizing. apa itu winsorizing?</p>
+<p>Winsorizing adalah teknik statistik yang digunakan untuk menangani outlier (nilai ekstrem) dalam suatu dataset. Alih-alih menghapus outlier seperti pada metode trimming, winsorizing justru mengganti nilai-nilai ekstrem tersebut dengan nilai-nilai yang kurang ekstrem, biasanya pada batas tertentu dari distribusi data.</p>
+<p>Bayangkan Anda memiliki sejumlah data, dan beberapa di antaranya jauh lebih tinggi atau jauh lebih rendah dari kebanyakan data lainnya. Winsorizing akan “memangkas” nilai-nilai ekstrem ini dan menggantinya dengan nilai-nilai yang berada di ambang batas yang ditentukan.</p>
+<p>Bagaimana Cara Kerja Winsorizing?
+Secara umum, proses winsorizing melibatkan langkah-langkah berikut:</p>
+<p>Menentukan Persentase/Batas: Anda perlu menentukan persentase data (misalnya, 5% teratas dan 5% terbawah) yang ingin di-winsorize. Atau, Anda bisa menentukan ambang batas secara manual berdasarkan kuantil (misalnya, kuantil ke-5 dan kuantil ke-95).
+Mengidentifikasi Outlier: Nilai-nilai yang berada di luar ambang batas yang ditentukan dianggap sebagai outlier.
+Mengganti Nilai:</p>
+<ul class="simple">
+<li><p>Semua nilai yang lebih rendah dari ambang batas bawah akan diganti dengan nilai ambang batas bawah tersebut.</p></li>
+<li><p>Semua nilai yang lebih tinggi dari ambang batas atas akan diganti dengan nilai ambang batas atas tersebut.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fungsi untuk winsorize kolom berdasarkan IQR</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">winsorize_iqr</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Q3</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">upper_bound</span><span class="p">)</span>
+
+<span class="c1"># Terapkan ke seluruh kolom numerik kecuali target G3</span>
+<span class="n">df_winsorized</span> <span class="o">=</span> <span class="n">df_selected</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_winsorized</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span>
+        <span class="n">df_winsorized</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">winsorize_iqr</span><span class="p">(</span><span class="n">df_winsorized</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_winsorized</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Medu  Fedu  studytime  failures  Dalc    G1    G2  G3
+0       4     4        2.0         0   1.0   5.5  11.0  11
+1       1     1        2.0         0   1.0   9.0  11.0  11
+2       1     1        2.0         0   2.0  12.0  13.0  12
+3       4     2        3.0         0   1.0  14.0  14.0  14
+4       3     3        2.0         0   1.0  11.0  13.0  13
+..    ...   ...        ...       ...   ...   ...   ...  ..
+644     2     3        3.0         0   1.0  10.0  11.0  10
+645     3     1        2.0         0   1.0  15.0  15.0  16
+646     1     1        2.0         0   1.0  11.0  12.0   9
+647     3     1        1.0         0   3.0  10.0  10.0  10
+648     3     2        1.0         0   3.0  10.0  11.0  11
+
+[649 rows x 8 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Salin data yang sudah diseleksi sebelumnya</span>
+<span class="n">df_outlier_check</span> <span class="o">=</span> <span class="n">df_winsorized</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Buat dictionary untuk menyimpan jumlah outlier tiap kolom</span>
+<span class="n">outlier_counts</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Loop untuk setiap kolom numerik</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_outlier_check</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span>  <span class="c1"># Kita skip target saat ini</span>
+        <span class="k">continue</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">Q3</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+    <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+
+    <span class="c1"># Deteksi outlier</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">df_outlier_check</span><span class="p">[(</span><span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_outlier_check</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+    <span class="n">outlier_counts</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan jumlah outlier per kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah outlier per kolom berdasarkan IQR:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">outlier_counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah outlier per kolom berdasarkan IQR:
+Medu: 0
+Fedu: 0
+studytime: 0
+failures: 0
+Dalc: 0
+G1: 0
+G2: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berikut ini adalah visualisasi mengenai keadaan data sebelum VS sesudah data di proses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Kolom yang ingin dibandingkan</span>
+<span class="n">selected_cols</span> <span class="o">=</span> <span class="n">df_winsorized</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;G3&#39;</span><span class="p">)</span>  <span class="c1"># kecuali target</span>
+
+<span class="c1"># Buat subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_cols</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">selected_cols</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_cols</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_selected</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2"> - SEBELUM Winsorizing&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_cols</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_winsorized</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2"> - SESUDAH Winsorizing&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/84b2729daac6636cd155f85a6e8288a1b52a62ac65eee558df583ab3e48f3272.png" src="_images/84b2729daac6636cd155f85a6e8288a1b52a62ac65eee558df583ab3e48f3272.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_winsorized</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 649 entries, 0 to 648
+Data columns (total 8 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   Medu       649 non-null    int64  
+ 1   Fedu       649 non-null    int64  
+ 2   studytime  649 non-null    float64
+ 3   failures   649 non-null    int64  
+ 4   Dalc       649 non-null    float64
+ 5   G1         649 non-null    float64
+ 6   G2         649 non-null    float64
+ 7   G3         649 non-null    int64  
+dtypes: float64(4), int64(4)
+memory usage: 40.7 KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standarisasi-data">
+<h4><em>Standarisasi Data</em><a class="headerlink" href="#standarisasi-data" title="Link to this heading">#</a></h4>
+<p>Berikut ini saya akan melakukan standarisasi data yang sudah kita pilih</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Pisahkan fitur dan target</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_winsorized</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;G3&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_winsorized</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span>
+
+<span class="c1"># Standarisasi fitur</span>
+<span class="n">scaler_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_standardized</span> <span class="o">=</span> <span class="n">scaler_std</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Konversi kembali ke DataFrame agar mudah dibaca</span>
+<span class="n">X_standardized_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_standardized</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_standardized_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Medu      Fedu  studytime  failures      Dalc        G1        G2
+0    1.310216  1.540715   0.125568       0.0 -0.592589 -2.206630 -0.230013
+1   -1.336039 -1.188832   0.125568       0.0 -0.592589 -0.899455 -0.230013
+2   -1.336039 -1.188832   0.125568       0.0  0.724501  0.220979  0.513590
+3    1.310216 -0.278983   1.429466       0.0 -0.592589  0.967936  0.885391
+4    0.428131  0.630866   0.125568       0.0 -0.592589 -0.152499  0.513590
+..        ...       ...        ...       ...       ...       ...       ...
+644 -0.453954  0.630866   1.429466       0.0 -0.592589 -0.525977 -0.230013
+645  0.428131 -1.188832   0.125568       0.0 -0.592589  1.341414  1.257192
+646 -1.336039 -1.188832   0.125568       0.0 -0.592589 -0.152499  0.141789
+647  0.428131 -1.188832  -1.178330       0.0  2.041591 -0.525977 -0.601814
+648  0.428131 -0.278983  -1.178330       0.0  2.041591 -0.525977 -0.230013
+
+[649 rows x 7 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="split-data-training-and-test">
+<h4><em>Split Data Training and Test</em><a class="headerlink" href="#split-data-training-and-test" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Misalnya kita gunakan data hasil standarisasi:</span>
+<span class="c1"># X_standardized_df dan y</span>
+
+<span class="c1"># Bagi data: 80% training, 20% testing</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_standardized_df</span><span class="p">,</span>  <span class="c1"># atau X_normalized_df jika pakai normalisasi</span>
+    <span class="n">y</span><span class="p">,</span>                  <span class="c1"># target (G3)</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>      <span class="c1"># 20% untuk testing</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>     <span class="c1"># agar hasil konsisten</span>
+<span class="p">)</span>
+
+<span class="c1"># Cek dimensi hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_test:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ukuran Data:
+X_train: (519, 7)
+X_test: (130, 7)
+y_train: (519,)
+y_test: (130,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="modeling">
+<h2><strong>Modeling</strong><a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
+<section id="linier-regression">
+<h3><em>Linier Regression</em><a class="headerlink" href="#linier-regression" title="Link to this heading">#</a></h3>
+<p>Regresi linier adalah salah satu algoritma machine learning paling dasar dan banyak digunakan untuk memodelkan hubungan antara dua variabel atau lebih, di mana salah satu variabel (dependen) dianggap sebagai fungsi linier dari variabel lainnya (independen). Secara sederhana, regresi linier mencari garis lurus terbaik (best-fit line) yang menggambarkan pola hubungan antar data.</p>
+<p>Tujuan Utama
+Tujuan utama dari regresi linier adalah untuk:</p>
+<ol class="arabic simple">
+<li><p>Memprediksi: Memprediksi nilai variabel dependen (target) berdasarkan nilai variabel independen (fitur).</p></li>
+<li><p>Memahami Hubungan: Mengidentifikasi kekuatan dan arah hubungan antara variabel-variabel tersebut.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Inisialisasi model</span>
+<span class="n">model_lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Latih model dengan data training</span>
+<span class="n">model_lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Prediksi pada data test</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">model_lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Linear Regression&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="decision-tree-regresi">
+<h3><em>Decision Tree Regresi</em><a class="headerlink" href="#decision-tree-regresi" title="Link to this heading">#</a></h3>
+<p>Decision Tree (Pohon Keputusan) adalah salah satu algoritma machine learning yang kuat dan intuitif, digunakan baik untuk tugas klasifikasi maupun regresi. Seperti namanya, Decision Tree bekerja dengan membangun model dalam bentuk struktur pohon, di mana setiap node internal merepresentasikan “pertanyaan” atau “pengujian” fitur, setiap cabang merepresentasikan hasil dari pengujian tersebut, dan setiap node daun (leaf node) merepresentasikan “keputusan” akhir atau nilai prediksi.</p>
+<p>Bayangkan Anda sedang mencoba memutuskan apakah akan membawa payung atau tidak. Anda mungkin akan bertanya: “Apakah hari ini hujan?” Jika ya, Anda mungkin bertanya lagi: “Apakah hujannya deras?” Jika tidak, Anda mungkin bertanya: “Apakah ada awan mendung?” Pohon keputusan bekerja dengan cara yang sangat mirip, secara sistematis memecah data berdasarkan pertanyaan-pertanyaan ini hingga mencapai keputusan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+<span class="n">tree_model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_tree</span> <span class="o">=</span> <span class="n">tree_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;Decision Tree&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="k-neighbors-regressor">
+<h4><em>K-Neighbors Regressor</em><a class="headerlink" href="#k-neighbors-regressor" title="Link to this heading">#</a></h4>
+<p>K-Neighbors Regressor (KNR), sering juga disebut KNN Regressor, adalah salah satu algoritma machine learning yang digunakan untuk tugas regresi. Algoritma ini termasuk dalam kategori algoritma non-parametrik dan lazy learner (pembelajar malas).</p>
+<p>Non-parametrik: Ini berarti KNR tidak membuat asumsi tentang bentuk fungsi yang mendasari data atau distribusi data.
+Lazy Learner: KNR tidak secara eksplisit membangun model selama fase pelatihan. Sebaliknya, ia hanya menghafal dataset pelatihan. Semua “pembelajaran” atau komputasi terjadi pada saat prediksi.
+Ide utama di balik K-Neighbors Regressor adalah: “Jika Anda ingin memprediksi nilai suatu titik data baru, cari ‘tetangga’ terdekatnya dalam data yang sudah ada, lalu ambil rata-rata dari nilai-nilai tetangga tersebut sebagai prediksi.”</p>
+<p>Bayangkan Anda ingin menebak harga sebuah rumah baru di kompleks Anda. Alih-alih membuat rumus matematis yang rumit, Anda mungkin akan bertanya kepada tetangga di sekitar rumah tersebut, mencari rumah-rumah yang paling mirip (ukuran, jumlah kamar, dll.), dan kemudian mengambil rata-rata harga dari rumah-rumah tetangga tersebut sebagai perkiraan. Itulah esensi dari KNR.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+
+<span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;K-Neighbors Regressor&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="evaluasi">
+<h2><strong>Evaluasi</strong><a class="headerlink" href="#evaluasi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">):</span>
+    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== Evaluasi untuk: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE  : </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE  : </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE : </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²   : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="evaluasi-linier-regression">
+<h3><em>Evaluasi Linier Regression</em><a class="headerlink" href="#evaluasi-linier-regression" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluasi Model Linear Regression</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Linear Regression&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi untuk: Linear Regression ===
+MAE  : 0.7931
+MSE  : 1.5954
+RMSE : 1.2631
+R²   : 0.8364
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluasi-decision-tree">
+<h3><em>Evaluasi Decision Tree</em><a class="headerlink" href="#evaluasi-decision-tree" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_tree</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi untuk: Decision Tree ===
+MAE  : 0.9838
+MSE  : 2.9941
+RMSE : 1.7303
+R²   : 0.6930
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;K-Neighbors Regressor&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi untuk: K-Neighbors Regressor ===
+MAE  : 0.9954
+MSE  : 2.3025
+RMSE : 1.5174
+R²   : 0.7639
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>🧠 Penjelasan Metrik</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>MAE (Mean Absolute Error)</strong>: Rata-rata kesalahan absolut. Semakin kecil, semakin baik.</p></li>
+<li><p><strong>MSE (Mean Squared Error)</strong>: Rata-rata kuadrat kesalahan. Memberi penalti lebih besar untuk error besar.</p></li>
+<li><p><strong>RMSE</strong>: Akar dari MSE. Sama satuan dengan target (<code class="docutils literal notranslate"><span class="pre">G3</span></code>).</p></li>
+<li><p><strong>R² (R-squared)</strong>: Seberapa baik model menjelaskan variansi target. Nilai mendekati 1 berarti sangat baik.</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic" start="2">
+<li><p>✅ <strong>Analisis Performa</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Linear Regression</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>MAE dan RMSE <strong>paling kecil</strong></p></li>
+<li><p>R² <strong>paling tinggi</strong>: <code class="docutils literal notranslate"><span class="pre">0.8364</span></code></p></li>
+<li><p>Artinya model ini <strong>menangkap pola linier antar fitur dan target (G3) dengan sangat baik</strong></p></li>
+<li><p><strong>Model baseline terbaik sejauh ini</strong></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Decision Tree</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Lebih fleksibel karena bisa menangani non-linearitas</p></li>
+<li><p>Tapi overfitting bisa terjadi jika tidak di-pruning</p></li>
+<li><p>R² <code class="docutils literal notranslate"><span class="pre">0.6930</span></code> → jauh di bawah Linear Regression</p></li>
+<li><p>Error juga <strong>lebih tinggi</strong></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>KNN Regressor</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Kinerja lebih baik dari Decision Tree, tapi <strong>masih di bawah Linear Regression</strong></p></li>
+<li><p>Bisa saja performanya membaik jika kamu:</p>
+<ul>
+<li><p><strong>Tuning nilai <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code></strong></p></li>
+<li><p>Scaling datanya sudah bagus (karena KNN sangat sensitif terhadap skala)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan-sementara">
+<h2>💡 Kesimpulan Sementara:<a class="headerlink" href="#kesimpulan-sementara" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Linear Regression</strong> adalah <strong>model terbaik</strong> sejauh ini</p></li>
+</ul>
+</section>
+<section id="deploy-model">
+<h2><strong>Deploy Model</strong><a class="headerlink" href="#deploy-model" title="Link to this heading">#</a></h2>
+<p>Unduh model yang akan digunakan dalam deploy. berikut ini adalah contohnya</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="c1"># Simpan model</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model_lr</span><span class="p">,</span> <span class="s1">&#39;model_linear.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Simpan juga scaler (jika ada)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler_std</span><span class="p">,</span> <span class="s1">&#39;scaler.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;scaler.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>setelah itu kalian perlu membuat akun di steamlit. untuk cara pembuatannya mungkin bisa dibaca pada dokumentasi berikut ini: <a class="reference external" href="https://docs.streamlit.io/deploy/streamlit-community-cloud">Steamlit Deploy</a>. Selanjutnya kalian bisa membuat repo baru di github lalu masukkan file file yang diperlukan. Untuk struktur file yang saya gunakan sendiri adalah sebagai berikut ini <a class="reference external" href="https://github.com/fznnfitrah/deploy-UAS-pendata">My Github</a>. Berikut adalah hasil website yang sudah saya unggah dengan menggunakan Steamlit <a class="reference external" href="https://deploy-uas-pendata-rvzqwdrflbn7wuzfmahhlj.streamlit.app/">Prediksi Nilai Akhir Siswa</a>. Berikut ini adalah hasil web yang sudah saya deploy</p>
+<p>Link : <a class="reference external" href="https://deploy-uas-pendata-rvzqwdrflbn7wuzfmahhlj.streamlit.app/">https://deploy-uas-pendata-rvzqwdrflbn7wuzfmahhlj.streamlit.app/</a></p>
+<p><img alt="Streamlit.png" src="attachment:Streamlit.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="praUas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em><strong>Tugas Pra-UAS</strong></em></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>Data Understanding</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-kolom-data"><em>Deskripsi Kolom Data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value"><em>Missing Value</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlies-detection"><em>Outlies Detection</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>Data Preprocessing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-tidak-digunakan"><em>Missing Value(tidak digunakan)</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memilih-kolom-dengan-korelasi-terhadap-data-akhir"><em>Memilih Kolom dengan Korelasi terhadap Data Akhir</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier"><em>Deteksi Outlier</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#winsorizing-teknik">Winsorizing Teknik</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data"><em>Standarisasi Data</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data-training-and-test"><em>Split Data Training and Test</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling"><strong>Modeling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linier-regression"><em>Linier Regression</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-regresi"><em>Decision Tree Regresi</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-neighbors-regressor"><em>K-Neighbors Regressor</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi"><strong>Evaluasi</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-linier-regression"><em>Evaluasi Linier Regression</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-decision-tree"><em>Evaluasi Decision Tree</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-sementara">💡 Kesimpulan Sementara:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-model"><strong>Deploy Model</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fauzan Alif Fitrah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -204,6 +204,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">Ujian Tengah Semester</a></li>
 <li class="toctree-l1"><a class="reference internal" href="praUas.html">Tugas praUas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uas.html">Ujian Akhir Semester</a></li>
 </ul>
 
     </div>
@@ -998,7 +999,29 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:649,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">649</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="k">break</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1520.0_x64__qbz5n2kfra8p0\Lib\socket.py:840,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">840</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">841</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">File C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1520.0_x64__qbz5n2kfra8p0\Lib\socket.py:977,</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span> <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">977</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="ne">gaierror</span>: [Errno 11001] getaddrinfo failed
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Mengkoneksi database dengan python</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
@@ -1024,44 +1047,16 @@ Konvergen tercapai pada iterasi 8 dengan selisih 0.000005
 <span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">361</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
-<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:669,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="bp">self</span><span class="o">.</span><span class="n">_next_seq_id</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_server_information</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">669</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request_authentication</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span> <span class="c1"># Send &quot;SET NAMES&quot; query on init for:</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span> <span class="c1"># - Ensure charaset (and collation) is set to the server.</span>
-<span class="g g-Whitespace">    </span><span class="mi">673</span> <span class="c1">#   - collation_id in handshake packet may be ignored.</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">682</span> <span class="c1"># - https://github.com/wagtail/wagtail/issues/9477</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span> <span class="c1"># - https://zenn.dev/methane/articles/2023-mysql-collation (Japanese)</span>
-<span class="g g-Whitespace">    </span><span class="mi">684</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_character_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">charset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">collation</span><span class="p">)</span>
+<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:716,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>         <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">traceback</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span>     <span class="k">raise</span> <span class="n">exc</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="c1"># If e is neither DatabaseError or IOError, It&#39;s a bug.</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span> <span class="c1"># But raising AssertionError hides original error.</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="c1"># So just reraise it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span> <span class="k">raise</span>
 
-<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:979,</span> in <span class="ni">Connection._request_authentication</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">977</span> <span class="c1"># https://dev.mysql.com/doc/internals/en/successful-authentication.html</span>
-<span class="g g-Whitespace">    </span><span class="mi">978</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auth_plugin_name</span> <span class="o">==</span> <span class="s2">&quot;caching_sha2_password&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">979</span>     <span class="n">auth_packet</span> <span class="o">=</span> <span class="n">_auth</span><span class="o">.</span><span class="n">caching_sha2_password_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth_packet</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">980</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auth_plugin_name</span> <span class="o">==</span> <span class="s2">&quot;sha256_password&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">981</span>     <span class="n">auth_packet</span> <span class="o">=</span> <span class="n">_auth</span><span class="o">.</span><span class="n">sha256_password_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth_packet</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\_auth.py:267,</span> in <span class="ni">caching_sha2_password_auth</span><span class="nt">(conn, pkt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span>     <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">265</span>         <span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">server_public_key</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">267</span> <span class="n">data</span> <span class="o">=</span> <span class="n">sha2_rsa_encrypt</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">salt</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">server_public_key</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span> <span class="n">pkt</span> <span class="o">=</span> <span class="n">_roundtrip</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\_auth.py:144,</span> in <span class="ni">sha2_rsa_encrypt</span><span class="nt">(password, salt, public_key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Encrypt password with salt and public_key.</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd"> Used for sha256_password and caching_sha2_password.</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_have_cryptography</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="s2">&quot;&#39;cryptography&#39; package is required for sha256_password or&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="o">+</span> <span class="s2">&quot; caching_sha2_password auth methods&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span> <span class="n">message</span> <span class="o">=</span> <span class="n">_xor_password</span><span class="p">(</span><span class="n">password</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">salt</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="n">rsa_key</span> <span class="o">=</span> <span class="n">serialization</span><span class="o">.</span><span class="n">load_pem_public_key</span><span class="p">(</span><span class="n">public_key</span><span class="p">,</span> <span class="n">default_backend</span><span class="p">())</span>
-
-<span class="ne">RuntimeError</span>: &#39;cryptography&#39; package is required for sha256_password or caching_sha2_password auth methods
+<span class="ne">OperationalError</span>: (2003, &quot;Can&#39;t connect to MySQL server on &#39;mysql-726cd75-mysqlpendata-11.h.aivencloud.com&#39; ([Errno 11001] getaddrinfo failed)&quot;)
 </pre></div>
 </div>
 </div>

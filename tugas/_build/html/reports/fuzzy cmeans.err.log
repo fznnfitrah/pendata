@@ -70,7 +70,29 @@ postgres_engine = create_engine("postgresql+psycopg2://avnadmin:AVNS__Y6I8K0T7rS
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mRuntimeError[39m                              Traceback (most recent call last)
+[31mgaierror[39m                                  Traceback (most recent call last)
+[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:649[39m, in [36mConnection.connect[39m[34m(self, sock)[39m
+[32m    648[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m649[39m     sock = [43msocket[49m[43m.[49m[43mcreate_connection[49m[43m([49m
+[32m    650[39m [43m        [49m[43m([49m[38;5;28;43mself[39;49m[43m.[49m[43mhost[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mport[49m[43m)[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[43m.[49m[43mconnect_timeout[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m
+[32m    651[39m [43m    [49m[43m)[49m
+[32m    652[39m     [38;5;28;01mbreak[39;00m
+
+[36mFile [39m[32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1520.0_x64__qbz5n2kfra8p0\Lib\socket.py:840[39m, in [36mcreate_connection[39m[34m(address, timeout, source_address, all_errors)[39m
+[32m    839[39m exceptions = []
+[32m--> [39m[32m840[39m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[32;43m0[39;49m[43m,[49m[43m [49m[43mSOCK_STREAM[49m[43m)[49m:
+[32m    841[39m     af, socktype, proto, canonname, sa = res
+
+[36mFile [39m[32mC:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.1520.0_x64__qbz5n2kfra8p0\Lib\socket.py:977[39m, in [36mgetaddrinfo[39m[34m(host, port, family, type, proto, flags)[39m
+[32m    976[39m addrlist = []
+[32m--> [39m[32m977[39m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43m_socket[49m[43m.[49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[38;5;28;43mtype[39;49m[43m,[49m[43m [49m[43mproto[49m[43m,[49m[43m [49m[43mflags[49m[43m)[49m:
+[32m    978[39m     af, socktype, proto, canonname, sa = res
+
+[31mgaierror[39m: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+[31mOperationalError[39m                          Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[3][39m[32m, line 5[39m
 [32m      1[39m [38;5;66;03m# Mengkoneksi database dengan python[39;00m
 [32m      2[39m 
@@ -96,42 +118,14 @@ postgres_engine = create_engine("postgresql+psycopg2://avnadmin:AVNS__Y6I8K0T7rS
 [32m    360[39m [38;5;28;01melse[39;00m:
 [32m--> [39m[32m361[39m     [38;5;28;43mself[39;49m[43m.[49m[43mconnect[49m[43m([49m[43m)[49m
 
-[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:669[39m, in [36mConnection.connect[39m[34m(self, sock)[39m
-[32m    666[39m [38;5;28mself[39m._next_seq_id = [32m0[39m
-[32m    668[39m [38;5;28mself[39m._get_server_information()
-[32m--> [39m[32m669[39m [38;5;28;43mself[39;49m[43m.[49m[43m_request_authentication[49m[43m([49m[43m)[49m
-[32m    671[39m [38;5;66;03m# Send "SET NAMES" query on init for:[39;00m
-[32m    672[39m [38;5;66;03m# - Ensure charaset (and collation) is set to the server.[39;00m
-[32m    673[39m [38;5;66;03m#   - collation_id in handshake packet may be ignored.[39;00m
-[32m   (...)[39m[32m    682[39m [38;5;66;03m# - https://github.com/wagtail/wagtail/issues/9477[39;00m
-[32m    683[39m [38;5;66;03m# - https://zenn.dev/methane/articles/2023-mysql-collation (Japanese)[39;00m
-[32m    684[39m [38;5;28mself[39m.set_character_set([38;5;28mself[39m.charset, [38;5;28mself[39m.collation)
+[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:716[39m, in [36mConnection.connect[39m[34m(self, sock)[39m
+[32m    714[39m     [38;5;28;01mif[39;00m DEBUG:
+[32m    715[39m         [38;5;28mprint[39m(exc.traceback)
+[32m--> [39m[32m716[39m     [38;5;28;01mraise[39;00m exc
+[32m    718[39m [38;5;66;03m# If e is neither DatabaseError or IOError, It's a bug.[39;00m
+[32m    719[39m [38;5;66;03m# But raising AssertionError hides original error.[39;00m
+[32m    720[39m [38;5;66;03m# So just reraise it.[39;00m
+[32m    721[39m [38;5;28;01mraise[39;00m
 
-[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\connections.py:979[39m, in [36mConnection._request_authentication[39m[34m(self)[39m
-[32m    977[39m [38;5;66;03m# https://dev.mysql.com/doc/internals/en/successful-authentication.html[39;00m
-[32m    978[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._auth_plugin_name == [33m"[39m[33mcaching_sha2_password[39m[33m"[39m:
-[32m--> [39m[32m979[39m     auth_packet = [43m_auth[49m[43m.[49m[43mcaching_sha2_password_auth[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mauth_packet[49m[43m)[49m
-[32m    980[39m [38;5;28;01melif[39;00m [38;5;28mself[39m._auth_plugin_name == [33m"[39m[33msha256_password[39m[33m"[39m:
-[32m    981[39m     auth_packet = _auth.sha256_password_auth([38;5;28mself[39m, auth_packet)
-
-[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\_auth.py:267[39m, in [36mcaching_sha2_password_auth[39m[34m(conn, pkt)[39m
-[32m    264[39m     [38;5;28;01mif[39;00m DEBUG:
-[32m    265[39m         [38;5;28mprint[39m(conn.server_public_key.decode([33m"[39m[33mascii[39m[33m"[39m))
-[32m--> [39m[32m267[39m data = [43msha2_rsa_encrypt[49m[43m([49m[43mconn[49m[43m.[49m[43mpassword[49m[43m,[49m[43m [49m[43mconn[49m[43m.[49m[43msalt[49m[43m,[49m[43m [49m[43mconn[49m[43m.[49m[43mserver_public_key[49m[43m)[49m
-[32m    268[39m pkt = _roundtrip(conn, data)
-
-[36mFile [39m[32m~\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\pymysql\_auth.py:144[39m, in [36msha2_rsa_encrypt[39m[34m(password, salt, public_key)[39m
-[32m    139[39m [38;5;250m[39m[33;03m"""Encrypt password with salt and public_key.[39;00m
-[32m    140[39m 
-[32m    141[39m [33;03mUsed for sha256_password and caching_sha2_password.[39;00m
-[32m    142[39m [33;03m"""[39;00m
-[32m    143[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m _have_cryptography:
-[32m--> [39m[32m144[39m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m(
-[32m    145[39m         [33m"[39m[33m'[39m[33mcryptography[39m[33m'[39m[33m package is required for sha256_password or[39m[33m"[39m
-[32m    146[39m         + [33m"[39m[33m caching_sha2_password auth methods[39m[33m"[39m
-[32m    147[39m     )
-[32m    148[39m message = _xor_password(password + [33mb[39m[33m"[39m[38;5;130;01m\0[39;00m[33m"[39m, salt)
-[32m    149[39m rsa_key = serialization.load_pem_public_key(public_key, default_backend())
-
-[31mRuntimeError[39m: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+[31mOperationalError[39m: (2003, "Can't connect to MySQL server on 'mysql-726cd75-mysqlpendata-11.h.aivencloud.com' ([Errno 11001] getaddrinfo failed)")
 
